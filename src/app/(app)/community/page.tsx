@@ -49,9 +49,11 @@ export default function CommunityPage() {
       </p>
 
       <div className="flex justify-end">
-        <Button>
-          <PenSquare className="mr-2 h-4 w-4" />
-          Start a New Discussion
+        <Button asChild>
+          <Link href="/community/new">
+            <PenSquare className="mr-2 h-4 w-4" />
+            Start a New Discussion
+          </Link>
         </Button>
       </div>
 
