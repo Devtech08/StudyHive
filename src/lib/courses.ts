@@ -74,7 +74,7 @@ export const subjects = [
             title: 'Introduction to Geometry',
             instructor: 'Pythagoras',
             progress: 80,
-            thumbnail: 'https://placehold.co/600x400.png',
+            thumbnail: 'https://i.pinimg.com/1200x/fc/56/73/fc5673761b7056163e2c60c074eb1af5.jpg',
             dataAiHint: 'geometric shapes',
             description: 'Discover the world of shapes, angles, and spatial reasoning.',
             objectives: [],
