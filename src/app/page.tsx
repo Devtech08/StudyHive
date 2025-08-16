@@ -14,7 +14,7 @@ const testimonials = [
   {
     name: 'Sarah L.',
     role: 'University Student',
-    avatar: 'https://placehold.co/40x40.png',
+    avatar: 'https://i.pinimg.com/1200x/94/cb/c2/94cbc278269c859320b22b64ebfe70f8.jpg',
     dataAiHint: 'woman portrait',
     quote:
       'NoteWise has been a total game-changer for my study routine. The AI revision prompts helped me ace my finals!',
