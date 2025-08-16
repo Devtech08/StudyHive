@@ -17,6 +17,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { subjects } from '@/lib/courses';
 import { generateMockExam } from '@/ai/flows/generate-mock-exam';
 import { useRouter } from 'next/navigation';
+import { generateChallengeQuiz } from '@/ai/flows/generate-challenge-quiz';
 
 const navLinks = [
   { href: '/courses', label: 'Courses' },
@@ -53,6 +54,8 @@ export default function AiRevisionPage() {
     
     const [isGeneratingExam, setIsGeneratingExam] = useState(false);
     const [examSubject, setExamSubject] = useState<string>('');
+    
+    const [isGeneratingChallenge, setIsGeneratingChallenge] = useState(false);
 
     const quizFileInputRef = useRef<HTMLInputElement>(null);
     const flashcardFileInputRef = useRef<HTMLInputElement>(null);
@@ -116,6 +119,18 @@ export default function AiRevisionPage() {
         setIsGeneratingExam(false);
     };
     
+    const handleGenerateChallenge = async () => {
+        setIsGeneratingChallenge(true);
+        try {
+            const challenge = await generateChallengeQuiz();
+            localStorage.setItem('aiChallenge', JSON.stringify(challenge));
+            router.push('/ai-challenge');
+        } catch (error) {
+            console.error("Failed to generate AI challenge:", error);
+        }
+        setIsGeneratingChallenge(false);
+    };
+
     const renderFileUpload = (
         file: File | null, 
         setFile: React.Dispatch<React.SetStateAction<File | null>>, 
@@ -373,8 +388,13 @@ export default function AiRevisionPage() {
                                     <CardDescription>Make revision fun with timed quizzes, streaks, and points. Compete with classmates on the leaderboard!</CardDescription>
                                 </CardHeader>
                                 <CardContent>
-                                    <Button className="w-full" size="lg">
-                                       Start an AI Challenge
+                                    <Button className="w-full" size="lg" onClick={handleGenerateChallenge} disabled={isGeneratingChallenge}>
+                                        {isGeneratingChallenge ? (
+                                            <>
+                                                <Loader2 className="w-5 h-5 mr-2 animate-spin"/>
+                                                Generating...
+                                            </>
+                                        ) : 'Start an AI Challenge'}
                                     </Button>
                                 </CardContent>
                                 <CardFooter>
@@ -388,3 +408,5 @@ export default function AiRevisionPage() {
         </div>
     )
 }
+
+    
