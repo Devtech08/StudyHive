@@ -1,8 +1,11 @@
 
+'use client';
+
+import { useState, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Upload, Wand2, BookCopy, Zap, Target, Award, Bot, FileText, CheckCircle, MessageSquare, Speaker, HelpCircle } from "lucide-react";
+import { Upload, Wand2, BookCopy, Zap, Target, Award, Bot, FileText, CheckCircle, MessageSquare, Speaker, HelpCircle, X, File as FileIcon } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 
@@ -14,6 +17,53 @@ const navLinks = [
 ];
 
 export default function AiRevisionPage() {
+    const [quizFile, setQuizFile] = useState<File | null>(null);
+    const [flashcardFile, setFlashcardFile] = useState<File | null>(null);
+    
+    const quizFileInputRef = useRef<HTMLInputElement>(null);
+    const flashcardFileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>, setFile: React.Dispatch<React.SetStateAction<File | null>>) => {
+        if (event.target.files && event.target.files.length > 0) {
+            setFile(event.target.files[0]);
+        }
+    };
+    
+    const renderFileUpload = (
+        file: File | null, 
+        setFile: React.Dispatch<React.SetStateAction<File | null>>, 
+        fileInputRef: React.RefObject<HTMLInputElement>
+    ) => {
+        if (file) {
+            return (
+                <div className="flex items-center justify-between p-3 rounded-lg bg-muted border">
+                    <div className="flex items-center gap-2">
+                        <FileIcon className="w-4 h-4" />
+                        <span className="text-sm font-medium truncate">{file.name}</span>
+                    </div>
+                    <Button variant="ghost" size="icon" onClick={() => setFile(null)}>
+                        <X className="w-4 h-4" />
+                    </Button>
+                </div>
+            )
+        }
+        return (
+            <>
+                <input 
+                    type="file" 
+                    ref={fileInputRef} 
+                    className="hidden" 
+                    onChange={(e) => handleFileUpload(e, setFile)}
+                    accept=".pdf,.doc,.docx,.txt"
+                />
+                <Button variant="outline" className="w-full" onClick={() => fileInputRef.current?.click()}>
+                    <Upload className="w-4 h-4 mr-2" />
+                    Upload Notes or PDF
+                </Button>
+            </>
+        )
+    };
+
     return (
         <div className="flex flex-col min-h-screen">
              <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
@@ -62,13 +112,10 @@ export default function AiRevisionPage() {
                                         <CardDescription>Upload course notes or a PDF and let AI create a quiz for you. Select difficulty and question types.</CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
-                                        <Button variant="outline" className="w-full">
-                                            <Upload className="w-4 h-4 mr-2" />
-                                            Upload Notes or PDF
-                                        </Button>
+                                       {renderFileUpload(quizFile, setQuizFile, quizFileInputRef)}
                                     </CardContent>
                                     <CardFooter>
-                                         <Button className="w-full"><Zap className="w-4 h-4 mr-2" />Generate Quiz</Button>
+                                         <Button className="w-full" disabled={!quizFile}><Zap className="w-4 h-4 mr-2" />Generate Quiz</Button>
                                     </CardFooter>
                                 </Card>
                                 <Card>
@@ -77,14 +124,11 @@ export default function AiRevisionPage() {
                                         <CardDescription>AI can turn your notes into flashcards or summarize long chapters for quick revision.</CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
-                                         <Button variant="outline" className="w-full">
-                                            <Upload className="w-4 h-4 mr-2" />
-                                            Upload Notes or PDF
-                                        </Button>
+                                         {renderFileUpload(flashcardFile, setFlashcardFile, flashcardFileInputRef)}
                                     </CardContent>
                                     <CardFooter className="grid grid-cols-2 gap-4">
-                                        <Button className="w-full">Create Flashcards</Button>
-                                        <Button className="w-full">Summarize Notes</Button>
+                                        <Button className="w-full" disabled={!flashcardFile}>Create Flashcards</Button>
+                                        <Button className="w-full" disabled={!flashcardFile}>Summarize Notes</Button>
                                     </CardFooter>
                                 </Card>
                             </div>
@@ -172,3 +216,5 @@ export default function AiRevisionPage() {
         </div>
     )
 }
+
+    
