@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { BookOpen, Target, TrendingUp, Bot, ArrowRight, Star } from 'lucide-react';
 import Image from 'next/image';
 import { Logo } from '@/components/Logo';
+import AiStudyAssistant from '@/components/AiStudyAssistant';
 
 const features = [
   {
@@ -131,7 +132,23 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
+        <section id="ai-assistant" className="w-full py-12 md:py-24 lg:py-32 bg-background">
+          <div className="container px-4 md:px-6">
+             <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm">AI Study Assistant</div>
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Have a question? Ask our AI.</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Stuck on a concept? Get an instant explanation from our friendly AI study assistant.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto max-w-2xl pt-12">
+              <AiStudyAssistant />
+            </div>
+          </div>
+        </section>
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/40">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">

@@ -8,6 +8,7 @@ import {
   Sparkles,
   User as UserIcon,
   Users,
+  Trophy,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -29,6 +30,7 @@ const navLinks = [
   { href: '/courses', label: 'Courses', icon: BookOpen },
   { href: '/revision', label: 'AI Revision', icon: Sparkles },
   { href: '/community', label: 'Community', icon: Users },
+  { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
 ];
 
 export function Header({ user }: { user: User | null }) {
