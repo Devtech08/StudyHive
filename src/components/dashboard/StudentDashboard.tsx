@@ -162,7 +162,7 @@ export default function StudentDashboard() {
                 <li className="flex items-center justify-between">
                   <span className="text-muted-foreground">Take a daily quiz</span>
                    <Link href="/quiz/algebra">
-                      <Button variant="destructive" size="sm">
+                      <Button variant="default" size="sm">
                          <Target className="mr-2 h-4 w-4" />
                          Start Quiz
                       </Button>
