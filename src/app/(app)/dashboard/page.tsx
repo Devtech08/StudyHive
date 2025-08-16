@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowUp, BookOpen, Bot, Target } from 'lucide-react';
+import { ArrowUp, BookOpen, Bot, Target, Award, Star, CheckCircle } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -12,8 +12,15 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
 import ProgressChart from '@/components/dashboard/ProgressChart';
 import { useAuth } from '@/context/AuthContext';
+
+const achievements = [
+    { icon: <Award className="h-6 w-6 text-yellow-500" />, title: 'First Quiz', description: 'Complete your first quiz' },
+    { icon: <Star className="h-6 w-6 text-yellow-500" />, title: 'Quick Learner', description: 'Master a topic in 1 day' },
+    { icon: <CheckCircle className="h-6 w-6 text-green-500" />, title: 'Perfect Score', description: 'Get 100% on a quiz' },
+]
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -68,17 +75,61 @@ export default function Dashboard() {
             </CardContent>
           </Card>
         </div>
-        <Card>
-          <CardHeader>
-            <CardTitle className="font-headline">Progress Overview</CardTitle>
-            <CardDescription>
-              Your performance across different subjects.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ProgressChart />
-          </CardContent>
-        </Card>
+        <div className="grid gap-6 md:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-headline">Progress Overview</CardTitle>
+              <CardDescription>
+                Your performance across different subjects.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ProgressChart />
+            </CardContent>
+          </Card>
+           <Card>
+            <CardHeader>
+              <CardTitle className="font-headline">Progress & Achievements</CardTitle>
+              <CardDescription>
+                Track your progress and unlock new badges.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+                <div>
+                    <h3 className="text-lg font-medium mb-2">Subject Progress</h3>
+                    <div className="space-y-4">
+                        <div>
+                            <div className="flex justify-between mb-1">
+                                <span className="text-sm font-medium">Mathematics</span>
+                                <span className="text-sm text-muted-foreground">40%</span>
+                            </div>
+                            <Progress value={40} aria-label="Mathematics progress" />
+                        </div>
+                         <div>
+                            <div className="flex justify-between mb-1">
+                                <span className="text-sm font-medium">Biology</span>
+                                <span className="text-sm text-muted-foreground">65%</span>
+                            </div>
+                            <Progress value={65} aria-label="Biology progress" />
+                        </div>
+                    </div>
+                </div>
+                 <div>
+                    <h3 className="text-lg font-medium mb-2">Badges</h3>
+                    <div className="grid grid-cols-3 gap-4 text-center">
+                        {achievements.map((badge) => (
+                           <div key={badge.title} className="flex flex-col items-center gap-1">
+                             <div className="p-3 rounded-full bg-muted">
+                                {badge.icon}
+                              </div>
+                             <p className="text-xs font-medium">{badge.title}</p>
+                           </div>
+                        ))}
+                    </div>
+                </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
       <div>
         <Card className="overflow-hidden">
