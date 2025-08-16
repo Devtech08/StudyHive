@@ -1,5 +1,6 @@
 
 
+
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,7 @@ import { Logo } from "@/components/Logo";
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '#', label: 'AI Revision' },
+  { href: '/ai-revision', label: 'AI Revision' },
   { href: '#', label: 'Communities' },
 ];
 
