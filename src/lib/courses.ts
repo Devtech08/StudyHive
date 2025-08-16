@@ -92,7 +92,7 @@ export const subjects = [
             title: 'World History I',
             instructor: 'Dr. Herodotus',
             progress: 15,
-            thumbnail: 'https://placehold.co/600x400.png',
+            thumbnail: 'https://i.pinimg.com/1200x/16/25/19/1625194cb44c312f7d2083ecc69e30dc.jpg',
             dataAiHint: 'ancient ruins',
             description: 'A survey of major global events from ancient civilizations to the pre-modern era.',
             objectives: [],
