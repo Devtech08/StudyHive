@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { UserNav } from '@/components/UserNav';
 
 const navLinks = [
   { href: '/courses', label: 'Courses' },
@@ -76,12 +77,7 @@ export default function CommunityPage() {
           ))}
         </nav>
         <div className="flex-1 flex justify-end items-center gap-4 sm:gap-6">
-          <Button variant="ghost" asChild>
-            <Link href="#">Login</Link>
-          </Button>
-          <Button asChild>
-            <Link href="#">Get Started</Link>
-          </Button>
+          <UserNav />
         </div>
       </header>
 

@@ -18,6 +18,7 @@ import { subjects } from '@/lib/courses';
 import { generateMockExam } from '@/ai/flows/generate-mock-exam';
 import { useRouter } from 'next/navigation';
 import { generateChallengeQuiz } from '@/ai/flows/generate-challenge-quiz';
+import { UserNav } from '@/components/UserNav';
 
 const navLinks = [
   { href: '/courses', label: 'Courses' },
@@ -91,11 +92,12 @@ export default function AiRevisionPage() {
 
         const newUserMessage: Message = { role: 'user', content: explanationInput };
         setMessages(prev => [...prev, newUserMessage]);
+        const currentInput = explanationInput;
         setExplanationInput('');
         setIsGeneratingExplanation(true);
 
         try {
-            const response = await explainConcept({query: explanationInput});
+            const response = await explainConcept({query: currentInput});
             const botMessage: Message = { role: 'bot', content: response };
             setMessages(prev => [...prev, botMessage]);
         } catch (error) {
@@ -182,12 +184,7 @@ export default function AiRevisionPage() {
                 ))}
                 </nav>
                 <div className="flex-1 flex justify-end items-center gap-4 sm:gap-6">
-                <Button variant="ghost" asChild>
-                    <Link href="#">Login</Link>
-                </Button>
-                <Button asChild>
-                    <Link href="#">Get Started</Link>
-                </Button>
+                    <UserNav />
                 </div>
             </header>
             <main className="flex-1 p-4 md:p-8 lg:p-12 bg-muted/20">

@@ -1,5 +1,6 @@
 
 
+'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -8,6 +9,7 @@ import { BookOpen, Target, TrendingUp, Bot, ArrowRight, Star } from 'lucide-reac
 import Image from 'next/image';
 import { Logo } from '@/components/Logo';
 import FeatureCarousel from '@/components/FeatureCarousel';
+import { UserNav } from '@/components/UserNav';
 
 const testimonials = [
   {
@@ -61,12 +63,7 @@ export default function Home() {
           ))}
         </nav>
         <div className="flex-1 flex justify-end items-center gap-4 sm:gap-6">
-          <Button variant="ghost" asChild>
-            <Link href="#">Login</Link>
-          </Button>
-          <Button asChild>
-            <Link href="#">Get Started</Link>
-          </Button>
+          <UserNav />
         </div>
       </header>
       <main className="flex-1">

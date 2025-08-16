@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { UserNav } from '@/components/UserNav';
 
 
 const navLinks = [
@@ -147,12 +148,7 @@ export default function LeaderboardPage() {
           ))}
         </nav>
         <div className="flex-1 flex justify-end items-center gap-4 sm:gap-6">
-          <Button variant="ghost" asChild>
-            <Link href="#">Login</Link>
-          </Button>
-          <Button asChild>
-            <Link href="#">Get Started</Link>
-          </Button>
+          <UserNav />
         </div>
       </header>
 

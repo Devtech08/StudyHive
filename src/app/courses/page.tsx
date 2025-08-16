@@ -1,7 +1,6 @@
 
 
-
-
+'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -11,6 +10,7 @@ import { subjects } from "@/lib/courses";
 import Image from "next/image";
 import { ArrowRight, User } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { UserNav } from "@/components/UserNav";
 
 const navLinks = [
   { href: '/courses', label: 'Courses' },
@@ -36,12 +36,7 @@ export default function CoursesPage() {
           ))}
         </nav>
         <div className="flex-1 flex justify-end items-center gap-4 sm:gap-6">
-          <Button variant="ghost" asChild>
-            <Link href="#">Login</Link>
-          </Button>
-          <Button asChild>
-            <Link href="#">Get Started</Link>
-          </Button>
+          <UserNav />
         </div>
       </header>
       <main className="flex-1 p-4 md:p-8 lg:p-12">
