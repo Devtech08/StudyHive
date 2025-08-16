@@ -22,7 +22,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { logout } from '@/lib/actions/auth';
 import type { User } from '@/lib/types';
 import { Logo } from './Logo';
@@ -57,6 +57,12 @@ export function Header({ user }: { user: User | null }) {
             </Button>
           </SheetTrigger>
           <SheetContent side="left">
+             <SheetHeader className="sr-only">
+                <SheetTitle>Navigation Menu</SheetTitle>
+                <SheetDescription>
+                    Main navigation links for the application.
+                </SheetDescription>
+            </SheetHeader>
             <nav className="grid gap-6 text-lg font-medium">
               <Link
                 href="/dashboard"
