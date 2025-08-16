@@ -42,17 +42,13 @@ export default function LoginPage() {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const idToken = await userCredential.user.getIdToken();
       
-      const sessionResult = await createSessionFromToken(idToken, role);
-
-      if (sessionResult.success) {
-        toast({
-            title: "Login Successful",
-            description: "Welcome back!",
-        });
-        window.location.href = '/dashboard';
-      } else {
-        setError(sessionResult.error || 'Failed to create server session.');
-      }
+      toast({
+          title: "Login Successful",
+          description: "Redirecting to your dashboard...",
+      });
+      
+      // The server action will handle the redirect.
+      await createSessionFromToken(idToken, role);
 
     } catch (error: any) {
       const errorCode = error.code;
@@ -63,6 +59,8 @@ export default function LoginPage() {
         console.error(error);
       }
     } finally {
+      // Don't set loading to false here, as the page should be redirecting.
+      // If it fails, the error message will be shown.
       setLoading(false);
     }
   };

@@ -57,17 +57,14 @@ export default function SignupPage() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const idToken = await userCredential.user.getIdToken();
       
-      const sessionResult = await createSessionFromToken(idToken, role);
+       toast({
+           title: "Account Created",
+           description: "Redirecting to your dashboard...",
+       });
+       
+       // The server action will handle the redirect.
+       await createSessionFromToken(idToken, role);
 
-       if (sessionResult.success) {
-        toast({
-            title: "Account Created",
-            description: "Welcome to NoteWise!",
-        });
-        window.location.href = '/dashboard';
-      } else {
-        setFirebaseError(sessionResult.error || 'Failed to create server session.');
-      }
 
     } catch (error: any) {
         if (error.code === 'auth/email-already-in-use') {
@@ -77,6 +74,8 @@ export default function SignupPage() {
             console.error(error);
         }
     } finally {
+      // Don't set loading to false, as the page should be redirecting.
+      // If it fails, the error message will be shown.
       setLoading(false);
     }
   };

@@ -60,15 +60,17 @@ export async function createSessionFromToken(token: string, role: 'student' | 't
         
         if (user) {
             await createSession({ email: user.email, role: role, uid: user.localId });
-            revalidatePath('/', 'layout');
-            return { success: true };
+            // A server-side redirect is more reliable here.
+        } else {
+          return { success: false, error: 'User not found' };
         }
-        return { success: false, error: 'User not found' };
 
     } catch (error) {
         console.error('Session creation failed:', error);
         return { success: false, error: (error as Error).message };
     }
+    // This will only be reached on success
+    redirect('/dashboard');
 }
 
 
