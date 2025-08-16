@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowUp, BookOpen, Bot, Target, Award, Star, CheckCircle } from 'lucide-react';
+import { BookOpen, Bot, Target, Award, Star, CheckCircle } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -161,7 +161,7 @@ export default function Dashboard() {
                 <li className="flex items-center justify-between">
                   <span className="text-muted-foreground">Take a daily quiz</span>
                    <Link href="/quiz/algebra">
-                      <Button variant="outline" size="sm">
+                      <Button variant="destructive" size="sm">
                          <Target className="mr-2 h-4 w-4" />
                          Start Quiz
                       </Button>
