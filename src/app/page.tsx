@@ -1,4 +1,5 @@
 
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -90,7 +91,7 @@ export default function Home() {
                 </div>
               </div>
               <Image
-                src="/images/hero-image.png"
+                src="/image/group.jpeg"
                 width="600"
                 height="400"
                 alt="A student studying with a laptop and books"
