@@ -68,20 +68,19 @@ export function Header({ user }: { user: User | null }) {
             <Logo />
          </Link>
       </div>
-
-      <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-        {navLinks.map(({ href, label }) => (
-          <Link
-            key={href}
-            href={href}
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            {label}
-          </Link>
-        ))}
-      </nav>
       
-      <div className="flex items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+      <div className="flex items-center gap-4 md:gap-2 lg:gap-4">
+        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+            {navLinks.map(({ href, label }) => (
+            <Link
+                key={href}
+                href={href}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+                {label}
+            </Link>
+            ))}
+        </nav>
         {user ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
