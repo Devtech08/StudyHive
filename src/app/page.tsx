@@ -53,7 +53,7 @@ export default function Home() {
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
+            <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
               {link.label}
             </Link>
           ))}
