@@ -91,7 +91,7 @@ export default function Home() {
                 </div>
               </div>
               <Image
-                src="https://placehold.co/600x400/14b8a6/ffffff.png"
+                src="https://i.pinimg.com/736x/38/8c/48/388c48ca385328688540d0c42cf51abf.jpg"
                 width="600"
                 height="400"
                 alt="A student studying with a laptop and books in a modern environment"
