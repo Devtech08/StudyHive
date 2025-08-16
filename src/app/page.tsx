@@ -35,14 +35,29 @@ const testimonials = [
   },
 ];
 
+const navLinks = [
+  { href: '/courses', label: 'Courses' },
+  { href: '/revision', label: 'AI Revision' },
+  { href: '/community', label: 'Community' },
+  { href: '/leaderboard', label: 'Leaderboard' },
+];
+
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10">
-        <Link href="/" className="flex items-center justify-center">
+        <Link href="/" className="flex items-center justify-center mr-6">
           <Logo />
         </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        <nav className="ml-auto flex items-center gap-4 sm:gap-6">
           <Button variant="ghost" asChild>
             <Link href="/login">Login</Link>
           </Button>
