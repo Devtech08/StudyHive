@@ -28,7 +28,7 @@ import type { User } from '@/lib/types';
 import { Logo } from './Logo';
 
 const studentNavLinks = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/dashboard', label: 'Home', icon: Home },
   { href: '/courses', label: 'Courses', icon: BookOpen },
   { href: '/revision', label: 'AI Revision', icon: Sparkles },
   { href: '/community', label: 'Community', icon: Users },
