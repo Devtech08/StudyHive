@@ -6,29 +6,7 @@ import { BookOpen, Target, TrendingUp, Bot, ArrowRight, Star } from 'lucide-reac
 import Image from 'next/image';
 import { Logo } from '@/components/Logo';
 import AiStudyAssistant from '@/components/AiStudyAssistant';
-
-const features = [
-  {
-    icon: <BookOpen className="h-8 w-8 text-primary" />,
-    title: 'Structured Notes',
-    description: 'Access well-organized course notes by subject and topic.',
-  },
-  {
-    icon: <Target className="h-8 w-8 text-primary" />,
-    title: 'Interactive Quizzes',
-    description: 'Test your knowledge with engaging, timer-based assessments.',
-  },
-  {
-    icon: <TrendingUp className="h-8 w-8 text-primary" />,
-    title: 'Progress Tracking',
-    description: 'Visualize your learning journey with insightful analytics.',
-  },
-  {
-    icon: <Bot className="h-8 w-8 text-primary" />,
-    title: 'AI Revision',
-    description: 'Get personalized revision prompts to focus on weak areas.',
-  },
-];
+import FeatureCarousel from '@/components/FeatureCarousel';
 
 const testimonials = [
   {
@@ -117,18 +95,8 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-2 xl:grid-cols-4 pt-12">
-              {features.map((feature) => (
-                <Card key={feature.title} className="hover:shadow-lg transition-shadow">
-                  <CardHeader className="flex flex-col items-center text-center gap-4">
-                    {feature.icon}
-                    <CardTitle className="font-headline text-xl">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="mx-auto max-w-7xl pt-12">
+              <FeatureCarousel />
             </div>
           </div>
         </section>

@@ -1,0 +1,108 @@
+
+'use client';
+
+import * as React from "react"
+import Autoplay from "embla-carousel-autoplay"
+import Link from "next/link";
+
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import { Button } from "./ui/button";
+import { ArrowRight, BookOpen, Target, TrendingUp, Bot } from "lucide-react";
+import Image from "next/image";
+
+const features = [
+  {
+    icon: <BookOpen className="h-10 w-10 text-primary" />,
+    title: 'Structured Notes',
+    description: 'Access well-organized course notes by subject and topic, tailored for effective learning.',
+    cta: 'Browse Courses',
+    link: '/courses',
+    image: 'https://placehold.co/1200x600.png',
+    dataAiHint: 'notebooks books',
+  },
+  {
+    icon: <Target className="h-10 w-10 text-primary" />,
+    title: 'Interactive Quizzes',
+    description: 'Test your knowledge with engaging, timer-based assessments and solidify your understanding.',
+    cta: 'Take a Quiz',
+    link: '/courses',
+    image: 'https://placehold.co/1200x600.png',
+    dataAiHint: 'quiz test',
+  },
+  {
+    icon: <TrendingUp className="h-10 w-10 text-primary" />,
+    title: 'Progress Tracking',
+    description: 'Visualize your learning journey with insightful analytics and stay motivated.',
+    cta: 'View Dashboard',
+    link: '/dashboard',
+    image: 'https://placehold.co/1200x600.png',
+    dataAiHint: 'charts graphs',
+  },
+  {
+    icon: <Bot className="h-10 w-10 text-primary" />,
+    title: 'AI Revision',
+    description: 'Get personalized revision prompts from our AI to focus on your specific weak areas.',
+    cta: 'Get Prompts',
+    link: '/revision',
+    image: 'https://placehold.co/1200x600.png',
+    dataAiHint: 'robot thinking',
+  },
+];
+
+
+export default function FeatureCarousel() {
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true, stopOnMouseEnter: true })
+  )
+
+  return (
+    <Carousel
+      plugins={[plugin.current]}
+      className="w-full"
+      opts={{ loop: true }}
+    >
+      <CarouselContent>
+        {features.map((feature, index) => (
+          <CarouselItem key={index}>
+            <div className="p-1">
+              <Card className="overflow-hidden">
+                <div className="grid md:grid-cols-2">
+                    <div className="p-8 md:p-12 flex flex-col justify-center items-start">
+                         <feature.icon />
+                        <h3 className="text-2xl md:text-3xl font-bold font-headline mt-4">{feature.title}</h3>
+                        <p className="text-muted-foreground mt-2 text-base md:text-lg">{feature.description}</p>
+                        <Button asChild className="mt-6 group" size="lg">
+                            <Link href={feature.link}>
+                                {feature.cta}
+                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                        </Button>
+                    </div>
+                     <div className="relative h-64 md:h-auto">
+                        <Image 
+                            src={feature.image}
+                            alt={feature.title}
+                            fill
+                            className="object-cover"
+                            data-ai-hint={feature.dataAiHint}
+                        />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent md:bg-gradient-to-r"></div>
+                    </div>
+                </div>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious className="hidden md:flex" />
+      <CarouselNext className="hidden md:flex" />
+    </Carousel>
+  )
+}
