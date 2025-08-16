@@ -1,13 +1,19 @@
+
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { subjects } from '@/lib/data';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Book, BookOpen } from 'lucide-react';
+import BookSearch from '@/components/courses/BookSearch';
 
 export default function CoursesPage() {
   return (
-    <>
-      <div className="flex items-center justify-between space-y-2">
-        <h1 className="text-3xl font-bold font-headline tracking-tight">Courses</h1>
+    <div className="space-y-8">
+      <div>
+        <div className="flex items-center gap-4">
+          <BookOpen className="h-8 w-8" />
+          <h1 className="text-3xl font-bold font-headline tracking-tight">Courses</h1>
+        </div>
+        <p className="text-muted-foreground mt-2">Explore topics, from fundamentals to advanced concepts.</p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {subjects.map((subject) => (
@@ -31,6 +37,17 @@ export default function CoursesPage() {
           </Link>
         ))}
       </div>
-    </>
+      
+      <div className="space-y-4">
+         <div className="flex items-center gap-4">
+            <Book className="h-8 w-8" />
+            <h2 className="text-3xl font-bold font-headline tracking-tight">Online Book Search</h2>
+         </div>
+        <p className="text-muted-foreground">
+          Use our AI-powered search to find textbooks and other study materials online.
+        </p>
+        <BookSearch />
+      </div>
+    </div>
   );
 }
