@@ -1,54 +1,55 @@
+
 'use server';
 
 /**
- * @fileOverview AI-powered study assistant to explain concepts.
+ * @fileOverview Provides an AI-powered explanation for a given concept.
  *
- * - explainConcept - A function that provides an explanation for a given concept.
- * - ExplainConceptInput - The input type for the explainConcept function.
- * - ExplainConceptOutput - The return type for the explainConcept function.
+ * - getExplanation - A function that returns an explanation for a user's query.
+ * - GetExplanationInput - The input type for the getExplanation function.
+ * - GetExplanationOutput - The return type for the getExplanation function.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
-const ExplainConceptInputSchema = z.object({
+const GetExplanationInputSchema = z.object({
   concept: z
     .string()
-    .describe('The concept the user wants an explanation for.'),
+    .describe('The concept or question the user wants an explanation for.'),
 });
-export type ExplainConceptInput = z.infer<typeof ExplainConceptInputSchema>;
+export type GetExplanationInput = z.infer<typeof GetExplanationInputSchema>;
 
-const ExplainConceptOutputSchema = z.object({
+const GetExplanationOutputSchema = z.object({
   explanation: z
     .string()
-    .describe(
-      'A clear and concise explanation of the concept, suitable for a student.'
-    ),
+    .describe('A clear and concise explanation of the concept.'),
 });
-export type ExplainConceptOutput = z.infer<typeof ExplainConceptOutputSchema>;
+export type GetExplanationOutput = z.infer<typeof GetExplanationOutputSchema>;
 
-export async function explainConcept(
-  input: ExplainConceptInput
-): Promise<ExplainConceptOutput> {
-  return explainConceptFlow(input);
+export async function getExplanation(
+  input: GetExplanationInput
+): Promise<GetExplanationOutput> {
+  return getExplanationFlow(input);
 }
 
 const prompt = ai.definePrompt({
-  name: 'explainConceptPrompt',
-  input: {schema: ExplainConceptInputSchema},
-  output: {schema: ExplainConceptOutputSchema},
-  prompt: `You are an AI Study Assistant. A student will ask you to explain a concept. Your goal is to provide a clear, simple, and easy-to-understand explanation.
+  name: 'getExplanationPrompt',
+  input: {schema: GetExplanationInputSchema},
+  output: {schema: GetExplanationOutputSchema},
+  prompt: `You are a friendly and helpful AI study assistant. A student has asked for an explanation of a concept.
+
+Provide a clear, concise, and easy-to-understand explanation for the following concept:
 
 Concept: {{{concept}}}
 
-Explain the concept in a way that a high school or early university student can grasp. Use analogies or simple examples if they help clarify the idea.`,
+Keep the explanation focused and suitable for a student who is learning this for the first time.`,
 });
 
-const explainConceptFlow = ai.defineFlow(
+const getExplanationFlow = ai.defineFlow(
   {
-    name: 'explainConceptFlow',
-    inputSchema: ExplainConceptInputSchema,
-    outputSchema: ExplainConceptOutputSchema,
+    name: 'getExplanationFlow',
+    inputSchema: GetExplanationInputSchema,
+    outputSchema: GetExplanationOutputSchema,
   },
   async input => {
     const {output} = await prompt(input);

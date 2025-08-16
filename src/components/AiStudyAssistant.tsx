@@ -1,9 +1,10 @@
+
 'use client';
 
 import React from 'react';
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
-import { getExplanationAction } from '@/app/(app)/leaderboard/actions';
+import { getExplanationAction } from '@/app/actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
