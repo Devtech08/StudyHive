@@ -37,6 +37,7 @@ const studentNavLinks = [
 const teacherNavLinks = [
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/my-courses', label: 'My Courses', icon: BookMarked },
+    { href: '/students', label: 'Students', icon: Users },
     { href: '/community', label: 'Community', icon: Users },
 ]
 
