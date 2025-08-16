@@ -173,26 +173,22 @@ export default function AiRevisionPage() {
                                     )}
                                     {studyPlan && (
                                         <div className="space-y-6">
-                                            {studyPlan.weeklyPlan.map((day) => {
-                                                const dayKey = Object.keys(day)[0];
-                                                const tasks = day[dayKey];
-                                                return (
-                                                    <div key={dayKey} className="p-4 bg-background rounded-lg border">
-                                                        <h4 className="font-semibold mb-3 capitalize">{dayKey.replace(/([A-Z])/g, ' $1').trim()}</h4>
-                                                        <ul className="space-y-2 text-sm">
-                                                            {tasks.map((task, index) => {
-                                                                const Icon = activityIcons[task.activity.toLowerCase()] || activityIcons.default;
-                                                                return (
-                                                                    <li key={index} className="flex items-center">
-                                                                        <Icon className="w-4 h-4 mr-2 text-muted-foreground" />
-                                                                        <span>{task.task}</span>
-                                                                    </li>
-                                                                );
-                                                            })}
-                                                        </ul>
-                                                    </div>
-                                                );
-                                            })}
+                                            {studyPlan.weeklyPlan.map((dayPlan, dayIndex) => (
+                                                <div key={dayIndex} className="p-4 bg-background rounded-lg border">
+                                                    <h4 className="font-semibold mb-3 capitalize">{dayPlan.day}</h4>
+                                                    <ul className="space-y-2 text-sm">
+                                                        {dayPlan.tasks.map((task, taskIndex) => {
+                                                            const Icon = activityIcons[task.activity.toLowerCase()] || activityIcons.default;
+                                                            return (
+                                                                <li key={taskIndex} className="flex items-center">
+                                                                    <Icon className="w-4 h-4 mr-2 text-muted-foreground" />
+                                                                    <span>{task.task}</span>
+                                                                </li>
+                                                            );
+                                                        })}
+                                                    </ul>
+                                                </div>
+                                            ))}
                                         </div>
                                     )}
                                     {!isLoadingPlan && !studyPlan && (
