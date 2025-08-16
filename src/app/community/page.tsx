@@ -33,9 +33,9 @@ const mockThreads = [
 ];
 
 const mockGroups = [
-    { id: 1, name: "Biology Exam Prep 2024", members: 45, privacy: "Public" },
-    { id: 2, name: "Coding Buddies (Beginners)", members: 112, privacy: "Public" },
-    { id: 3, name: "History Majors Collective", members: 23, privacy: "Private" },
+    { id: 1, name: "Biology Exam Prep 2024", members: 0, privacy: "Public" },
+    { id: 2, name: "Coding Buddies (Beginners)", members: 0, privacy: "Public" },
+    { id: 3, name: "History Majors Collective", members: 0, privacy: "Private" },
 ];
 
 const mockResources = [
