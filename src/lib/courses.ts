@@ -45,7 +45,7 @@ export const subjects = [
         title: 'Chemistry Basics',
         instructor: 'Dr. Marie Curie',
         progress: 30,
-        thumbnail: 'https://placehold.co/600x400.png',
+        thumbnail: 'https://i.pinimg.com/736x/42/71/78/4271784fbd83c7e8d9099c4aecef7e34.jpg',
         dataAiHint: 'chemistry beakers',
         description: 'A foundational course on the properties, composition, and structure of matter.',
         objectives: [],
