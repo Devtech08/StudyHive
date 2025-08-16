@@ -5,9 +5,10 @@ import { useState, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Upload, Wand2, BookCopy, Zap, Target, Award, Bot, FileText, CheckCircle, MessageSquare, Speaker, HelpCircle, X, File as FileIcon } from "lucide-react";
+import { Upload, Wand2, BookCopy, Zap, Target, Award, Bot, FileText, CheckCircle, MessageSquare, Speaker, HelpCircle, X, File as FileIcon, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { generateStudyPlan, StudyPlan } from '@/ai/flows/generate-study-plan';
 
 const navLinks = [
   { href: '/courses', label: 'Courses' },
@@ -16,9 +17,20 @@ const navLinks = [
   { href: '#', label: 'Leaderboard' },
 ];
 
+const activityIcons: { [key: string]: React.ElementType } = {
+    review: BookCopy,
+    practice: Zap,
+    read: BookCopy,
+    quiz: HelpCircle,
+    default: CheckCircle,
+};
+
+
 export default function AiRevisionPage() {
     const [quizFile, setQuizFile] = useState<File | null>(null);
     const [flashcardFile, setFlashcardFile] = useState<File | null>(null);
+    const [studyPlan, setStudyPlan] = useState<StudyPlan | null>(null);
+    const [isLoadingPlan, setIsLoadingPlan] = useState(false);
     
     const quizFileInputRef = useRef<HTMLInputElement>(null);
     const flashcardFileInputRef = useRef<HTMLInputElement>(null);
@@ -27,6 +39,19 @@ export default function AiRevisionPage() {
         if (event.target.files && event.target.files.length > 0) {
             setFile(event.target.files[0]);
         }
+    };
+
+    const handleGeneratePlan = async () => {
+        setIsLoadingPlan(true);
+        setStudyPlan(null);
+        try {
+            const plan = await generateStudyPlan({ subject: 'Biology', weakTopics: ['Cellular Respiration', 'Genetics'] });
+            setStudyPlan(plan);
+        } catch (error) {
+            console.error("Failed to generate study plan:", error);
+            // Optionally, show an error message to the user
+        }
+        setIsLoadingPlan(false);
     };
     
     const renderFileUpload = (
@@ -140,15 +165,54 @@ export default function AiRevisionPage() {
                                     <CardDescription>Our AI analyzes your progress and suggests what to revise next to maximize your learning efficiency.</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
-                                   <div className="p-4 bg-background rounded-lg border">
-                                       <h4 className="font-semibold mb-2">Today's Focus: Biology 101</h4>
-                                       <ul className="space-y-2 text-sm">
-                                           <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-green-500" />Review 'Cell Structure' (Completed)</li>
-                                           <li className="flex items-center"><Zap className="w-4 h-4 mr-2 text-yellow-500" />Practice 10 quiz questions on 'Genetics'.</li>
-                                            <li className="flex items-center"><BookCopy className="w-4 h-4 mr-2 text-blue-500" />Read summary of 'The Chemistry of Life'.</li>
-                                       </ul>
-                                   </div>
-                                    <Button className="w-full">Generate My Weekly Plan</Button>
+                                    {isLoadingPlan && (
+                                        <div className="flex items-center justify-center p-8">
+                                            <Loader2 className="w-8 h-8 mr-2 animate-spin text-primary" />
+                                            <p>Generating your plan...</p>
+                                        </div>
+                                    )}
+                                    {studyPlan && (
+                                        <div className="space-y-6">
+                                            {studyPlan.weeklyPlan.map((day) => {
+                                                const dayKey = Object.keys(day)[0];
+                                                const tasks = day[dayKey];
+                                                return (
+                                                    <div key={dayKey} className="p-4 bg-background rounded-lg border">
+                                                        <h4 className="font-semibold mb-3 capitalize">{dayKey.replace(/([A-Z])/g, ' $1').trim()}</h4>
+                                                        <ul className="space-y-2 text-sm">
+                                                            {tasks.map((task, index) => {
+                                                                const Icon = activityIcons[task.activity.toLowerCase()] || activityIcons.default;
+                                                                return (
+                                                                    <li key={index} className="flex items-center">
+                                                                        <Icon className="w-4 h-4 mr-2 text-muted-foreground" />
+                                                                        <span>{task.task}</span>
+                                                                    </li>
+                                                                );
+                                                            })}
+                                                        </ul>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    )}
+                                    {!isLoadingPlan && !studyPlan && (
+                                       <div className="p-4 bg-background rounded-lg border">
+                                           <h4 className="font-semibold mb-2">Today's Focus: Biology 101</h4>
+                                           <ul className="space-y-2 text-sm">
+                                               <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-green-500" />Review 'Cell Structure' (Completed)</li>
+                                               <li className="flex items-center"><Zap className="w-4 h-4 mr-2 text-yellow-500" />Practice 10 quiz questions on 'Genetics'.</li>
+                                                <li className="flex items-center"><BookCopy className="w-4 h-4 mr-2 text-blue-500" />Read summary of 'The Chemistry of Life'.</li>
+                                           </ul>
+                                       </div>
+                                    )}
+                                    <Button className="w-full" onClick={handleGeneratePlan} disabled={isLoadingPlan}>
+                                        {isLoadingPlan ? (
+                                            <>
+                                                <Loader2 className="w-4 h-4 mr-2 animate-spin"/>
+                                                Generating...
+                                            </>
+                                        ) : 'Generate My Weekly Plan'}
+                                    </Button>
                                 </CardContent>
                             </Card>
                         </TabsContent>
@@ -216,5 +280,3 @@ export default function AiRevisionPage() {
         </div>
     )
 }
-
-    
