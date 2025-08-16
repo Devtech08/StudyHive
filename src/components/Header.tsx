@@ -35,7 +35,7 @@ const navLinks = [
 
 export function Header({ user }: { user: User | null }) {
   return (
-    <header className="sticky top-0 z-50 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
+    <header className="sticky top-0 z-50 flex h-16 items-center border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="flex items-center gap-4">
         <Sheet>
           <SheetTrigger asChild>
@@ -69,18 +69,19 @@ export function Header({ user }: { user: User | null }) {
          </Link>
       </div>
       
+      <nav className="hidden flex-1 items-center justify-center gap-6 text-lg font-medium md:flex md:flex-row md:gap-5 md:text-sm lg:gap-6">
+          {navLinks.map(({ href, label }) => (
+          <Link
+              key={href}
+              href={href}
+              className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+              {label}
+          </Link>
+          ))}
+      </nav>
+      
       <div className="flex items-center gap-4 md:gap-2 lg:gap-4">
-        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-            {navLinks.map(({ href, label }) => (
-            <Link
-                key={href}
-                href={href}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-                {label}
-            </Link>
-            ))}
-        </nav>
         {user ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
