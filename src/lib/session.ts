@@ -1,4 +1,5 @@
 
+'use server';
 import 'server-only';
 import { cookies } from 'next/headers';
 import { SignJWT, jwtVerify, type JWTPayload } from 'jose';
@@ -54,10 +55,8 @@ export async function getSession() {
   const session = await decrypt(cookie);
   if (!session) return null;
 
-  // Refresh the session so it doesn't expire while the user is active
-  if (new Date(session.expires) > new Date()) {
-    await createSession(session.user);
-  } else {
+  // Check if session is expired
+  if (new Date(session.expires) < new Date()) {
     // The session has expired
     return null;
   }
