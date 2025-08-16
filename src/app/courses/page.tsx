@@ -40,8 +40,8 @@ export default function CoursesPage() {
         </div>
       </header>
       <main className="flex-1 p-4 md:p-8 lg:p-12">
-        <div className="container mx-auto">
-          <header className="mb-12 text-center">
+        <div className="container mx-auto pl-48">
+          <header className="mb-12">
             <h1 className="text-4xl font-bold font-headline">Explore Courses</h1>
             <p className="text-muted-foreground mt-2 text-lg">
               Choose a subject to start your learning journey.
@@ -50,7 +50,7 @@ export default function CoursesPage() {
 
           {subjects.map((subject) => (
             <section key={subject.id} className="mb-16">
-              <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="flex items-center gap-4 mb-6">
                  <subject.icon className="w-8 h-8 text-primary" />
                  <h2 className="text-3xl font-bold font-headline">{subject.name}</h2>
               </div>
@@ -69,8 +69,8 @@ export default function CoursesPage() {
                       </div>
                     </CardHeader>
                     <CardContent className="p-4 flex-grow flex flex-col">
-                      <h3 className="text-lg font-bold mb-2 text-center">{course.title}</h3>
-                      <div className="flex items-center text-sm text-muted-foreground mb-4 justify-center">
+                      <h3 className="text-lg font-bold mb-2">{course.title}</h3>
+                      <div className="flex items-center text-sm text-muted-foreground mb-4">
                         <User className="w-4 h-4 mr-2" />
                         <span>{course.instructor}</span>
                       </div>
