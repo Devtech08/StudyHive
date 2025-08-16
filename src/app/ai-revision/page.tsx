@@ -1,14 +1,18 @@
 
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Upload, Wand2, BookCopy, Zap, Target, Award, Bot, FileText, CheckCircle, MessageSquare, Speaker, HelpCircle, X, File as FileIcon, Loader2 } from "lucide-react";
+import { Upload, Wand2, BookCopy, Zap, Target, Award, Bot, FileText, CheckCircle, MessageSquare, Speaker, HelpCircle, X, File as FileIcon, Loader2, User } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { generateStudyPlan, StudyPlan } from '@/ai/flows/generate-study-plan';
+import { explainConcept } from '@/ai/flows/explain-concept';
+import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const navLinks = [
   { href: '/courses', label: 'Courses' },
@@ -25,15 +29,33 @@ const activityIcons: { [key: string]: React.ElementType } = {
     default: CheckCircle,
 };
 
+type Message = {
+    role: 'user' | 'bot';
+    content: string;
+};
 
 export default function AiRevisionPage() {
     const [quizFile, setQuizFile] = useState<File | null>(null);
     const [flashcardFile, setFlashcardFile] = useState<File | null>(null);
     const [studyPlan, setStudyPlan] = useState<StudyPlan | null>(null);
     const [isLoadingPlan, setIsLoadingPlan] = useState(false);
+
+    const [messages, setMessages] = useState<Message[]>([
+        { role: 'bot', content: "Hello! I'm your AI tutor. How can I help you study today? You can ask me to explain a topic or quiz you." }
+    ]);
+    const [explanationInput, setExplanationInput] = useState('');
+    const [isGeneratingExplanation, setIsGeneratingExplanation] = useState(false);
     
     const quizFileInputRef = useRef<HTMLInputElement>(null);
     const flashcardFileInputRef = useRef<HTMLInputElement>(null);
+    const chatContainerRef = useRef<HTMLDivElement>(null);
+
+     useEffect(() => {
+        if (chatContainerRef.current) {
+            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+        }
+    }, [messages]);
+
 
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>, setFile: React.Dispatch<React.SetStateAction<File | null>>) => {
         if (event.target.files && event.target.files.length > 0) {
@@ -52,6 +74,26 @@ export default function AiRevisionPage() {
             // Optionally, show an error message to the user
         }
         setIsLoadingPlan(false);
+    };
+
+    const handleSendExplanationRequest = async () => {
+        if (!explanationInput.trim()) return;
+
+        const newUserMessage: Message = { role: 'user', content: explanationInput };
+        setMessages(prev => [...prev, newUserMessage]);
+        setExplanationInput('');
+        setIsGeneratingExplanation(true);
+
+        try {
+            const response = await explainConcept(explanationInput);
+            const botMessage: Message = { role: 'bot', content: response };
+            setMessages(prev => [...prev, botMessage]);
+        } catch (error) {
+            console.error("Failed to get explanation:", error);
+            const errorMessage: Message = { role: 'bot', content: "Sorry, I ran into an issue. Please try again." };
+            setMessages(prev => [...prev, errorMessage]);
+        }
+        setIsGeneratingExplanation(false);
     };
     
     const renderFileUpload = (
@@ -219,19 +261,48 @@ export default function AiRevisionPage() {
                                     <CardDescription>Stuck on a concept? Ask our AI assistant for a simple explanation, or to quiz you on a topic.</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
-                                   <div className="p-4 bg-background rounded-lg border flex flex-col h-64">
-                                       <div className="flex-grow space-y-4">
-                                           <div className="flex items-start gap-3">
-                                               <div className="p-2 rounded-full bg-primary/10"><Bot className="w-5 h-5 text-primary" /></div>
-                                               <div className="bg-muted p-3 rounded-lg">
-                                                   <p className="text-sm">Hello! I'm your AI tutor. How can I help you study today? You can ask me to explain a topic or quiz you.</p>
-                                               </div>
-                                           </div>
-                                       </div>
-                                       <div className="flex gap-2">
-                                           <input placeholder="Ask something like 'Explain photosynthesis in simple terms'" className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background" />
-                                            <Button><MessageSquare className="w-4 h-4" /></Button>
-                                            <Button variant="outline"><Speaker className="w-4 h-4" /></Button>
+                                   <div className="p-4 bg-background rounded-lg border flex flex-col h-96">
+                                       <ScrollArea className="flex-grow space-y-4 pr-4" ref={chatContainerRef}>
+                                            {messages.map((message, index) => (
+                                                <div key={index} className={cn("flex items-start gap-3 my-4", message.role === 'user' && 'justify-end')}>
+                                                    {message.role === 'bot' && (
+                                                        <div className="p-2 rounded-full bg-primary/10">
+                                                            <Bot className="w-5 h-5 text-primary" />
+                                                        </div>
+                                                    )}
+                                                     <div className={cn("p-3 rounded-lg max-w-sm", message.role === 'bot' ? 'bg-muted' : 'bg-primary text-primary-foreground')}>
+                                                        <p className="text-sm">{message.content}</p>
+                                                    </div>
+                                                    {message.role === 'user' && (
+                                                        <div className="p-2 rounded-full bg-muted/80">
+                                                            <User className="w-5 h-5" />
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            ))}
+                                            {isGeneratingExplanation && (
+                                                 <div className="flex items-start gap-3 my-4">
+                                                     <div className="p-2 rounded-full bg-primary/10">
+                                                         <Bot className="w-5 h-5 text-primary" />
+                                                     </div>
+                                                     <div className="p-3 rounded-lg bg-muted">
+                                                        <Loader2 className="w-5 h-5 animate-spin"/>
+                                                     </div>
+                                                 </div>
+                                            )}
+                                       </ScrollArea>
+                                       <div className="flex gap-2 pt-4 border-t">
+                                            <Input 
+                                                placeholder="Ask something like 'Explain photosynthesis in simple terms'" 
+                                                value={explanationInput}
+                                                onChange={(e) => setExplanationInput(e.target.value)}
+                                                onKeyDown={(e) => e.key === 'Enter' && !isGeneratingExplanation && handleSendExplanationRequest()}
+                                                disabled={isGeneratingExplanation}
+                                            />
+                                            <Button onClick={handleSendExplanationRequest} disabled={isGeneratingExplanation}>
+                                                <MessageSquare className="w-4 h-4" />
+                                            </Button>
+                                            <Button variant="outline" disabled><Speaker className="w-4 h-4" /></Button>
                                        </div>
                                    </div>
                                 </CardContent>
@@ -276,3 +347,5 @@ export default function AiRevisionPage() {
         </div>
     )
 }
+
+    
