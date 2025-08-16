@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, Users, BookCopy, Trophy, Bell, MessageSquare, PlusCircle, ArrowRight, Upload, Filter } from "lucide-react";
+import { Search, Users, BookCopy, Trophy, Bell, MessageSquare, PlusCircle, ArrowRight, Upload, Filter, Check } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
@@ -46,6 +46,14 @@ const mockResources = [
 
 
 export default function CommunityPage() {
+  const [joinedGroups, setJoinedGroups] = useState<number[]>([]);
+
+  const handleJoinGroup = (groupId: number) => {
+    if (!joinedGroups.includes(groupId)) {
+        setJoinedGroups([...joinedGroups, groupId]);
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
@@ -151,7 +159,9 @@ export default function CommunityPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {mockGroups.map(group => (
+                            {mockGroups.map(group => {
+                                const isJoined = joinedGroups.includes(group.id);
+                                return (
                                 <Card key={group.id}>
                                     <CardHeader>
                                         <CardTitle className="text-lg">{group.name}</CardTitle>
@@ -160,14 +170,25 @@ export default function CommunityPage() {
                                     <CardContent>
                                         <div className="flex items-center gap-2">
                                             <Users className="w-4 h-4 text-muted-foreground"/>
-                                            <span className="text-sm">{group.members} members</span>
+                                            <span className="text-sm">{isJoined ? group.members + 1 : group.members} members</span>
                                         </div>
                                     </CardContent>
                                     <CardFooter>
-                                        <Button className="w-full">Join Group</Button>
+                                        <Button 
+                                            className="w-full"
+                                            onClick={() => handleJoinGroup(group.id)}
+                                            disabled={isJoined}
+                                        >
+                                            {isJoined ? (
+                                                <>
+                                                <Check className="w-4 h-4 mr-2" />
+                                                Joined
+                                                </>
+                                            ) : 'Join Group'}
+                                        </Button>
                                     </CardFooter>
                                 </Card>
-                            ))}
+                            )})}
                         </CardContent>
                     </Card>
                 </TabsContent>
@@ -222,17 +243,16 @@ export default function CommunityPage() {
                             <CardTitle>Announcements</CardTitle>
                             <CardDescription>Stay updated with the latest news, events, and important notices.</CardDescription>
                         </CardHeader>
-                        <CardContent className="flex flex-col items-center justify-center text-center py-16">
-                           <Bell className="w-16 h-16 text-muted-foreground/50 mb-4" />
-                           <p className="text-muted-foreground">No new announcements right now.</p>
-                        </CardContent>
+                        <CardContent className="flex flex-col items-center justify-center py-12">
+                            <Bell className="w-16 h-16 text-muted-foreground/50 mb-4" />
+                            <h3 className="text-xl font-semibold mb-2">Nothing new to see here!</h3>
+                            <p className="text-muted-foreground">Check back later for important updates.</p>
+                         </CardContent>
                     </Card>
                 </TabsContent>
-
-           </Tabs>
+            </Tabs>
         </div>
       </main>
     </div>
   );
 }
-
