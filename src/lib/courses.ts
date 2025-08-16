@@ -11,7 +11,7 @@ export const subjects = [
         title: 'Biology 101',
         instructor: 'Dr. Jane Goodall',
         progress: 65,
-        thumbnail: 'https://placehold.co/600x400.png',
+        thumbnail: 'https://i.pinimg.com/736x/17/d5/a4/17d5a43f2220a95895e653842c960b8d.jpg',
         dataAiHint: 'biology microscope',
         description: 'Explore the fundamental principles of life, from cellular structures to complex ecosystems.',
         objectives: [
