@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import {
   BookOpen,
+  Home,
   LayoutDashboard,
   LogOut,
   Menu,
@@ -23,6 +24,7 @@ import type { User } from '@/lib/types';
 import { Logo } from './Logo';
 
 const navLinks = [
+  { href: '/', label: 'Home', icon: Home },
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/courses', label: 'Courses', icon: BookOpen },
   { href: '/revision', label: 'AI Revision', icon: Sparkles },
