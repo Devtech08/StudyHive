@@ -57,9 +57,9 @@ export function Header({ user }: { user: User | null }) {
             </Button>
           </SheetTrigger>
           <SheetContent side="left">
-             <SheetHeader className="sr-only">
-                <SheetTitle>Navigation Menu</SheetTitle>
-                <SheetDescription>
+             <SheetHeader>
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                <SheetDescription className="sr-only">
                     Main navigation links for the application.
                 </SheetDescription>
             </SheetHeader>
@@ -70,12 +70,13 @@ export function Header({ user }: { user: User | null }) {
               >
                 <Logo />
               </Link>
-              {navLinks.map(({ href, label }) => (
+              {navLinks.map(({ href, label, icon: Icon }) => (
                 <Link
                   key={href}
                   href={href}
-                  className="text-muted-foreground hover:text-foreground"
+                  className="flex items-center gap-4 text-muted-foreground hover:text-foreground"
                 >
+                  <Icon className="h-5 w-5" />
                   {label}
                 </Link>
               ))}
@@ -87,19 +88,20 @@ export function Header({ user }: { user: User | null }) {
          </Link>
       </div>
       
-      <nav className="hidden flex-1 items-center justify-end gap-6 text-lg font-medium md:flex md:flex-row md:gap-5 md:text-sm lg:gap-6 mr-6">
-          {navLinks.map(({ href, label }) => (
+      <nav className="hidden flex-1 items-center justify-center gap-6 text-lg font-medium md:flex md:flex-row md:gap-5 md:text-sm lg:gap-6">
+          {navLinks.map(({ href, label, icon: Icon }) => (
           <Link
               key={href}
               href={href}
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
           >
+              <Icon className="h-4 w-4" />
               {label}
           </Link>
           ))}
       </nav>
       
-      <div className="flex items-center gap-4 md:gap-2 lg:gap-4">
+      <div className="ml-auto flex items-center gap-4 md:gap-2 lg:gap-4">
         {user ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
