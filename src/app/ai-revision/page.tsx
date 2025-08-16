@@ -23,7 +23,7 @@ const navLinks = [
   { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
   { href: '/community', label: 'Community' },
-  { href: '#', label: 'Leaderboard' },
+  { href: '/leaderboard', label: 'Leaderboard' },
 ];
 
 const activityIcons: { [key: string]: React.ElementType } = {

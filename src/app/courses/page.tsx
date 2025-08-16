@@ -2,6 +2,7 @@
 
 
 
+
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -12,9 +13,10 @@ import { ArrowRight, User } from "lucide-react";
 import { Logo } from "@/components/Logo";
 
 const navLinks = [
-  { href: '/', label: 'Home' },
+  { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
-  { href: '/community', label: 'Communities' },
+  { href: '/community', label: 'Community' },
+  { href: '/leaderboard', label: 'Leaderboard' },
 ];
 
 export default function CoursesPage() {
