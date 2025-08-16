@@ -41,8 +41,8 @@ export default function CoursesPage() {
         </div>
       </header>
       <main className="flex-1 p-4 md:p-8 lg:p-12">
-        <div className="container mx-auto pl-48">
-          <header className="mb-12">
+        <div className="container mx-auto">
+          <header className="mb-12 text-center">
             <h1 className="text-4xl font-bold font-headline">Explore Courses</h1>
             <p className="text-muted-foreground mt-2 text-lg">
               Choose a subject to start your learning journey.
@@ -101,4 +101,3 @@ export default function CoursesPage() {
     </div>
   );
 }
-
