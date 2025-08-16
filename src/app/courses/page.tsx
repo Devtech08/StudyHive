@@ -54,11 +54,11 @@ export default function CoursesPage() {
                  <subject.icon className="w-8 h-8 text-primary" />
                  <h2 className="text-3xl font-bold font-headline">{subject.name}</h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {subject.courses.map((course) => (
-                  <Card key={course.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full max-w-sm">
+                  <Card key={course.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full max-w-md">
                     <CardHeader className="p-0">
-                      <div className="relative h-48 w-full">
+                      <div className="relative h-56 w-full">
                         <Image
                           src={course.thumbnail}
                           alt={course.title}
