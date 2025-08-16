@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { subjects } from '@/lib/data';
+import { getSubject, subjects } from '@/lib/data';
 import QuizComponent from '@/components/quiz/QuizComponent';
 import type { Question } from '@/lib/types';
 import Link from 'next/link';

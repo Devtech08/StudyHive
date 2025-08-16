@@ -20,7 +20,7 @@ export default function TopicPage({ params }: { params: { subjectId: string; top
     notFound();
   }
 
-  const subject = getTopic(params.subjectId, params.topicId);
+  const subject = getSubject(params.subjectId);
 
   return (
     <div className="space-y-6">
