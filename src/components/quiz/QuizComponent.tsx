@@ -144,7 +144,7 @@ export default function QuizComponent({ quiz }: QuizComponentProps) {
       </CardContent>
       <CardFooter>
         {!showFeedback ? (
-          <Button onClick={handleAnswerSubmit} disabled={!selectedAnswer} className="w-full">
+          <Button onClick={handleAnswerSubmit} disabled={!selectedAnswer} className="w-full" variant="destructive">
             Submit Answer
           </Button>
         ) : (
