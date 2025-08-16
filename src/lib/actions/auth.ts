@@ -1,8 +1,13 @@
+
 'use server';
 
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { createSession, deleteSession } from '../session';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { app } from '../firebase';
+import { cookies } from 'next/headers';
+import { revalidatePath } from 'next/cache';
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -20,47 +25,55 @@ const signupSchema = z.object({
   }),
 });
 
+// This action is now a placeholder as Firebase handles client-side auth.
+// The server-side session is created via a route handler after Firebase login.
 export async function login(prevState: any, formData: FormData) {
-  const validatedFields = loginSchema.safeParse(
-    Object.fromEntries(formData.entries())
-  );
-
-  if (!validatedFields.success) {
-    return {
-      error: 'Invalid email or password.',
-    };
-  }
-  
-  const { email, role } = validatedFields.data;
-
-  // In a real app, you'd validate the password against a database hash.
-  // Here, we'll just create a session for any valid email.
-  await createSession({ email, role });
-  
-  redirect('/dashboard');
+  // This logic is now primarily handled on the client with Firebase.
+  // The server session will be created via a separate API route.
+  // We keep this structure for progressive enhancement if needed.
+  return {
+    error: 'Complete login through the form.',
+  };
 }
 
 export async function signup(prevState: any, formData: FormData) {
-  const validatedFields = signupSchema.safeParse(
-    Object.fromEntries(formData.entries())
-  );
-
-  if (!validatedFields.success) {
-    return {
-      error: validatedFields.error.flatten().fieldErrors,
-    };
-  }
-
-  const { email, role } = validatedFields.data;
-
-  // In a real app, you would save the new user to the database.
-  // For this demo, we'll just create a session.
-  await createSession({ email, role });
-
-  redirect('/dashboard');
+  // This logic is now primarily handled on the client with Firebase.
+  return {
+    error: 'Complete signup through the form.',
+  };
 }
+
+export async function createSessionFromToken(token: string, role: 'student' | 'teacher') {
+    try {
+        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${process.env.FIREBASE_API_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ idToken: token })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to verify token');
+        }
+
+        const data = await response.json();
+        const user = data.users[0];
+        
+        if (user) {
+            await createSession({ email: user.email, role: role, uid: user.localId });
+            revalidatePath('/', 'layout');
+            return { success: true };
+        }
+        return { success: false, error: 'User not found' };
+
+    } catch (error) {
+        console.error('Session creation failed:', error);
+        return { success: false, error: (error as Error).message };
+    }
+}
+
 
 export async function logout() {
   await deleteSession();
+  revalidatePath('/', 'layout');
   redirect('/login');
 }

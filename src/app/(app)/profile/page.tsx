@@ -1,13 +1,19 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/context/AuthContext';
-import { logout } from '@/lib/actions/auth';
+import { logout as logoutAction } from '@/lib/actions/auth';
 import { User, LogOut } from 'lucide-react';
 
 export default function ProfilePage() {
-  const { user } = useAuth();
+  const { user, logout: clientLogout } = useAuth();
+  
+  const handleLogout = async () => {
+    await clientLogout();
+    await logoutAction();
+  }
 
   return (
     <div className="flex justify-center items-start pt-10">
@@ -26,14 +32,16 @@ export default function ProfilePage() {
             <h3 className="font-semibold">Email</h3>
             <p className="text-muted-foreground">{user?.email || 'No email found.'}</p>
           </div>
+           <div>
+            <h3 className="font-semibold">Role</h3>
+            <p className="text-muted-foreground capitalize">{user?.role || 'No role found.'}</p>
+          </div>
         </CardContent>
         <CardFooter>
-          <form action={logout} className="w-full">
-            <Button variant="destructive" className="w-full">
+            <Button variant="destructive" className="w-full" onClick={handleLogout}>
               <LogOut className="mr-2 h-4 w-4" />
               Logout
             </Button>
-          </form>
         </CardFooter>
       </Card>
     </div>

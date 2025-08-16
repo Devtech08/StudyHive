@@ -1,5 +1,7 @@
+
 export type User = {
-  email: string;
+  uid: string;
+  email: string | null;
   role: 'student' | 'teacher';
 };
 

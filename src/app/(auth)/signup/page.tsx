@@ -1,27 +1,86 @@
+
 'use client';
 
 import Link from 'next/link';
-import { useActionState } from 'react';
-import { useFormStatus } from 'react-dom';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { signup } from '@/lib/actions/auth';
 import { Logo } from '@/components/Logo';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { app } from '@/lib/firebase';
+import { createSessionFromToken } from '@/lib/actions/auth';
+import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" className="w-full" disabled={pending}>
-      {pending ? 'Creating account...' : 'Create an account'}
-    </Button>
-  );
-}
+const signupSchema = z.object({
+  email: z.string().email({ message: 'Invalid email address.' }),
+  password: z.string().min(8, 'Password must be at least 8 characters.'),
+  role: z.enum(['student', 'teacher']),
+});
 
 export default function SignupPage() {
-  const [state, formAction] = useActionState(signup, undefined);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<z.ZodError['formErrors']['fieldErrors'] | null>(null);
+  const [firebaseError, setFirebaseError] = useState<string | null>(null);
+  const router = useRouter();
+  const auth = getAuth(app);
+  const { toast } = useToast();
+
+  const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+    setErrors(null);
+    setFirebaseError(null);
+
+    const formData = new FormData(event.currentTarget);
+    const signupData = {
+      email: formData.get('email'),
+      password: formData.get('password'),
+      role: formData.get('role'),
+    };
+
+    const validationResult = signupSchema.safeParse(signupData);
+
+    if (!validationResult.success) {
+      setErrors(validationResult.error.flatten().fieldErrors);
+      setLoading(false);
+      return;
+    }
+    
+    const { email, password, role } = validationResult.data;
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const idToken = await userCredential.user.getIdToken();
+      
+      const sessionResult = await createSessionFromToken(idToken, role);
+
+       if (sessionResult.success) {
+        toast({
+            title: "Account Created",
+            description: "Welcome to NoteWise!",
+        });
+        router.push('/dashboard');
+        router.refresh();
+      } else {
+        setFirebaseError(sessionResult.error || 'Failed to create server session.');
+      }
+
+    } catch (error: any) {
+        if (error.code === 'auth/email-already-in-use') {
+            setFirebaseError('This email is already registered. Please login instead.');
+        } else {
+            setFirebaseError('An unexpected error occurred. Please try again.');
+            console.error(error);
+        }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Card className="mx-auto max-w-sm w-full">
@@ -35,7 +94,7 @@ export default function SignupPage() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={formAction} className="grid gap-4">
+        <form onSubmit={handleSignup} className="grid gap-4">
            <div className="grid gap-2">
             <Label>I am a...</Label>
             <RadioGroup defaultValue="student" name="role" className="grid grid-cols-2 gap-4">
@@ -68,21 +127,23 @@ export default function SignupPage() {
               placeholder="m@example.com"
               required
             />
-            {state?.error?.email && (
-              <p className="text-sm font-medium text-destructive">{state.error.email[0]}</p>
+            {errors?.email && (
+              <p className="text-sm font-medium text-destructive">{errors.email[0]}</p>
             )}
           </div>
           <div className="grid gap-2">
             <Label htmlFor="password">Password</Label>
             <Input id="password" name="password" type="password" required />
-             {state?.error?.password && (
-              <p className="text-sm font-medium text-destructive">{state.error.password[0]}</p>
+             {errors?.password && (
+              <p className="text-sm font-medium text-destructive">{errors.password[0]}</p>
             )}
           </div>
-           {state?.error?.role && (
-              <p className="text-sm font-medium text-destructive">{state.error.role[0]}</p>
+            {firebaseError && (
+              <p className="text-sm font-medium text-destructive">{firebaseError}</p>
             )}
-          <SubmitButton />
+            <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? 'Creating account...' : 'Create an account'}
+            </Button>
         </form>
         <div className="mt-4 text-center text-sm">
           Already have an account?{' '}

@@ -23,9 +23,10 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
-import { logout } from '@/lib/actions/auth';
+import { logout as logoutAction } from '@/lib/actions/auth';
 import type { User } from '@/lib/types';
 import { Logo } from './Logo';
+import { useAuth } from '@/context/AuthContext';
 
 const studentNavLinks = [
   { href: '/dashboard', label: 'Home', icon: Home },
@@ -44,8 +45,14 @@ const teacherNavLinks = [
 ]
 
 export function Header({ user }: { user: User | null }) {
+  const { logout: clientLogout } = useAuth();
   const navLinks = user?.role === 'teacher' ? teacherNavLinks : studentNavLinks;
   
+  const handleLogout = async () => {
+    await clientLogout();
+    await logoutAction();
+  }
+
   return (
     <header className="sticky top-0 z-50 flex h-16 items-center border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="flex items-center gap-4">
@@ -117,14 +124,12 @@ export function Header({ user }: { user: User | null }) {
                 <DropdownMenuItem>Profile</DropdownMenuItem>
               </Link>
               <DropdownMenuSeparator />
-              <form action={logout}>
-                <DropdownMenuItem asChild>
-                  <button type="submit" className="w-full">
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
-                  </button>
-                </DropdownMenuItem>
-              </form>
+              <DropdownMenuItem asChild>
+                <button onClick={handleLogout} className="w-full">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </button>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
