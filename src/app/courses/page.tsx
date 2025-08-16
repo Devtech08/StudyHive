@@ -21,14 +21,14 @@ export default function CoursesPage() {
         <Link href="/" className="flex items-center justify-center">
           <Logo />
         </Link>
-        <nav className="hidden md:flex flex-1 justify-center items-center gap-6 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navLinks.map((link) => (
             <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
               {link.label}
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex items-center gap-4 sm:gap-6 ml-auto">
           <Button variant="ghost" asChild>
             <Link href="#">Login</Link>
           </Button>
