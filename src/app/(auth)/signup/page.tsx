@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { signup } from '@/lib/actions/auth';
 import { Logo } from '@/components/Logo';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -35,6 +36,29 @@ export default function SignupPage() {
       </CardHeader>
       <CardContent>
         <form action={formAction} className="grid gap-4">
+           <div className="grid gap-2">
+            <Label>I am a...</Label>
+            <RadioGroup defaultValue="student" name="role" className="grid grid-cols-2 gap-4">
+              <div>
+                <RadioGroupItem value="student" id="student" className="peer sr-only" />
+                <Label
+                  htmlFor="student"
+                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  Student
+                </Label>
+              </div>
+              <div>
+                <RadioGroupItem value="teacher" id="teacher" className="peer sr-only" />
+                <Label
+                  htmlFor="teacher"
+                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  Teacher
+                </Label>
+              </div>
+            </RadioGroup>
+          </div>
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
             <Input
@@ -55,6 +79,9 @@ export default function SignupPage() {
               <p className="text-sm font-medium text-destructive">{state.error.password[0]}</p>
             )}
           </div>
+           {state?.error?.role && (
+              <p className="text-sm font-medium text-destructive">{state.error.role[0]}</p>
+            )}
           <SubmitButton />
         </form>
         <div className="mt-4 text-center text-sm">

@@ -7,11 +7,17 @@ import { createSession, deleteSession } from '../session';
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(1, 'Password is required'),
+  role: z.enum(['student', 'teacher'], {
+    errorMap: () => ({ message: 'Please select a role.' }),
+  }),
 });
 
 const signupSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8, 'Password must be at least 8 characters'),
+  role: z.enum(['student', 'teacher'], {
+    errorMap: () => ({ message: 'Please select a role.' }),
+  }),
 });
 
 export async function login(prevState: any, formData: FormData) {
@@ -25,11 +31,11 @@ export async function login(prevState: any, formData: FormData) {
     };
   }
   
-  const { email } = validatedFields.data;
+  const { email, role } = validatedFields.data;
 
   // In a real app, you'd validate the password against a database hash.
   // Here, we'll just create a session for any valid email.
-  await createSession({ email });
+  await createSession({ email, role });
   
   redirect('/dashboard');
 }
@@ -45,11 +51,11 @@ export async function signup(prevState: any, formData: FormData) {
     };
   }
 
-  const { email } = validatedFields.data;
+  const { email, role } = validatedFields.data;
 
   // In a real app, you would save the new user to the database.
   // For this demo, we'll just create a session.
-  await createSession({ email });
+  await createSession({ email, role });
 
   redirect('/dashboard');
 }

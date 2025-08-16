@@ -1,5 +1,6 @@
 export type User = {
   email: string;
+  role: 'student' | 'teacher';
 };
 
 export interface Question {
