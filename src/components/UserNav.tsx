@@ -75,9 +75,7 @@ export function UserNav() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
              <Link href="/dashboard"><DropdownMenuItem>Dashboard</DropdownMenuItem></Link>
-            <DropdownMenuItem>
-              Profile
-            </DropdownMenuItem>
+            <Link href="/profile"><DropdownMenuItem>Profile</DropdownMenuItem></Link>
             <DropdownMenuItem>
               Settings
             </DropdownMenuItem>
