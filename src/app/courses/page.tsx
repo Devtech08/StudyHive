@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -69,13 +70,13 @@ export default function CoursesPage() {
                             />
                           </div>
                         </CardHeader>
-                        <CardContent className="p-4 flex-grow">
+                        <CardContent className="p-4 flex-grow flex flex-col items-center text-center">
                           <h3 className="text-lg font-bold mb-2">{course.title}</h3>
                           <div className="flex items-center text-sm text-muted-foreground mb-4">
                             <User className="w-4 h-4 mr-2" />
                             <span>{course.instructor}</span>
                           </div>
-                          <div>
+                          <div className="w-full mt-auto">
                             <div className="flex justify-between items-center mb-1">
                               <span className="text-sm text-muted-foreground">Progress</span>
                               <span className="text-sm font-semibold">{course.progress}%</span>
