@@ -19,7 +19,7 @@ import {
 import { useAuth } from "@/hooks/use-auth";
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
-import { useToast } from "./ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
 
