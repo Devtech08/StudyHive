@@ -10,7 +10,8 @@ import {
   User as UserIcon,
   Users,
   Trophy,
-  BookMarked
+  BookMarked,
+  FilePen
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -38,6 +39,7 @@ const teacherNavLinks = [
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/my-courses', label: 'My Courses', icon: BookMarked },
     { href: '/students', label: 'Students', icon: Users },
+    { href: '/assignments', label: 'Assignments', icon: FilePen },
     { href: '/community', label: 'Community', icon: Users },
 ]
 
