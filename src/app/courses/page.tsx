@@ -68,9 +68,9 @@ export default function CoursesPage() {
                         />
                       </div>
                     </CardHeader>
-                    <CardContent className="p-4 flex-grow flex flex-col items-center text-center">
-                      <h3 className="text-lg font-bold mb-2">{course.title}</h3>
-                      <div className="flex items-center text-sm text-muted-foreground mb-4">
+                    <CardContent className="p-4 flex-grow flex flex-col">
+                      <h3 className="text-lg font-bold mb-2 text-center">{course.title}</h3>
+                      <div className="flex items-center text-sm text-muted-foreground mb-4 justify-center">
                         <User className="w-4 h-4 mr-2" />
                         <span>{course.instructor}</span>
                       </div>
