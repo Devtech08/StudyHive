@@ -1,20 +1,21 @@
 'use client';
 
 import { useFormState, useFormStatus } from 'react-dom';
-import { generateRevisionPromptsAction } from '@/app/(app)/revision/actions';
+import { generateAiRevisionPromptsAction } from '@/app/(app)/revision/actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Sparkles, Bot } from 'lucide-react';
+import { Input } from '../ui/input';
 
 const initialState = {
   prompts: null,
   error: null,
 };
 
-const performanceDataPlaceholder = "Accuracy: 75%\nStrong Topics: Algebra, Cell Biology\nWeak Topics: Geometry, Ancient Civilizations";
-const studySchedulePlaceholder = "Monday: 7 PM - 9 PM (Mathematics)\nWednesday: 6 PM - 8 PM (History)\nFriday: 5 PM - 7 PM (Biology)";
+const weakTopicsPlaceholder = "e.g., Geometry, Ancient Civilizations";
+const upcomingQuizzesPlaceholder = "e.g., Biology Chapter 5 (Tomorrow), History Mid-Term (Friday)";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -33,37 +34,33 @@ function SubmitButton() {
 }
 
 export default function RevisionGenerator() {
-  const [state, formAction] = useFormState(generateRevisionPromptsAction, initialState);
+  const [state, formAction] = useFormState(generateAiRevisionPromptsAction, initialState);
 
   return (
     <Card className="max-w-3xl">
       <CardHeader>
         <CardTitle>Personalized Revision Plan</CardTitle>
         <CardDescription>
-          Enter your performance data and study schedule to get AI-generated revision prompts.
+          Enter your weak topics and upcoming quizzes to get AI-generated revision prompts.
         </CardDescription>
       </CardHeader>
       <form action={formAction}>
         <CardContent className="space-y-6">
           <div className="grid w-full gap-2">
-            <Label htmlFor="performanceData">Performance Data</Label>
-            <Textarea
-              id="performanceData"
-              name="performanceData"
-              placeholder={performanceDataPlaceholder}
-              rows={4}
-              defaultValue={performanceDataPlaceholder}
+            <Label htmlFor="weakTopics">Weak Topics</Label>
+            <Input
+              id="weakTopics"
+              name="weakTopics"
+              placeholder={weakTopicsPlaceholder}
               required
             />
           </div>
           <div className="grid w-full gap-2">
-            <Label htmlFor="studySchedule">Study Schedule</Label>
-            <Textarea
-              id="studySchedule"
-              name="studySchedule"
-              placeholder={studySchedulePlaceholder}
-              rows={4}
-              defaultValue={studySchedulePlaceholder}
+            <Label htmlFor="upcomingQuizzes">Upcoming Quizzes</Label>
+            <Input
+              id="upcomingQuizzes"
+              name="upcomingQuizzes"
+              placeholder={upcomingQuizzesPlaceholder}
               required
             />
           </div>

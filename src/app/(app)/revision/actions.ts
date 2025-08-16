@@ -1,17 +1,17 @@
 'use server';
 
 import { z } from 'zod';
-import { generateRevisionPrompts } from '@/ai/flows/generate-revision-prompts';
+import { generateAiRevisionPrompts } from '@/ai/flows/ai-revision-prompts';
 
 const formSchema = z.object({
-  performanceData: z.string().min(10, 'Performance data is too short.'),
-  studySchedule: z.string().min(10, 'Study schedule is too short.'),
+  weakTopics: z.string().min(3, 'Please enter at least one weak topic.'),
+  upcomingQuizzes: z.string().min(3, 'Please enter at least one upcoming quiz.'),
 });
 
-export async function generateRevisionPromptsAction(prevState: any, formData: FormData) {
+export async function generateAiRevisionPromptsAction(prevState: any, formData: FormData) {
   const validatedFields = formSchema.safeParse({
-    performanceData: formData.get('performanceData'),
-    studySchedule: formData.get('studySchedule'),
+    weakTopics: formData.get('weakTopics'),
+    upcomingQuizzes: formData.get('upcomingQuizzes'),
   });
 
   if (!validatedFields.success) {
@@ -22,7 +22,7 @@ export async function generateRevisionPromptsAction(prevState: any, formData: Fo
   }
   
   try {
-    const result = await generateRevisionPrompts(validatedFields.data);
+    const result = await generateAiRevisionPrompts(validatedFields.data);
     return {
       prompts: result.revisionPrompts,
       error: null,

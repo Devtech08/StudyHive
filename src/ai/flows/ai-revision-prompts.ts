@@ -47,7 +47,7 @@ const prompt = ai.definePrompt({
 Weak Topics: {{{weakTopics}}}
 Upcoming Quizzes: {{{upcomingQuizzes}}}
 
-Generate a list of revision prompts that will help the student focus on areas where they need the most improvement, and prepare them for their upcoming quizzes.`,
+Generate a list of revision prompts that will help the student focus on areas where they need the most improvement, and prepare them for their upcoming quizzes. The prompts should be specific and actionable.`,
 });
 
 const generateAiRevisionPromptsFlow = ai.defineFlow(
