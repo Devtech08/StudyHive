@@ -9,7 +9,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/Logo';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { app } from '@/lib/firebase';
 import { createSessionFromToken } from '@/lib/actions/auth';
@@ -19,7 +18,6 @@ import { z } from 'zod';
 const signupSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
   password: z.string().min(8, 'Password must be at least 8 characters.'),
-  role: z.enum(['student', 'teacher']),
 });
 
 export default function SignupPage() {
@@ -40,7 +38,6 @@ export default function SignupPage() {
     const signupData = {
       email: formData.get('email'),
       password: formData.get('password'),
-      role: formData.get('role'),
     };
 
     const validationResult = signupSchema.safeParse(signupData);
@@ -51,7 +48,8 @@ export default function SignupPage() {
       return;
     }
     
-    const { email, password, role } = validationResult.data;
+    const { email, password } = validationResult.data;
+    const role = 'student'; // Hardcode role to student
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -62,9 +60,7 @@ export default function SignupPage() {
            description: "Redirecting to your dashboard...",
        });
        
-       // The server action will handle the redirect.
        await createSessionFromToken(idToken, role);
-
 
     } catch (error: any) {
         if (error.code === 'auth/email-already-in-use') {
@@ -73,10 +69,7 @@ export default function SignupPage() {
             setFirebaseError('An unexpected error occurred. Please try again.');
             console.error(error);
         }
-    } finally {
-      // Don't set loading to false, as the page should be redirecting.
-      // If it fails, the error message will be shown.
-      setLoading(false);
+        setLoading(false);
     }
   };
 
@@ -93,29 +86,6 @@ export default function SignupPage() {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSignup} className="grid gap-4">
-           <div className="grid gap-2">
-            <Label>I am a...</Label>
-            <RadioGroup defaultValue="student" name="role" className="grid grid-cols-2 gap-4">
-              <div>
-                <RadioGroupItem value="student" id="student" className="peer sr-only" />
-                <Label
-                  htmlFor="student"
-                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                >
-                  Student
-                </Label>
-              </div>
-              <div>
-                <RadioGroupItem value="teacher" id="teacher" className="peer sr-only" />
-                <Label
-                  htmlFor="teacher"
-                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                >
-                  Teacher
-                </Label>
-              </div>
-            </RadioGroup>
-          </div>
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
             <Input

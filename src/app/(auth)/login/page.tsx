@@ -9,7 +9,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/Logo';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { app } from '@/lib/firebase';
 import { createSessionFromToken } from '@/lib/actions/auth';
@@ -30,9 +29,9 @@ export default function LoginPage() {
     const formData = new FormData(event.currentTarget);
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
-    const role = formData.get('role') as 'student' | 'teacher';
+    const role = 'student'; // Hardcode role to student
 
-    if (!email || !password || !role) {
+    if (!email || !password) {
       setError('Please fill in all fields.');
       setLoading(false);
       return;
@@ -47,7 +46,6 @@ export default function LoginPage() {
           description: "Redirecting to your dashboard...",
       });
       
-      // The server action will handle the redirect.
       await createSessionFromToken(idToken, role);
 
     } catch (error: any) {
@@ -58,9 +56,6 @@ export default function LoginPage() {
         setError('An unexpected error occurred. Please try again later.');
         console.error(error);
       }
-    } finally {
-      // Don't set loading to false here, as the page should be redirecting.
-      // If it fails, the error message will be shown.
       setLoading(false);
     }
   };
@@ -79,29 +74,6 @@ export default function LoginPage() {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleLogin} className="grid gap-4">
-          <div className="grid gap-2">
-            <Label>I am a...</Label>
-            <RadioGroup defaultValue="student" name="role" className="grid grid-cols-2 gap-4">
-              <div>
-                <RadioGroupItem value="student" id="student" className="peer sr-only" />
-                <Label
-                  htmlFor="student"
-                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                >
-                  Student
-                </Label>
-              </div>
-              <div>
-                <RadioGroupItem value="teacher" id="teacher" className="peer sr-only" />
-                <Label
-                  htmlFor="teacher"
-                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                >
-                  Teacher
-                </Label>
-              </div>
-            </RadioGroup>
-          </div>
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
             <Input
