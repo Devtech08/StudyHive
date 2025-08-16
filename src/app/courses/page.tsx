@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -5,14 +6,36 @@ import Link from "next/link";
 import { subjects } from "@/lib/courses";
 import Image from "next/image";
 import { ArrowRight, User } from "lucide-react";
+import { Logo } from "@/components/Logo";
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '#', label: 'AI Revision' },
+  { href: '#', label: 'Communities' },
+];
 
 export default function CoursesPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
-        <Link href="/" className="flex items-center justify-center mr-6 font-bold text-primary">
-          NoteWise
+        <Link href="/" className="flex items-center justify-center mr-6">
+          <Logo />
         </Link>
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+          {navLinks.map((link) => (
+            <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        <nav className="ml-auto flex items-center gap-4 sm:gap-6">
+          <Button variant="ghost" asChild>
+            <Link href="#">Login</Link>
+          </Button>
+          <Button asChild>
+            <Link href="#">Get Started</Link>
+          </Button>
+        </nav>
       </header>
       <main className="flex-1 p-4 md:p-8 lg:p-12">
         <div className="container mx-auto">
