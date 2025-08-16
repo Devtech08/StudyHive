@@ -7,11 +7,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useRequireAuth } from "@/hooks/use-auth";
+import { useAuth, useRequireAuth } from "@/hooks/use-auth";
 import SettingsHeader from "@/components/SettingsHeader";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 export default function SettingsPage() {
     useRequireAuth();
+    const { user } = useAuth();
 
     return (
         <div className="flex flex-col min-h-screen bg-muted/40">
@@ -45,7 +55,32 @@ export default function SettingsPage() {
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="email">Email</Label>
-                                        <Input id="email" type="email" defaultValue="scholar@notewise.com" />
+                                        <div className="flex items-center gap-4">
+                                            <Input id="email" type="email" value={user?.email || ''} disabled />
+                                            <Dialog>
+                                                <DialogTrigger asChild>
+                                                    <Button variant="outline">Change Email</Button>
+                                                </DialogTrigger>
+                                                <DialogContent>
+                                                    <DialogHeader>
+                                                        <DialogTitle>Change Email</DialogTitle>
+                                                        <DialogDescription>
+                                                            Enter your new email address below. A verification link will be sent.
+                                                        </DialogDescription>
+                                                    </DialogHeader>
+                                                    <div className="space-y-4 py-4">
+                                                        <div className="space-y-2">
+                                                            <Label htmlFor="new-email">New Email</Label>
+                                                            <Input id="new-email" type="email" placeholder="new.email@example.com"/>
+                                                        </div>
+                                                    </div>
+                                                    <DialogFooter>
+                                                        <Button variant="ghost">Cancel</Button>
+                                                        <Button>Save Changes</Button>
+                                                    </DialogFooter>
+                                                </DialogContent>
+                                            </Dialog>
+                                        </div>
                                     </div>
                                 </CardContent>
                                 <CardFooter>
