@@ -48,12 +48,14 @@ export default function LoginPage() {
       
       await createSessionFromToken(idToken, role);
       
+      // A full page navigation is required to clear client-side state and
+      // ensure the server reads the new session cookie.
       window.location.href = '/dashboard';
 
     } catch (error: any) {
       const errorCode = error.code;
-      if (errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password' || errorCode === 'auth/invalid-credential') {
-        setError('Invalid email or password. Please try again.');
+      if (errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password' || errorCode === 'auth/invalid-credential' || errorCode === 'auth/too-many-requests') {
+        setError('Invalid email or password, or too many requests. Please try again later.');
       } else {
         setError('An unexpected error occurred. Please try again later.');
         console.error(error);
