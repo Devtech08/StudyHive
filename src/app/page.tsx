@@ -124,18 +124,8 @@ export default function Home() {
                     Stuck on a concept? Get an instant explanation from our friendly AI study assistant.
                     </p>
                 </div>
-                <div className="grid lg:grid-cols-2 lg:gap-12 items-center">
-                    <div className="mx-auto max-w-2xl pt-12 lg:pt-0">
-                        <AiStudyAssistant />
-                    </div>
-                    <Image
-                        src="https://placehold.co/600x400.png"
-                        width="600"
-                        height="400"
-                        alt="AI Assistant providing help"
-                        data-ai-hint="robot chatbot"
-                        className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-first"
-                    />
+                <div className="mx-auto max-w-2xl pt-12 lg:pt-0">
+                    <AiStudyAssistant />
                 </div>
             </div>
         </section>
