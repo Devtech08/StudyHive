@@ -18,7 +18,7 @@ export async function explainConcept(query: string): Promise<string> {
 
 const prompt = ai.definePrompt({
   name: 'explainConceptPrompt',
-  input: { schema: ExplainConceptInputSchema },
+  input: { schema: z.object({ prompt: ExplainConceptInputSchema }) },
   output: { schema: ExplainConceptOutputSchema },
   prompt: `You are an expert tutor AI. A student has asked you to explain a concept. 
   
@@ -34,7 +34,7 @@ const explainConceptFlow = ai.defineFlow(
     outputSchema: ExplainConceptOutputSchema,
   },
   async (query) => {
-    const { output } = await prompt(query);
+    const { output } = await prompt({ prompt: query });
     return output!;
   }
 );
