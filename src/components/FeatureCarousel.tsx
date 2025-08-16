@@ -24,7 +24,7 @@ const features = [
     description: 'Access well-organized course notes by subject and topic, tailored for effective learning.',
     cta: 'Browse Courses',
     link: '/signup',
-    image: 'https://placehold.co/1200x600.png',
+    image: '/images/feature-notes.png',
     dataAiHint: 'notebooks books',
   },
   {
@@ -33,7 +33,7 @@ const features = [
     description: 'Test your knowledge with engaging, timer-based assessments and solidify your understanding.',
     cta: 'Take a Quiz',
     link: '/signup',
-    image: 'https://placehold.co/1200x600.png',
+    image: '/images/feature-quiz.png',
     dataAiHint: 'quiz test',
   },
   {
@@ -42,7 +42,7 @@ const features = [
     description: 'Visualize your learning journey with insightful analytics and stay motivated.',
     cta: 'View Dashboard',
     link: '/signup',
-    image: 'https://placehold.co/1200x600.png',
+    image: '/images/feature-progress.png',
     dataAiHint: 'charts graphs',
   },
   {
@@ -51,7 +51,7 @@ const features = [
     description: 'Get personalized revision prompts from our AI to focus on your specific weak areas.',
     cta: 'Get Prompts',
     link: '/signup',
-    image: 'https://placehold.co/1200x600.png',
+    image: '/images/feature-ai.png',
     dataAiHint: 'robot thinking',
   },
 ];
