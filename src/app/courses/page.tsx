@@ -1,6 +1,7 @@
 
 
 
+
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -13,7 +14,7 @@ import { Logo } from "@/components/Logo";
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/ai-revision', label: 'AI Revision' },
-  { href: '#', label: 'Communities' },
+  { href: '/community', label: 'Communities' },
 ];
 
 export default function CoursesPage() {

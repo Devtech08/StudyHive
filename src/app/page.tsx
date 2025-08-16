@@ -39,7 +39,7 @@ const testimonials = [
 const navLinks = [
   { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
-  { href: '#', label: 'Community' },
+  { href: '/community', label: 'Community' },
   { href: '#', label: 'Leaderboard' },
 ];
 
