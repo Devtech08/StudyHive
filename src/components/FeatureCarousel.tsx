@@ -33,7 +33,7 @@ const features = [
     description: 'Test your knowledge with engaging, timer-based assessments and solidify your understanding.',
     cta: 'Take a Quiz',
     link: '/signup',
-    image: 'https://placehold.co/600x600.png',
+    image: 'https://i.pinimg.com/736x/6a/89/94/6a8994527f9395ee50b8d449b4896f45.jpg',
     dataAiHint: 'quiz test',
   },
   {
