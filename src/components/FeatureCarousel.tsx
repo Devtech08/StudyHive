@@ -51,7 +51,7 @@ const features = [
     description: 'Get personalized revision prompts from our AI to focus on your specific weak areas.',
     cta: 'Get Prompts',
     link: '/signup',
-    image: 'https://placehold.co/600x600.png',
+    image: 'https://i.pinimg.com/1200x/f9/48/d7/f948d733c26e8c35c7e2eae7a0e92384.jpg',
     dataAiHint: 'robot thinking',
   },
 ];
