@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getTopic } from '@/lib/data';
+import { getTopic, getSubject } from '@/lib/data';
 import {
   Breadcrumb,
   BreadcrumbItem,
