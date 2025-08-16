@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import {
   BookOpen,
@@ -9,6 +10,7 @@ import {
   User as UserIcon,
   Users,
   Trophy,
+  BookMarked
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -24,8 +26,7 @@ import { logout } from '@/lib/actions/auth';
 import type { User } from '@/lib/types';
 import { Logo } from './Logo';
 
-const navLinks = [
-  { href: '/', label: 'Home', icon: Home },
+const studentNavLinks = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/courses', label: 'Courses', icon: BookOpen },
   { href: '/revision', label: 'AI Revision', icon: Sparkles },
@@ -33,7 +34,15 @@ const navLinks = [
   { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
 ];
 
+const teacherNavLinks = [
+    { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/my-courses', label: 'My Courses', icon: BookMarked },
+    { href: '/community', label: 'Community', icon: Users },
+]
+
 export function Header({ user }: { user: User | null }) {
+  const navLinks = user?.role === 'teacher' ? teacherNavLinks : studentNavLinks;
+  
   return (
     <header className="sticky top-0 z-50 flex h-16 items-center border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="flex items-center gap-4">
@@ -69,7 +78,7 @@ export function Header({ user }: { user: User | null }) {
          </Link>
       </div>
       
-      <nav className="hidden flex-1 items-center justify-center gap-6 text-lg font-medium md:flex md:flex-row md:gap-5 md:text-sm lg:gap-6">
+      <nav className="hidden flex-1 items-center justify-end gap-6 text-lg font-medium md:flex md:flex-row md:gap-5 md:text-sm lg:gap-6 mr-6">
           {navLinks.map(({ href, label }) => (
           <Link
               key={href}
