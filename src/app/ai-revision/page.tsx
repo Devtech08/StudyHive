@@ -13,6 +13,10 @@ import { explainConcept } from '@/ai/flows/explain-concept';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { subjects } from '@/lib/courses';
+import { generateMockExam } from '@/ai/flows/generate-mock-exam';
+import { useRouter } from 'next/navigation';
 
 const navLinks = [
   { href: '/courses', label: 'Courses' },
@@ -35,6 +39,7 @@ type Message = {
 };
 
 export default function AiRevisionPage() {
+    const router = useRouter();
     const [quizFile, setQuizFile] = useState<File | null>(null);
     const [flashcardFile, setFlashcardFile] = useState<File | null>(null);
     const [studyPlan, setStudyPlan] = useState<StudyPlan | null>(null);
@@ -46,6 +51,9 @@ export default function AiRevisionPage() {
     const [explanationInput, setExplanationInput] = useState('');
     const [isGeneratingExplanation, setIsGeneratingExplanation] = useState(false);
     
+    const [isGeneratingExam, setIsGeneratingExam] = useState(false);
+    const [examSubject, setExamSubject] = useState<string>('');
+
     const quizFileInputRef = useRef<HTMLInputElement>(null);
     const flashcardFileInputRef = useRef<HTMLInputElement>(null);
     const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -71,7 +79,6 @@ export default function AiRevisionPage() {
             setStudyPlan(plan);
         } catch (error) {
             console.error("Failed to generate study plan:", error);
-            // Optionally, show an error message to the user
         }
         setIsLoadingPlan(false);
     };
@@ -85,7 +92,7 @@ export default function AiRevisionPage() {
         setIsGeneratingExplanation(true);
 
         try {
-            const response = await explainConcept(explanationInput);
+            const response = await explainConcept({query: explanationInput});
             const botMessage: Message = { role: 'bot', content: response };
             setMessages(prev => [...prev, botMessage]);
         } catch (error) {
@@ -94,6 +101,19 @@ export default function AiRevisionPage() {
             setMessages(prev => [...prev, errorMessage]);
         }
         setIsGeneratingExplanation(false);
+    };
+    
+    const handleGenerateExam = async () => {
+        if (!examSubject) return;
+        setIsGeneratingExam(true);
+        try {
+            const exam = await generateMockExam({ subject: examSubject });
+            localStorage.setItem('mockExam', JSON.stringify(exam));
+            router.push('/mock-exam');
+        } catch (error) {
+            console.error("Failed to generate mock exam:", error);
+        }
+        setIsGeneratingExam(false);
     };
     
     const renderFileUpload = (
@@ -314,10 +334,31 @@ export default function AiRevisionPage() {
                                     <CardTitle className="flex items-center"><FileText className="w-6 h-6 mr-3 text-primary" />Mock Exam Mode</CardTitle>
                                     <CardDescription>Let the AI generate a full practice test from all topics in a course to get you ready for the real exam.</CardDescription>
                                 </CardHeader>
-                                <CardContent>
-                                    <Button className="w-full" size="lg">
-                                        <Zap className="w-5 h-5 mr-2"/>
-                                        Generate Mock Exam
+                                <CardContent className="space-y-4">
+                                    <Select onValueChange={setExamSubject} value={examSubject}>
+                                        <SelectTrigger>
+                                            <SelectValue placeholder="Select a subject..." />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {subjects.map((subject) => (
+                                                <SelectItem key={subject.id} value={subject.name}>
+                                                    {subject.name}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                    <Button className="w-full" size="lg" onClick={handleGenerateExam} disabled={isGeneratingExam || !examSubject}>
+                                        {isGeneratingExam ? (
+                                            <>
+                                                <Loader2 className="w-5 h-5 mr-2 animate-spin"/>
+                                                Generating...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Zap className="w-5 h-5 mr-2"/>
+                                                Generate Mock Exam
+                                            </>
+                                        )}
                                     </Button>
                                 </CardContent>
                                 <CardFooter>
@@ -347,5 +388,3 @@ export default function AiRevisionPage() {
         </div>
     )
 }
-
-    
