@@ -30,7 +30,7 @@ const testimonials = [
   {
     name: 'Emily R.',
     role: 'Medical Student',
-    avatar: 'https://placehold.co/40x40.png',
+    avatar: 'https://i.pinimg.com/736x/e5/39/49/e5394915262d78aacd2ee18562dae9d3.jpg',
     dataAiHint: 'woman portrait',
     quote:
       'The ability to see my progress visually is incredibly motivating. It keeps me on track and focused on my goals.',
