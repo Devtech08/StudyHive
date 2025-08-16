@@ -48,7 +48,7 @@ export default function CoursesPage() {
 
           {subjects.map((subject) => (
             <section key={subject.id} className="mb-16">
-              <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="flex items-center gap-4 mb-6">
                  <subject.icon className="w-8 h-8 text-primary" />
                  <h2 className="text-3xl font-bold font-headline">{subject.name}</h2>
               </div>
