@@ -24,7 +24,7 @@ const features = [
     description: 'Access well-organized course notes by subject and topic, tailored for effective learning.',
     cta: 'Browse Courses',
     link: '/signup',
-    image: 'https://placehold.co/600x600.png',
+    image: 'https://i.pinimg.com/736x/5d/79/70/5d79704f05e772f45ca9bdf8d24dda83.jpg',
     dataAiHint: 'notebooks books',
   },
   {
