@@ -4,15 +4,15 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Users } from 'lucide-react';
 
 const students = [
-  { id: '1', name: 'Alice Johnson', email: 'alice@example.com', joined: '2024-05-01', avatar: '/images/woman-portrait-1.png', dataAiHint: 'woman portrait' },
-  { id: '2', name: 'Bob Williams', email: 'bob@example.com', joined: '2024-05-02', avatar: '/images/man-portrait-1.png', dataAiHint: 'man portrait' },
-  { id: '3', name: 'Charlie Brown', email: 'charlie@example.com', joined: '2024-05-03', avatar: '/images/man-portrait-2.png', dataAiHint: 'man portrait' },
-  { id: '4', name: 'Diana Prince', email: 'diana@example.com', joined: '2024-05-04', avatar: '/images/woman-portrait-2.png', dataAiHint: 'woman portrait' },
-  { id: '5', name: 'Ethan Hunt', email: 'ethan@example.com', joined: '2024-05-05', avatar: '/images/man-portrait-3.png', dataAiHint: 'man portrait' },
-  { id: '6', name: 'Frank Miller', email: 'frank@example.com', joined: '2024-05-10', avatar: '/images/man-portrait-6.png', dataAiHint: 'man portrait' },
-  { id: '7', name: 'Grace Lee', email: 'grace@example.com', joined: '2024-05-11', avatar: '/images/woman-portrait-4.png', dataAiHint: 'woman portrait' },
-  { id: '8', name: 'Heidi Turner', email: 'heidi@example.com', joined: '2024-05-12', avatar: '/images/woman-portrait-5.png', dataAiHint: 'woman portrait' },
-  { id: '9', name: 'Ivan Petrov', email: 'ivan@example.com', joined: '2024-05-15', avatar: '/images/man-portrait-7.png', dataAiHint: 'man portrait' },
+  { id: '1', name: 'Alice Johnson', email: 'alice@example.com', joined: '2024-05-01', avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+  { id: '2', name: 'Bob Williams', email: 'bob@example.com', joined: '2024-05-02', avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
+  { id: '3', name: 'Charlie Brown', email: 'charlie@example.com', joined: '2024-05-03', avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
+  { id: '4', name: 'Diana Prince', email: 'diana@example.com', joined: '2024-05-04', avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+  { id: '5', name: 'Ethan Hunt', email: 'ethan@example.com', joined: '2024-05-05', avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
+  { id: '6', name: 'Frank Miller', email: 'frank@example.com', joined: '2024-05-10', avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
+  { id: '7', name: 'Grace Lee', email: 'grace@example.com', joined: '2024-05-11', avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+  { id: '8', name: 'Heidi Turner', email: 'heidi@example.com', joined: '2024-05-12', avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+  { id: '9', name: 'Ivan Petrov', email: 'ivan@example.com', joined: '2024-05-15', avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
 ];
 
 export default function StudentsPage() {

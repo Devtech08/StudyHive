@@ -10,25 +10,25 @@ import { useAuth } from '@/context/AuthContext';
 
 const leaderboardData = {
   allTime: [
-    { rank: 1, name: 'Alice Johnson', score: 1250, avatar: '/images/woman-portrait-1.png', dataAiHint: 'woman portrait' },
-    { rank: 2, name: 'Bob Williams', score: 1180, avatar: '/images/man-portrait-1.png', dataAiHint: 'man portrait' },
-    { rank: 3, name: 'Charlie Brown', score: 1120, avatar: '/images/man-portrait-2.png', dataAiHint: 'man portrait' },
-    { rank: 4, name: 'Diana Prince', score: 1050, avatar: '/images/woman-portrait-2.png', dataAiHint: 'woman portrait' },
-    { rank: 5, name: 'Ethan Hunt', score: 980, avatar: '/images/man-portrait-3.png', dataAiHint: 'man portrait' },
+    { rank: 1, name: 'Alice Johnson', score: 1250, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+    { rank: 2, name: 'Bob Williams', score: 1180, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
+    { rank: 3, name: 'Charlie Brown', score: 1120, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
+    { rank: 4, name: 'Diana Prince', score: 1050, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+    { rank: 5, name: 'Ethan Hunt', score: 980, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
   ],
   monthly: [
-    { rank: 1, name: 'Diana Prince', score: 450, avatar: '/images/woman-portrait-2.png', dataAiHint: 'woman portrait' },
-    { rank: 2, name: 'Alice Johnson', score: 420, avatar: '/images/woman-portrait-1.png', dataAiHint: 'woman portrait' },
-    { rank: 3, name: 'Frank Miller', score: 390, avatar: '/images/man-portrait-6.png', dataAiHint: 'man portrait' },
-    { rank: 4, name: 'Grace Lee', score: 350, avatar: '/images/woman-portrait-4.png', dataAiHint: 'woman portrait' },
-    { rank: 5, name: 'Charlie Brown', score: 320, avatar: '/images/man-portrait-2.png', dataAiHint: 'man portrait' },
+    { rank: 1, name: 'Diana Prince', score: 450, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+    { rank: 2, name: 'Alice Johnson', score: 420, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+    { rank: 3, name: 'Frank Miller', score: 390, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
+    { rank: 4, name: 'Grace Lee', score: 350, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+    { rank: 5, name: 'Charlie Brown', score: 320, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
   ],
   weekly: [
-    { rank: 1, name: 'Grace Lee', score: 150, avatar: '/images/woman-portrait-4.png', dataAiHint: 'woman portrait' },
-    { rank: 2, name: 'Heidi Turner', score: 135, avatar: '/images/woman-portrait-5.png', dataAiHint: 'woman portrait' },
-    { rank: 3, name: 'Diana Prince', score: 120, avatar: '/images/woman-portrait-2.png', dataAiHint: 'woman portrait' },
-    { rank: 4, name: 'Ivan Petrov', score: 100, avatar: '/images/man-portrait-7.png', dataAiHint: 'man portrait' },
-    { rank: 5, name: 'Alice Johnson', score: 90, avatar: '/images/woman-portrait-1.png', dataAiHint: 'woman portrait' },
+    { rank: 1, name: 'Grace Lee', score: 150, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+    { rank: 2, name: 'Heidi Turner', score: 135, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+    { rank: 3, name: 'Diana Prince', score: 120, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+    { rank: 4, name: 'Ivan Petrov', score: 100, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
+    { rank: 5, name: 'Alice Johnson', score: 90, avatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
   ]
 };
 

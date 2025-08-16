@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const assignments = [
-  { id: '1', studentName: 'Alice Johnson', course: 'Introduction to Algebra', title: 'Chapter 1 Homework', submitted: '2024-06-10', studentAvatar: '/images/woman-portrait-1.png', dataAiHint: 'woman portrait' },
-  { id: '2', studentName: 'Bob Williams', course: 'Photosynthesis Deep Dive', title: 'Lab Report: Light Intensity', submitted: '2024-06-10', studentAvatar: '/images/man-portrait-1.png', dataAiHint: 'man portrait' },
-  { id: '3', studentName: 'Charlie Brown', course: 'Introduction to Algebra', title: 'Worksheet: Solving Equations', submitted: '2024-06-09', studentAvatar: '/images/man-portrait-2.png', dataAiHint: 'man portrait' },
-  { id: '4', studentName: 'Diana Prince', course: 'Creative Writing Workshop', title: 'Short Story Draft 1', submitted: '2024-06-09', studentAvatar: '/images/woman-portrait-2.png', dataAiHint: 'woman portrait' },
-  { id: '5', studentName: 'Ethan Hunt', course: 'Ancient Roman History', title: 'Essay: The Fall of Rome', submitted: '2024-06-08', studentAvatar: '/images/man-portrait-3.png', dataAiHint: 'man portrait' },
+  { id: '1', studentName: 'Alice Johnson', course: 'Introduction to Algebra', title: 'Chapter 1 Homework', submitted: '2024-06-10', studentAvatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+  { id: '2', studentName: 'Bob Williams', course: 'Photosynthesis Deep Dive', title: 'Lab Report: Light Intensity', submitted: '2024-06-10', studentAvatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
+  { id: '3', studentName: 'Charlie Brown', course: 'Introduction to Algebra', title: 'Worksheet: Solving Equations', submitted: '2024-06-09', studentAvatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
+  { id: '4', studentName: 'Diana Prince', course: 'Creative Writing Workshop', title: 'Short Story Draft 1', submitted: '2024-06-09', studentAvatar: 'https://placehold.co/32x32.png', dataAiHint: 'woman portrait' },
+  { id: '5', studentName: 'Ethan Hunt', course: 'Ancient Roman History', title: 'Essay: The Fall of Rome', submitted: '2024-06-08', studentAvatar: 'https://placehold.co/32x32.png', dataAiHint: 'man portrait' },
 ];
 
 export default function AssignmentsPage() {

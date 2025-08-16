@@ -14,7 +14,7 @@ const testimonials = [
   {
     name: 'Sarah L.',
     role: 'University Student',
-    avatar: '/images/woman-portrait-1.png',
+    avatar: 'https://placehold.co/40x40.png',
     dataAiHint: 'woman portrait',
     quote:
       'NoteWise has been a total game-changer for my study routine. The AI revision prompts helped me ace my finals!',
@@ -22,7 +22,7 @@ const testimonials = [
   {
     name: 'Mike P.',
     role: 'High School Student',
-    avatar: '/images/man-portrait-1.png',
+    avatar: 'https://placehold.co/40x40.png',
     dataAiHint: 'man portrait',
     quote:
       'I love the interactive quizzes. They make learning fun and I\'ve seen a huge improvement in my grades.',
@@ -30,7 +30,7 @@ const testimonials = [
   {
     name: 'Emily R.',
     role: 'Medical Student',
-    avatar: '/images/woman-portrait-2.png',
+    avatar: 'https://placehold.co/40x40.png',
     dataAiHint: 'woman portrait',
     quote:
       'The ability to see my progress visually is incredibly motivating. It keeps me on track and focused on my goals.',
@@ -91,7 +91,7 @@ export default function Home() {
                 </div>
               </div>
               <Image
-                src="/image/group.jpeg"
+                src="https://placehold.co/600x400.png"
                 width="600"
                 height="400"
                 alt="A student studying with a laptop and books"

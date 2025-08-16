@@ -9,7 +9,8 @@ const discussions = [
     id: 1,
     title: 'Struggling with Algebra concepts',
     author: 'Alex Doe',
-    avatar: '/images/man-portrait-4.png',
+    avatar: 'https://placehold.co/32x32.png',
+    dataAiHint: 'man portrait',
     replies: 12,
     likes: 5,
     excerpt: 'Hey everyone, I\'m having a hard time understanding quadratic equations. Can anyone explain it in a simple way?',
@@ -19,7 +20,8 @@ const discussions = [
     id: 2,
     title: 'Tips for memorizing historical dates?',
     author: 'Jane Smith',
-    avatar: '/images/woman-portrait-3.png',
+    avatar: 'https://placehold.co/32x32.png',
+    dataAiHint: 'woman portrait',
     replies: 8,
     likes: 15,
     excerpt: 'I have a big history exam coming up and I\'m terrible at remembering dates. What are your best strategies?',
@@ -29,7 +31,8 @@ const discussions = [
     id: 3,
     title: 'What is the function of the mitochondria?',
     author: 'Sam Wilson',
-    avatar: '/images/man-portrait-5.png',
+    avatar: 'https://placehold.co/32x32.png',
+    dataAiHint: 'man portrait',
     replies: 20,
     likes: 10,
     excerpt: 'The textbook calls it the "powerhouse of the cell", but I need a more detailed explanation for my biology homework.',
@@ -63,7 +66,7 @@ export default function CommunityPage() {
             <CardHeader>
               <div className="flex items-start gap-4">
                 <Avatar>
-                  <AvatarImage src={post.avatar} />
+                  <AvatarImage src={post.avatar} data-ai-hint={post.dataAiHint} />
                   <AvatarFallback>{post.author.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
