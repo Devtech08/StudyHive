@@ -1,6 +1,8 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import React from 'react';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { getExplanationAction } from '@/app/(app)/leaderboard/actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -22,7 +24,7 @@ function SubmitButton() {
 }
 
 export default function AiStudyAssistant() {
-  const [state, formAction] = useFormState(getExplanationAction, initialState);
+  const [state, formAction] = useActionState(getExplanationAction, initialState);
   const [history, setHistory] = React.useState<{query: string, response: string}[]>([]);
   const formRef = React.useRef<HTMLFormElement>(null);
 
