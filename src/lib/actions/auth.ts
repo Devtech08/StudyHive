@@ -45,14 +45,22 @@ export async function signup(prevState: any, formData: FormData) {
 
 export async function createSessionFromToken(token: string, role: 'student' | 'teacher') {
     try {
-        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${process.env.FIREBASE_API_KEY}`, {
+        // The API key must be present for this call to succeed.
+        const apiKey = process.env.FIREBASE_API_KEY;
+        if (!apiKey) {
+            throw new Error('Firebase API Key is not configured on the server.');
+        }
+
+        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ idToken: token })
         });
 
         if (!response.ok) {
-            throw new Error('Failed to verify token');
+            const errorData = await response.json();
+            console.error('Firebase token verification failed:', errorData);
+            throw new Error('Failed to verify token with Firebase.');
         }
 
         const data = await response.json();
@@ -60,16 +68,19 @@ export async function createSessionFromToken(token: string, role: 'student' | 't
         
         if (user) {
             await createSession({ email: user.email, role: role, uid: user.localId });
-            // A server-side redirect is more reliable here.
         } else {
-          return { success: false, error: 'User not found' };
+          throw new Error('User not found in Firebase response.');
         }
 
     } catch (error) {
         console.error('Session creation failed:', error);
-        return { success: false, error: (error as Error).message };
+        // Do not redirect on error, let the client handle it.
+        // We can't return an error message here because the client is doing a full page redirect anyway.
+        // The user will just stay on the login page.
+        return;
     }
-    // This will only be reached on success
+    
+    // This server-side redirect is the most reliable way to navigate after a session is created.
     redirect('/dashboard');
 }
 
