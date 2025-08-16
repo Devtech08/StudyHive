@@ -110,7 +110,7 @@ export const subjects = [
             title: 'Introduction to Coding',
             instructor: 'Ada Lovelace',
             progress: 95,
-            thumbnail: 'https://placehold.co/600x400.png',
+            thumbnail: 'https://i.pinimg.com/1200x/ce/a1/89/cea18960e037ac9aaa880eda471e2c34.jpg',
             dataAiHint: 'code editor',
             description: 'Start your journey into the world of programming. No prior experience required!',
             objectives: [],
