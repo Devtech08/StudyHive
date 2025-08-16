@@ -48,24 +48,26 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
-        <Link href="/" className="flex items-center justify-center mr-6">
-          <Logo />
-        </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <div className="flex-1 flex justify-start">
+            <Link href="/" className="flex items-center justify-center">
+              <Logo />
+            </Link>
+        </div>
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium justify-center flex-1">
           {navLinks.map((link) => (
             <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
               {link.label}
             </Link>
           ))}
         </nav>
-        <nav className="ml-auto flex items-center gap-4 sm:gap-6">
+        <div className="flex-1 flex justify-end items-center gap-4 sm:gap-6">
           <Button variant="ghost" asChild>
             <Link href="#">Login</Link>
           </Button>
           <Button asChild>
             <Link href="#">Get Started</Link>
           </Button>
-        </nav>
+        </div>
       </header>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
