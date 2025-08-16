@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { BookOpen, Target, TrendingUp, Bot, ArrowRight, Star } from 'lucide-react';
 import Image from 'next/image';
 import { Logo } from '@/components/Logo';
-import AiStudyAssistant from '@/components/AiStudyAssistant';
 import FeatureCarousel from '@/components/FeatureCarousel';
 
 const testimonials = [
@@ -38,10 +37,10 @@ const testimonials = [
 ];
 
 const navLinks = [
-  { href: '/courses', label: 'Courses' },
-  { href: '/revision', label: 'AI Revision' },
-  { href: '/community', label: 'Community' },
-  { href: '/leaderboard', label: 'Leaderboard' },
+  { href: '#', label: 'Courses' },
+  { href: '#', label: 'AI Revision' },
+  { href: '#', label: 'Community' },
+  { href: '#', label: 'Leaderboard' },
 ];
 
 
@@ -61,10 +60,10 @@ export default function Home() {
         </nav>
         <nav className="ml-auto flex items-center gap-4 sm:gap-6">
           <Button variant="ghost" asChild>
-            <Link href="/login">Login</Link>
+            <Link href="#">Login</Link>
           </Button>
           <Button asChild>
-            <Link href="/signup">Get Started</Link>
+            <Link href="#">Get Started</Link>
           </Button>
         </nav>
       </header>
@@ -83,7 +82,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button asChild size="lg" className="group">
-                    <Link href="/signup">
+                    <Link href="#">
                       Start Learning Now
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
@@ -127,7 +126,11 @@ export default function Home() {
                     </p>
                 </div>
                 <div className="mx-auto max-w-2xl pt-12 lg:pt-0">
-                    <AiStudyAssistant />
+                    <Card className="max-w-2xl mx-auto">
+                        <CardContent className="pt-6">
+                            <p className="text-center text-muted-foreground">The AI Study Assistant is currently being developed.</p>
+                        </CardContent>
+                    </Card>
                 </div>
             </div>
         </section>
