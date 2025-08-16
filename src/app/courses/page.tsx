@@ -11,34 +11,12 @@ import Image from "next/image";
 import { ArrowRight, User } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { UserNav } from "@/components/UserNav";
-
-const navLinks = [
-  { href: '/courses', label: 'Courses' },
-  { href: '/ai-revision', label: 'AI Revision' },
-  { href: '/community', label: 'Community' },
-  { href: '/leaderboard', label: 'Leaderboard' },
-];
+import DashboardHeader from "@/components/DashboardHeader";
 
 export default function CoursesPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
-        <div className="flex-1 flex justify-start">
-            <Link href="/" className="flex items-center justify-center">
-              <Logo />
-            </Link>
-        </div>
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium justify-center flex-1">
-          {navLinks.map((link) => (
-            <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex-1 flex justify-end items-center gap-4 sm:gap-6">
-          <UserNav />
-        </div>
-      </header>
+      <DashboardHeader />
       <main className="flex-1 p-4 md:p-8 lg:p-12">
         <div className="container mx-auto">
           <header className="mb-12 text-center">

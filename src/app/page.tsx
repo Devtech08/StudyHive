@@ -10,6 +10,9 @@ import Image from 'next/image';
 import { Logo } from '@/components/Logo';
 import FeatureCarousel from '@/components/FeatureCarousel';
 import { UserNav } from '@/components/UserNav';
+import { useAuth } from '@/hooks/use-auth';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const testimonials = [
   {
@@ -47,13 +50,28 @@ const navLinks = [
 
 
 export default function Home() {
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace('/dashboard');
+    }
+  }, [user, loading, router]);
+  
+  if (loading || user) {
+    return (
+        <div className="flex items-center justify-center min-h-screen">
+            <p>Loading...</p>
+        </div>
+    );
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
         <div className="flex-1 flex justify-start">
-            <Link href="/" className="flex items-center justify-center">
-              <Logo />
-            </Link>
+            <Logo />
         </div>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium justify-center flex-1">
           {navLinks.map((link) => (

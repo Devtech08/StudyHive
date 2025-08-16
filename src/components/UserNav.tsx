@@ -22,10 +22,12 @@ import { auth } from "@/lib/firebase";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export function UserNav() {
   const { user, loading } = useAuth();
   const { toast } = useToast();
+  const router = useRouter();
 
   const handleSignOut = async () => {
     try {
@@ -34,6 +36,7 @@ export function UserNav() {
         title: "Signed Out",
         description: "You have been successfully signed out.",
       })
+      router.push('/');
     } catch (error: any) {
       toast({
         variant: "destructive",
@@ -71,6 +74,7 @@ export function UserNav() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
+             <Link href="/dashboard"><DropdownMenuItem>Dashboard</DropdownMenuItem></Link>
             <DropdownMenuItem>
               Profile
             </DropdownMenuItem>

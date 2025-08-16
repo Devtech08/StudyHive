@@ -30,7 +30,7 @@ export default function RegisterPage() {
         title: "Account Created!",
         description: "You've been successfully registered.",
       });
-      router.push('/');
+      router.push('/dashboard');
     } catch (error: any) {
       toast({
         variant: "destructive",
