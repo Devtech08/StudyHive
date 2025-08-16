@@ -49,8 +49,7 @@ export default function LoginPage() {
             title: "Login Successful",
             description: "Welcome back!",
         });
-        router.push('/dashboard');
-        router.refresh();
+        window.location.href = '/dashboard';
       } else {
         setError(sessionResult.error || 'Failed to create server session.');
       }

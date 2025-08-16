@@ -64,8 +64,7 @@ export default function SignupPage() {
             title: "Account Created",
             description: "Welcome to NoteWise!",
         });
-        router.push('/dashboard');
-        router.refresh();
+        window.location.href = '/dashboard';
       } else {
         setFirebaseError(sessionResult.error || 'Failed to create server session.');
       }
