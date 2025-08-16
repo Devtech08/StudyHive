@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, Users, BookCopy, Trophy, Bell, MessageSquare, PlusCircle, ArrowRight, Upload, Filter, Check } from "lucide-react";
+import { Search, Users, BookCopy, Trophy, Bell, MessageSquare, PlusCircle, ArrowRight, Upload, Filter, Check, LogOut } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
@@ -48,10 +48,16 @@ const mockResources = [
 export default function CommunityPage() {
   const [joinedGroups, setJoinedGroups] = useState<number[]>([]);
 
-  const handleJoinGroup = (groupId: number) => {
-    if (!joinedGroups.includes(groupId)) {
-        setJoinedGroups([...joinedGroups, groupId]);
-    }
+  const toggleGroupMembership = (groupId: number) => {
+    setJoinedGroups(prevJoinedGroups => {
+        if (prevJoinedGroups.includes(groupId)) {
+            // Leave group
+            return prevJoinedGroups.filter(id => id !== groupId);
+        } else {
+            // Join group
+            return [...prevJoinedGroups, groupId];
+        }
+    });
   };
 
   return (
@@ -88,7 +94,7 @@ export default function CommunityPage() {
               </p>
           </header>
 
-           <Tabs defaultValue="forums">
+           <Tabs defaultValue="groups">
                 <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-8">
                     <TabsTrigger value="forums"><MessageSquare className="w-4 h-4 mr-2"/>Forums</TabsTrigger>
                     <TabsTrigger value="groups"><Users className="w-4 h-4 mr-2"/>Study Groups</TabsTrigger>
@@ -173,19 +179,25 @@ export default function CommunityPage() {
                                             <span className="text-sm">{isJoined ? group.members + 1 : group.members} members</span>
                                         </div>
                                     </CardContent>
-                                    <CardFooter>
+                                    <CardFooter className="grid grid-cols-2 gap-2">
                                         <Button 
                                             className="w-full"
-                                            onClick={() => handleJoinGroup(group.id)}
-                                            disabled={isJoined}
+                                            onClick={() => toggleGroupMembership(group.id)}
+                                            variant={isJoined ? "destructive" : "default"}
                                         >
                                             {isJoined ? (
                                                 <>
-                                                <Check className="w-4 h-4 mr-2" />
-                                                Joined
+                                                <LogOut className="w-4 h-4 mr-2" />
+                                                Leave
                                                 </>
-                                            ) : 'Join Group'}
+                                            ) : (
+                                                <>
+                                                <PlusCircle className="w-4 h-4 mr-2" />
+                                                Join Group
+                                                </>
+                                            )}
                                         </Button>
+                                        <Button variant="outline" className="w-full" disabled>View Members</Button>
                                     </CardFooter>
                                 </Card>
                             )})}
