@@ -28,7 +28,7 @@ export default function CoursesPage() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-4 sm:gap-6 ml-auto">
+        <div className="flex items-center gap-4 sm:gap-6">
           <Button variant="ghost" asChild>
             <Link href="#">Login</Link>
           </Button>
@@ -38,7 +38,7 @@ export default function CoursesPage() {
         </div>
       </header>
       <main className="flex-1 p-4 md:p-8 lg:p-12">
-        <div className="container mx-auto">
+        <div className="container mx-auto pl-24">
           <header className="mb-12">
             <h1 className="text-4xl font-bold font-headline">Explore Courses</h1>
             <p className="text-muted-foreground mt-2 text-lg">
