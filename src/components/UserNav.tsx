@@ -76,9 +76,7 @@ export function UserNav() {
           <DropdownMenuGroup>
              <Link href="/dashboard"><DropdownMenuItem>Dashboard</DropdownMenuItem></Link>
             <Link href="/profile"><DropdownMenuItem>Profile</DropdownMenuItem></Link>
-            <DropdownMenuItem>
-              Settings
-            </DropdownMenuItem>
+            <Link href="/settings"><DropdownMenuItem>Settings</DropdownMenuItem></Link>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleSignOut}>
