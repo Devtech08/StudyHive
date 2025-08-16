@@ -62,6 +62,8 @@ export default function SignupPage() {
        
        await createSessionFromToken(idToken, role);
 
+       window.location.href = '/dashboard';
+
     } catch (error: any) {
         if (error.code === 'auth/email-already-in-use') {
             setFirebaseError('This email is already registered. Please login instead.');

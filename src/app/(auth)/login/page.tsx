@@ -47,6 +47,8 @@ export default function LoginPage() {
       });
       
       await createSessionFromToken(idToken, role);
+      
+      window.location.href = '/dashboard';
 
     } catch (error: any) {
       const errorCode = error.code;
