@@ -22,7 +22,7 @@ const testimonials = [
   {
     name: 'Mike P.',
     role: 'High School Student',
-    avatar: 'https://placehold.co/40x40.png',
+    avatar: 'https://i.pinimg.com/736x/e5/45/ca/e545ca570256c9b8969b8fedb4c43b13.jpg',
     dataAiHint: 'man portrait',
     quote:
       'I love the interactive quizzes. They make learning fun and I\'ve seen a huge improvement in my grades.',
