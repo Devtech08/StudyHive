@@ -63,7 +63,7 @@ export const subjects = [
             title: 'Algebra Basics',
             instructor: 'Prof. Leonhard Euler',
             progress: 45,
-            thumbnail: 'https://placehold.co/600x400.png',
+            thumbnail: 'https://i.pinimg.com/1200x/70/d9/9f/70d99ff61d081a491386414484ad0cce.jpg',
             dataAiHint: 'math equations',
             description: 'Learn the fundamentals of algebra, including variables, equations, and functions.',
             objectives: [],
