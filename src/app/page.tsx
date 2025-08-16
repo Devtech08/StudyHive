@@ -37,7 +37,7 @@ const testimonials = [
 ];
 
 const navLinks = [
-  { href: '#', label: 'Courses' },
+  { href: '/courses', label: 'Courses' },
   { href: '#', label: 'AI Revision' },
   { href: '#', label: 'Community' },
   { href: '#', label: 'Leaderboard' },
@@ -82,7 +82,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button asChild size="lg" className="group">
-                    <Link href="#">
+                    <Link href="/courses">
                       Start Learning Now
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
@@ -115,24 +115,6 @@ export default function Home() {
               <FeatureCarousel />
             </div>
           </div>
-        </section>
-        <section id="ai-assistant" className="w-full py-12 md:py-24 lg:py-32">
-            <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
-                <div className="space-y-3">
-                    <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground">AI Study Assistant</div>
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl md:text-5xl">Have a question? Ask our AI.</h2>
-                    <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Stuck on a concept? Get an instant explanation from our friendly AI study assistant.
-                    </p>
-                </div>
-                <div className="mx-auto max-w-2xl pt-12 lg:pt-0">
-                    <Card className="max-w-2xl mx-auto">
-                        <CardContent className="pt-6">
-                            <p className="text-center text-muted-foreground">The AI Study Assistant is currently being developed.</p>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
