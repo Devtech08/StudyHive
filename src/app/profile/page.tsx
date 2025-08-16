@@ -1,16 +1,27 @@
 
 'use client';
 
+import { useState, useRef, ChangeEvent } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import DashboardHeader from "@/components/DashboardHeader";
 import { useAuth, useRequireAuth } from "@/hooks/use-auth";
 import { subjects } from "@/lib/courses";
-import { Award, BookCopy, Edit, Medal, Shield, Star, Trophy } from "lucide-react";
+import { Award, BookCopy, Edit, Medal, Shield, Star, Trophy, Upload, Camera } from "lucide-react";
 import Link from "next/link";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from '@/components/ui/input';
 
 const userProfile = {
     name: 'QuantumLeaper',
@@ -35,10 +46,32 @@ const badgeIcons: { [key: string]: React.ElementType } = {
 export default function ProfilePage() {
     useRequireAuth();
     const { user } = useAuth();
+    const [isEditing, setIsEditing] = useState(false);
+    const [avatarFile, setAvatarFile] = useState<File | null>(null);
+    const [avatarPreview, setAvatarPreview] = useState<string | null>(userProfile.avatar);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
 
     if (!user) {
         return null; // Or a loading spinner
     }
+    
+    const handleAvatarChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
+            setAvatarFile(file);
+            setAvatarPreview(URL.createObjectURL(file));
+        }
+    };
+
+    const handleSaveChanges = () => {
+        // Here you would typically handle the file upload to a server
+        console.log("Saving new avatar:", avatarFile);
+        setIsEditing(false);
+         if (avatarPreview) {
+            userProfile.avatar = avatarPreview;
+        }
+    };
 
     return (
         <div className="flex flex-col min-h-screen bg-muted/40">
@@ -60,15 +93,59 @@ export default function ProfilePage() {
                              <Card>
                                 <CardContent className="pt-6 flex flex-col items-center text-center">
                                     <Avatar className="w-24 h-24 mb-4 border-4 border-primary">
-                                        <AvatarImage src={userProfile.avatar} />
+                                        <AvatarImage src={avatarPreview || ''} />
                                         <AvatarFallback>{user.email?.charAt(0).toUpperCase()}</AvatarFallback>
                                     </Avatar>
                                     <h2 className="text-2xl font-bold">{userProfile.name}</h2>
                                     <p className="text-muted-foreground">{user.email}</p>
-                                    <Button variant="outline" className="mt-4">
-                                        <Edit className="w-4 h-4 mr-2" />
-                                        Edit Profile
-                                    </Button>
+                                    
+                                    <Dialog open={isEditing} onOpenChange={setIsEditing}>
+                                        <DialogTrigger asChild>
+                                             <Button variant="outline" className="mt-4">
+                                                <Edit className="w-4 h-4 mr-2" />
+                                                Edit Profile
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent>
+                                            <DialogHeader>
+                                                <DialogTitle>Edit Profile</DialogTitle>
+                                                <DialogDescription>
+                                                    Make changes to your profile here. Click save when you're done.
+                                                </DialogDescription>
+                                            </DialogHeader>
+                                            <div className="space-y-4 py-4">
+                                                <div className="flex flex-col items-center space-y-4">
+                                                    <div className="relative">
+                                                        <Avatar className="w-32 h-32 border-4 border-primary/50">
+                                                            <AvatarImage src={avatarPreview || ''} />
+                                                            <AvatarFallback>{user.email?.charAt(0).toUpperCase()}</AvatarFallback>
+                                                        </Avatar>
+                                                        <Button
+                                                            variant="outline"
+                                                            size="icon"
+                                                            className="absolute bottom-1 right-1 rounded-full"
+                                                            onClick={() => fileInputRef.current?.click()}
+                                                        >
+                                                            <Camera className="w-4 h-4" />
+                                                        </Button>
+                                                        <Input 
+                                                            type="file" 
+                                                            ref={fileInputRef} 
+                                                            className="hidden" 
+                                                            accept="image/*"
+                                                            onChange={handleAvatarChange}
+                                                        />
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <DialogFooter>
+                                                <Button variant="ghost" onClick={() => setIsEditing(false)}>Cancel</Button>
+                                                <Button onClick={handleSaveChanges}>Save Changes</Button>
+                                            </DialogFooter>
+                                        </DialogContent>
+                                    </Dialog>
+
                                 </CardContent>
                             </Card>
                              <Card>
