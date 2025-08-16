@@ -17,8 +17,8 @@ const navLinks = [
 export default function CoursesPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
-        <Link href="/" className="flex items-center justify-center mr-6">
+      <header className="px-4 lg:px-6 h-16 flex items-center justify-between bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
+        <Link href="/" className="flex items-center justify-center">
           <Logo />
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -28,14 +28,14 @@ export default function CoursesPage() {
             </Link>
           ))}
         </nav>
-        <nav className="ml-auto flex items-center gap-4 sm:gap-6">
+        <div className="flex items-center gap-4 sm:gap-6">
           <Button variant="ghost" asChild>
             <Link href="#">Login</Link>
           </Button>
           <Button asChild>
             <Link href="#">Get Started</Link>
           </Button>
-        </nav>
+        </div>
       </header>
       <main className="flex-1 p-4 md:p-8 lg:p-12">
         <div className="container mx-auto">
