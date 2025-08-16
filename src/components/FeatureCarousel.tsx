@@ -42,7 +42,7 @@ const features = [
     description: 'Visualize your learning journey with insightful analytics and stay motivated.',
     cta: 'View Dashboard',
     link: '/signup',
-    image: 'https://placehold.co/600x600.png',
+    image: 'https://i.pinimg.com/736x/9e/f2/5d/9ef25dd79246670040402f14610684d9.jpg',
     dataAiHint: 'charts graphs',
   },
   {
