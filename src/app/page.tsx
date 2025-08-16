@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
-import { BookOpen, Target, TrendingUp, Bot, ArrowRight } from 'lucide-react';
+import { BookOpen, Target, TrendingUp, Bot, ArrowRight, Star } from 'lucide-react';
 import Image from 'next/image';
 import { Logo } from '@/components/Logo';
 
@@ -25,6 +26,33 @@ const features = [
     icon: <Bot className="h-8 w-8 text-primary" />,
     title: 'AI Revision',
     description: 'Get personalized revision prompts to focus on weak areas.',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Sarah L.',
+    role: 'University Student',
+    avatar: 'https://placehold.co/48x48.png',
+    dataAiHint: 'woman portrait',
+    quote:
+      'NoteWise has been a total game-changer for my study routine. The AI revision prompts helped me ace my finals!',
+  },
+  {
+    name: 'Mike P.',
+    role: 'High School Student',
+    avatar: 'https://placehold.co/48x48.png',
+    dataAiHint: 'man portrait',
+    quote:
+      'I love the interactive quizzes. They make learning fun and I\'ve seen a huge improvement in my grades.',
+  },
+  {
+    name: 'Emily R.',
+    role: 'Medical Student',
+    avatar: 'https://placehold.co/48x48.png',
+    dataAiHint: 'woman portrait',
+    quote:
+      'The ability to see my progress visually is incredibly motivating. It keeps me on track and focused on my goals.',
   },
 ];
 
@@ -70,7 +98,7 @@ export default function Home() {
                 src="https://placehold.co/600x400.png"
                 width="600"
                 height="400"
-                alt="Hero"
+                alt="A student studying with a laptop and books"
                 data-ai-hint="student library"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
               />
@@ -98,6 +126,38 @@ export default function Home() {
                   <CardContent className="text-center">
                     <p className="text-muted-foreground">{feature.description}</p>
                   </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm">Success Stories</div>
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Join Thousands of Successful Students</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  See how NoteWise is helping students achieve their academic goals.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3 pt-12">
+              {testimonials.map((testimonial) => (
+                <Card key={testimonial.name} className="flex flex-col">
+                  <CardContent className="pt-6 flex-grow">
+                    <p className="text-muted-foreground">"{testimonial.quote}"</p>
+                  </CardContent>
+                  <CardFooter className="pt-4 flex items-center gap-4">
+                    <Avatar>
+                       <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.dataAiHint} />
+                       <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="font-semibold">{testimonial.name}</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                    </div>
+                  </CardFooter>
                 </Card>
               ))}
             </div>
