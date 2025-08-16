@@ -51,7 +51,7 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Unlock Your Learning Potential with ScholarSage
+                    Unlock Your Learning Potential with NoteWise
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     Our intelligent platform helps you study smarter, not harder. Master subjects with organized notes, interactive quizzes, and AI-powered revision tools.
@@ -84,7 +84,7 @@ export default function Home() {
                 <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm">Key Features</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Everything You Need to Succeed</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  ScholarSage provides a comprehensive suite of tools designed to enhance your study experience and boost your academic performance.
+                  NoteWise provides a comprehensive suite of tools designed to enhance your study experience and boost your academic performance.
                 </p>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function Home() {
         </section>
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-muted-foreground">&copy; 2024 ScholarSage. All rights reserved.</p>
+        <p className="text-xs text-muted-foreground">&copy; 2024 NoteWise. All rights reserved.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
           <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
             Terms of Service

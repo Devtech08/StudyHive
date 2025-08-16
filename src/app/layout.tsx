@@ -4,7 +4,7 @@ import { Providers } from '@/components/Providers';
 import { getSession } from '@/lib/session';
 
 export const metadata: Metadata = {
-  title: 'ScholarSage - Learn Faster',
+  title: 'NoteWise - Learn Faster',
   description: 'An intelligent platform to accelerate your learning and retention.',
 };
 
