@@ -35,7 +35,7 @@ export default function DashboardPage() {
     const firstCourse = subjects.flatMap(s => s.courses).find(c => c.progress > 0);
 
     return (
-        <div className="flex flex-col min-h-screen bg-muted/40">
+        <div className="flex flex-col min-h-screen bg-muted/40 animate-zoom-in">
             <DashboardHeader />
             <main className="flex-1 p-4 md:p-8 lg:p-12">
                 <div className="container mx-auto">

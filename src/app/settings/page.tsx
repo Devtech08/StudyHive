@@ -27,7 +27,7 @@ export default function SettingsPage() {
     const { setTheme, theme } = useTheme();
 
     return (
-        <div className="flex flex-col min-h-screen bg-muted/40">
+        <div className="flex flex-col min-h-screen bg-muted/40 animate-zoom-in">
             <SettingsHeader />
             <main className="flex-1 p-4 md:p-8 lg:p-12">
                 <div className="container mx-auto max-w-4xl">
