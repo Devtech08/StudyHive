@@ -87,26 +87,31 @@ export default function Home() {
         <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 flex items-center justify-center text-white">
           <Image
               src="https://placehold.co/1920x1080.png"
-              alt="Battlefield 6 background"
+              alt="Students studying"
               fill
               className="object-cover -z-10"
-              data-ai-hint="warfare soldiers"
+              data-ai-hint="library students"
           />
           <div className="absolute inset-0 bg-black/60 -z-10" />
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col justify-center space-y-4 max-w-2xl">
+            <div className="flex flex-col justify-center space-y-4 max-w-2xl text-center items-center">
               <div className="space-y-4">
                 <h1 className="text-5xl font-bold font-headline tracking-tighter sm:text-7xl xl:text-8xl/none">
-                  BATTLEFIELD™ 6
+                  Unlock Your Learning Potential
                 </h1>
-                <h2 className="text-3xl font-bold sm:text-4xl">All-out warfare is here</h2>
-                <p className="text-lg text-white/80">
-                  In a battle of tanks, fighter jets and massive combat arsenals - your squad is your deadliest weapon. This is Battlefield™ 6.
+                <p className="text-lg text-white/80 max-w-[700px]">
+                  NoteWise is an intelligent, AI-powered learning platform designed to help you study more effectively, retain information better, and collaborate with a community of learners.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white group">
-                    Pre-order now
+                <Button size="lg" className="group" asChild>
+                    <Link href="/register">
+                      Get Started for Free
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                </Button>
+                 <Button size="lg" variant="secondary">
+                    Learn More
                 </Button>
               </div>
             </div>
