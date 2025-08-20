@@ -21,7 +21,7 @@ const testimonials = [
     avatar: 'https://i.pinimg.com/1200x/94/cb/c2/94cbc278269c859320b22b64ebfe70f8.jpg',
     dataAiHint: 'woman portrait',
     quote:
-      'NoteWise has been a total game-changer for my study routine. The AI revision prompts helped me ace my finals!',
+      'StudyHive has been a total game-changer for my study routine. The AI revision prompts helped me ace my finals!',
   },
   {
     name: 'Mike P.',
@@ -54,6 +54,7 @@ export default function Home() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+
 
   return (
     <div className="flex flex-col min-h-screen animate-zoom-in">
@@ -98,7 +99,7 @@ export default function Home() {
             )
           ))}
         </nav>
-        <div className="flex-1 flex justify-end items-center gap-4 sm:gap-6">
+        <div className="flex justify-end items-center gap-4 sm:gap-6">
           <UserNav />
         </div>
       </header>
@@ -119,7 +120,7 @@ export default function Home() {
                   Unlock Your Learning Potential
                 </h1>
                 <p className="text-lg text-white/80 max-w-[700px]">
-                  NoteWise is an intelligent, AI-powered learning platform designed to help you study more effectively, retain information better, and collaborate with a community of learners.
+                  StudyHive is an intelligent, AI-powered learning platform designed to help you study more effectively, retain information better, and collaborate with a community of learners.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -143,7 +144,7 @@ export default function Home() {
                 <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground">Key Features</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Everything You Need to Succeed</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  NoteWise provides a comprehensive suite of tools designed to enhance your study experience and boost your academic performance.
+                  StudyHive provides a comprehensive suite of tools designed to enhance your study experience and boost your academic performance.
                 </p>
               </div>
             </div>
@@ -159,7 +160,7 @@ export default function Home() {
                 <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground">Success Stories</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Join Thousands of Successful Students</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  See how NoteWise is helping students achieve their academic goals.
+                  See how StudyHive is helping students achieve their academic goals.
                 </p>
               </div>
             </div>

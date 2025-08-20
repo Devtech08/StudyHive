@@ -12,7 +12,7 @@ export function Logo({ className }: { className?: string }) {
      <Link href={href} className={cn("flex items-center gap-2", className)}>
       <GraduationCap className="h-6 w-6 text-primary" />
       <span className="text-xl font-bold font-headline text-primary">
-        NoteWise
+        StudyHive
       </span>
     </Link>
   );

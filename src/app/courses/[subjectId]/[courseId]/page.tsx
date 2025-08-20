@@ -28,7 +28,7 @@ export default function CourseDetailPage({ params }: { params: { subjectId: stri
                 <nav className="flex items-center gap-4 text-sm font-medium">
                     <Link href="/" className="flex items-center gap-2">
                         <Home className="w-4 h-4" />
-                        <span className="font-bold text-primary">NoteWise</span>
+                        <span className="font-bold text-primary">StudyHive</span>
                     </Link>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                     <Link href="/courses" className="text-muted-foreground transition-colors hover:text-foreground">

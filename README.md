@@ -1,10 +1,10 @@
-# NoteWise - Technical Documentation
+# StudyHive - Technical Documentation
 
 ## 1. Introduction
 
 ### Purpose of the Application
 
-NoteWise is an intelligent, AI-powered learning platform designed to help students study more effectively, retain information better, and engage with a community of learners. It addresses common challenges in modern education, such as information overload, lack of motivation, and one-size-fits-all learning models. By combining structured content, personalized AI assistance, and gamified community features, NoteWise provides a comprehensive solution for students to unlock their full academic potential.
+StudyHive is an intelligent, AI-powered learning platform designed to help students study more effectively, retain information better, and engage with a community of learners. It addresses common challenges in modern education, such as information overload, lack of motivation, and one-size-fits-all learning models. By combining structured content, personalized AI assistance, and gamified community features, StudyHive provides a comprehensive solution for students to unlock their full academic potential.
 
 ### How It Helps Students
 
@@ -18,7 +18,7 @@ NoteWise is an intelligent, AI-powered learning platform designed to help studen
 
 ## 2. Technical Architecture
 
-NoteWise is built on a modern, robust, and scalable tech stack, prioritizing developer experience, performance, and type safety.
+StudyHive is built on a modern, robust, and scalable tech stack, prioritizing developer experience, performance, and type safety.
 
 - **Framework:** [Next.js](https://nextjs.org/) (with App Router)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)

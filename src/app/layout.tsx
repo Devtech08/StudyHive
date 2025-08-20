@@ -5,7 +5,7 @@ import { AuthProvider } from '@/components/AuthProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
-  title: 'NoteWise - Learn Faster',
+  title: 'StudyHive - Learn Faster',
   description: 'An intelligent platform to accelerate your learning and retention.',
 };
 
@@ -30,7 +30,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
           <AuthProvider>
-            {children}
+            <div className="animate-zoom-in">{children}</div>
           </AuthProvider>
         </ThemeProvider>
       </body>
