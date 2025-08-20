@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "./ui
 import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -19,6 +20,7 @@ const navLinks = [
 
 export default function DashboardHeader() {
     const [open, setOpen] = useState(false);
+    const pathname = usePathname();
 
     return (
         <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
@@ -32,19 +34,21 @@ export default function DashboardHeader() {
                 </SheetTrigger>
                 <SheetContent side="left">
                   <SheetHeader>
-                    <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                    <SheetTitle>Navigation Menu</SheetTitle>
                   </SheetHeader>
                   <nav className="grid gap-6 text-lg font-medium mt-6">
                     <Logo />
                     {navLinks.map((link) => (
-                      <Link
-                        key={link.label}
-                        href={link.href}
-                        onClick={() => setOpen(false)}
-                        className="text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {link.label}
-                      </Link>
+                      pathname !== link.href && (
+                        <Link
+                          key={link.label}
+                          href={link.href}
+                          onClick={() => setOpen(false)}
+                          className="text-muted-foreground transition-colors hover:text-foreground"
+                        >
+                          {link.label}
+                        </Link>
+                      )
                     ))}
                   </nav>
                 </SheetContent>
@@ -60,9 +64,11 @@ export default function DashboardHeader() {
             
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium justify-center flex-1">
             {navLinks.map((link) => (
-                <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
-                {link.label}
-                </Link>
+                pathname !== link.href && (
+                  <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
+                    {link.label}
+                  </Link>
+                )
             ))}
             </nav>
             <div className="flex-1 flex justify-end items-center gap-4 sm:gap-6">

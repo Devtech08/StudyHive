@@ -10,7 +10,7 @@ import { Logo } from '@/components/Logo';
 import FeatureCarousel from '@/components/FeatureCarousel';
 import { UserNav } from '@/components/UserNav';
 import { useAuth } from '@/hooks/use-auth';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
@@ -53,6 +53,7 @@ export default function Home() {
   const { user, loading } = useAuth();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div className="flex flex-col min-h-screen animate-zoom-in">
@@ -67,19 +68,21 @@ export default function Home() {
             </SheetTrigger>
             <SheetContent side="left">
                 <SheetHeader>
-                    <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                    <SheetTitle>Navigation Menu</SheetTitle>
                 </SheetHeader>
               <nav className="grid gap-6 text-lg font-medium mt-6">
                 <Logo />
                 {navLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
+                  pathname !== link.href && (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {link.label}
+                    </Link>
+                  )
                 ))}
               </nav>
             </SheetContent>
@@ -88,9 +91,11 @@ export default function Home() {
         </div>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium justify-center flex-1">
           {navLinks.map((link) => (
-            <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
-              {link.label}
-            </Link>
+             pathname !== link.href && (
+              <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
+                {link.label}
+              </Link>
+            )
           ))}
         </nav>
         <div className="flex-1 flex justify-end items-center gap-4 sm:gap-6">
