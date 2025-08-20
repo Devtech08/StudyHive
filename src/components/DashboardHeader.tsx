@@ -11,7 +11,6 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 const baseNavLinks = [
-  { href: '/dashboard', label: 'Dashboard' },
   { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
   { href: '/community', label: 'Community' },
@@ -24,12 +23,9 @@ export default function DashboardHeader() {
 
     const isProfileOrSettings = pathname === '/profile' || pathname === '/settings';
 
-    const navLinks = baseNavLinks.map(link => {
-        if (isProfileOrSettings && link.href === '/dashboard') {
-            return { href: '/', label: 'Home' };
-        }
-        return link;
-    });
+    const navLinks = isProfileOrSettings 
+        ? [{ href: '/', label: 'Home' }, ...baseNavLinks]
+        : [{ href: '/dashboard', label: 'Dashboard' }, ...baseNavLinks];
 
 
     return (
