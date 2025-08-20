@@ -34,7 +34,7 @@ export default function CoursesPage() {
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {subject.courses.map((course) => (
-                  <Card key={course.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full max-w-md">
+                  <Card key={course.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
                     <CardHeader className="p-0">
                       <div className="relative h-56 w-full">
                         <Image
