@@ -10,7 +10,7 @@ import { Menu } from "lucide-react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
-let navLinks = [
+const baseNavLinks = [
   { href: '/dashboard', label: 'Dashboard' },
   { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
@@ -22,7 +22,7 @@ export default function DashboardHeader() {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
 
-    const currentNavLinks = navLinks.map(link => {
+    const currentNavLinks = baseNavLinks.map(link => {
         if ((pathname === '/profile' || pathname === '/settings') && link.href === '/dashboard') {
             return { href: '/', label: 'Home' };
         }

@@ -10,7 +10,7 @@ import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-const navLinks = [
+const baseNavLinks = [
   { href: '/dashboard', label: 'Dashboard' },
   { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
@@ -22,7 +22,7 @@ export default function SettingsHeader() {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
 
-    const currentNavLinks = navLinks.map(link => {
+    const currentNavLinks = baseNavLinks.map(link => {
         if ((pathname === '/profile' || pathname === '/settings') && link.href === '/dashboard') {
             return { href: '/', label: 'Home' };
         }
