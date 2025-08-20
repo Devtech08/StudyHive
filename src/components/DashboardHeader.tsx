@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { UserNav } from "@/components/UserNav";
 import { Logo } from "@/components/Logo";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
@@ -30,6 +30,9 @@ export default function DashboardHeader() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="left">
+                  <SheetHeader>
+                    <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                  </SheetHeader>
                   <nav className="grid gap-6 text-lg font-medium mt-6">
                     <Logo />
                     {navLinks.map((link) => (

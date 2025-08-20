@@ -12,7 +12,7 @@ import { UserNav } from '@/components/UserNav';
 import { useAuth } from '@/hooks/use-auth';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 const testimonials = [
   {
@@ -80,6 +80,9 @@ export default function Home() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
+                <SheetHeader>
+                    <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                </SheetHeader>
               <nav className="grid gap-6 text-lg font-medium mt-6">
                 <Logo />
                 {navLinks.map((link) => (

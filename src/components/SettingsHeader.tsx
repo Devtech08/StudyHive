@@ -5,7 +5,7 @@ import Link from "next/link";
 import { UserNav } from "@/components/UserNav";
 import { Logo } from "@/components/Logo";
 import { useState } from "react";
-import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 
@@ -30,6 +30,9 @@ export default function SettingsHeader() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="left">
+                   <SheetHeader>
+                        <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                    </SheetHeader>
                   <nav className="grid gap-6 text-lg font-medium mt-6">
                     <Logo />
                     {navLinks.map((link) => (
