@@ -70,7 +70,7 @@ export default function DashboardHeader() {
                 <Logo />
             </div>
             
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium justify-center flex-1">
+            <nav className="hidden md:flex items-center gap-8 text-sm font-medium justify-center flex-1">
             {navLinks.map((link) => (
                 pathname !== link.href && (
                   <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
