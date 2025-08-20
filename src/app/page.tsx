@@ -165,6 +165,13 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <footer className="w-full py-6 border-t bg-muted/40">
+        <div className="container px-4 md:px-6 flex items-center justify-center">
+          <p className="text-sm text-muted-foreground">
+            &copy; 2025 StudyHive. All rights reserved. Created by Dravok.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
