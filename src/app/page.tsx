@@ -25,7 +25,7 @@ const testimonials = [
   {
     name: 'Mike P.',
     role: 'High School Student',
-    avatar: 'https://i.pinimg.com/736x/e5/45/ca/e545ca570256c9b8969b8fedb4c43b13.jpg',
+    avatar: 'https://i.pinimg.com/736x/e5/45/ca/e545ca570256c9b88969b8fedb4c43b13.jpg',
     dataAiHint: 'man portrait',
     quote:
       'I love the interactive quizzes. They make learning fun and I\'ve seen a huge improvement in my grades.',
@@ -84,35 +84,31 @@ export default function Home() {
         </div>
       </header>
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+        <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 flex items-center justify-center text-white">
+          <Image
+              src="https://placehold.co/1920x1080.png"
+              alt="Battlefield 6 background"
+              fill
+              className="object-cover -z-10"
+              data-ai-hint="warfare soldiers"
+          />
+          <div className="absolute inset-0 bg-black/60 -z-10" />
           <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h1 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Unlock Your Learning Potential with NoteWise
-                  </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Our intelligent platform helps you study smarter, not harder. Master subjects with organized notes, interactive quizzes, and AI-powered revision tools.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button asChild size="lg" className="group">
-                    <Link href="/courses">
-                      Start Learning Now
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                </div>
+            <div className="flex flex-col justify-center space-y-4 max-w-2xl">
+              <div className="space-y-4">
+                <h1 className="text-5xl font-bold font-headline tracking-tighter sm:text-7xl xl:text-8xl/none">
+                  BATTLEFIELD™ 6
+                </h1>
+                <h2 className="text-3xl font-bold sm:text-4xl">All-out warfare is here</h2>
+                <p className="text-lg text-white/80">
+                  In a battle of tanks, fighter jets and massive combat arsenals - your squad is your deadliest weapon. This is Battlefield™ 6.
+                </p>
               </div>
-              <Image
-                src="https://i.pinimg.com/736x/38/8c/48/388c48ca385328688540d0c42cf51abf.jpg"
-                width="600"
-                height="400"
-                alt="A student studying with a laptop and books in a modern environment"
-                data-ai-hint="modern learning"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
-              />
+              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white group">
+                    Pre-order now
+                </Button>
+              </div>
             </div>
           </div>
         </section>
