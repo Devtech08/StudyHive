@@ -68,7 +68,7 @@ export function UserNav() {
           <DropdownMenuLabel className="font-normal">
             <div className="flex flex-col space-y-1">
               <p className="text-sm font-medium leading-none">
-                {user.displayName || user.email}
+                {user.displayName || user.email?.split('@')[0]}
               </p>
               <p className="text-xs leading-none text-muted-foreground">
                 {user.email}
@@ -78,9 +78,9 @@ export function UserNav() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
              {isProfileOrSettings ? (
-                <Link href="/"><DropdownMenuItem>Home</DropdownMenuItem></Link>
-             ) : (
                 <Link href="/dashboard"><DropdownMenuItem>Dashboard</DropdownMenuItem></Link>
+             ) : (
+                <Link href="/"><DropdownMenuItem>Home</DropdownMenuItem></Link>
              )}
             <Link href="/profile"><DropdownMenuItem>Profile</DropdownMenuItem></Link>
             <Link href="/settings"><DropdownMenuItem>Settings</DropdownMenuItem></Link>
