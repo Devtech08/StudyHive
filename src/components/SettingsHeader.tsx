@@ -22,8 +22,10 @@ export default function SettingsHeader() {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
 
-    const currentNavLinks = baseNavLinks.map(link => {
-        if ((pathname === '/profile' || pathname === '/settings') && link.href === '/dashboard') {
+    const isProfileOrSettings = pathname === '/profile' || pathname === '/settings';
+
+    const navLinks = baseNavLinks.map(link => {
+        if (isProfileOrSettings && link.href === '/dashboard') {
             return { href: '/', label: 'Home' };
         }
         return link;
@@ -45,7 +47,7 @@ export default function SettingsHeader() {
                     </SheetHeader>
                   <nav className="grid gap-6 text-lg font-medium mt-6">
                     <Logo />
-                    {currentNavLinks.map((link) => (
+                    {navLinks.map((link) => (
                       pathname !== link.href && (
                         <Link
                           key={link.label}
@@ -70,7 +72,7 @@ export default function SettingsHeader() {
             </div>
 
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium justify-center flex-1">
-            {currentNavLinks.map((link) => (
+            {navLinks.map((link) => (
                 pathname !== link.href && (
                   <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
                     {link.label}
