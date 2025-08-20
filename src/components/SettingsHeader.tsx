@@ -10,6 +10,7 @@ import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 
 const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
   { href: '/community', label: 'Community' },
