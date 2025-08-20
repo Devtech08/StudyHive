@@ -30,9 +30,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
           <AuthProvider>
-            <div className="animate-zoom-in">
-              {children}
-            </div>
+            {children}
           </AuthProvider>
         </ThemeProvider>
       </body>

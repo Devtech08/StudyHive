@@ -55,7 +55,7 @@ export default function CommunityPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen animate-zoom-in">
       <DashboardHeader />
 
       <main className="flex-1 p-4 md:p-8 lg:p-12 bg-muted/20">
