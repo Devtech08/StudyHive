@@ -11,7 +11,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: '/', label: 'Home' },
+  { href: '/dashboard', label: 'Dashboard' },
   { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
   { href: '/community', label: 'Community' },
