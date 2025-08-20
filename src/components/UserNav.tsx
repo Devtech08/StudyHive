@@ -22,12 +22,13 @@ import { auth } from "@/lib/firebase";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export function UserNav() {
   const { user, loading } = useAuth();
   const { toast } = useToast();
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleSignOut = async () => {
     try {
@@ -49,6 +50,8 @@ export function UserNav() {
   if (loading) {
     return <Loader2 className="w-6 h-6 animate-spin" />;
   }
+
+  const isProfileOrSettings = pathname === '/profile' || pathname === '/settings';
 
   if (user) {
     return (
@@ -74,7 +77,11 @@ export function UserNav() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-             <Link href="/dashboard"><DropdownMenuItem>Dashboard</DropdownMenuItem></Link>
+             {isProfileOrSettings ? (
+                <Link href="/"><DropdownMenuItem>Home</DropdownMenuItem></Link>
+             ) : (
+                <Link href="/dashboard"><DropdownMenuItem>Dashboard</DropdownMenuItem></Link>
+             )}
             <Link href="/profile"><DropdownMenuItem>Profile</DropdownMenuItem></Link>
             <Link href="/settings"><DropdownMenuItem>Settings</DropdownMenuItem></Link>
           </DropdownMenuGroup>
