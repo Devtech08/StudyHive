@@ -67,7 +67,7 @@ export default function Home() {
             </SheetTrigger>
             <SheetContent side="left">
                 <SheetHeader>
-                    <SheetTitle>Navigation Menu</SheetTitle>
+                    <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 </SheetHeader>
               <nav className="grid gap-6 text-lg font-medium mt-6">
                 <Logo />
