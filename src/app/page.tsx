@@ -4,14 +4,15 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
-import { BookOpen, Target, TrendingUp, Bot, ArrowRight, Star } from 'lucide-react';
+import { BookOpen, Target, TrendingUp, Bot, ArrowRight, Star, Menu } from 'lucide-react';
 import Image from 'next/image';
 import { Logo } from '@/components/Logo';
 import FeatureCarousel from '@/components/FeatureCarousel';
 import { UserNav } from '@/components/UserNav';
 import { useAuth } from '@/hooks/use-auth';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const testimonials = [
   {
@@ -51,6 +52,7 @@ const navLinks = [
 export default function Home() {
   const { user, loading } = useAuth();
   const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (!loading && user) {
@@ -69,8 +71,31 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
-        <div className="flex-1 flex justify-start">
-            <Logo />
+        <div className="flex items-center gap-4">
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="md:hidden">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Open navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left">
+              <nav className="grid gap-6 text-lg font-medium mt-6">
+                <Logo />
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
+          <Logo />
         </div>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium justify-center flex-1">
           {navLinks.map((link) => (

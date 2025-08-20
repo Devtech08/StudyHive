@@ -4,6 +4,10 @@
 import Link from "next/link";
 import { UserNav } from "@/components/UserNav";
 import { Logo } from "@/components/Logo";
+import { useState } from "react";
+import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
+import { Button } from "./ui/button";
+import { Menu } from "lucide-react";
 
 const navLinks = [
   { href: '/courses', label: 'Courses' },
@@ -13,11 +17,43 @@ const navLinks = [
 ];
 
 export default function SettingsHeader() {
+    const [open, setOpen] = useState(false);
+
     return (
         <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
-            <div className="flex-1 flex justify-start">
+            <div className="flex items-center gap-4 md:flex-1 md:justify-start">
+              <Sheet open={open} onOpenChange={setOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="outline" size="icon" className="md:hidden">
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Open navigation menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="left">
+                  <nav className="grid gap-6 text-lg font-medium mt-6">
+                    <Logo />
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.label}
+                        href={link.href}
+                        onClick={() => setOpen(false)}
+                        className="text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </nav>
+                </SheetContent>
+              </Sheet>
+              <div className="hidden md:block">
+                <Logo />
+              </div>
+            </div>
+
+            <div className="md:hidden">
                 <Logo />
             </div>
+
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium justify-center flex-1">
             {navLinks.map((link) => (
                 <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
