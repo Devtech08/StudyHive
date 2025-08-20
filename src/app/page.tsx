@@ -54,20 +54,6 @@ export default function Home() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    if (!loading && user) {
-      router.replace('/dashboard');
-    }
-  }, [user, loading, router]);
-  
-  if (loading || user) {
-    return (
-        <div className="flex items-center justify-center min-h-screen">
-            <p>Loading...</p>
-        </div>
-    );
-  }
-
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
@@ -81,7 +67,7 @@ export default function Home() {
             </SheetTrigger>
             <SheetContent side="left">
                 <SheetHeader>
-                    <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                    <SheetTitle>Navigation Menu</SheetTitle>
                 </SheetHeader>
               <nav className="grid gap-6 text-lg font-medium mt-6">
                 <Logo />
