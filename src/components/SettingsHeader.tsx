@@ -23,8 +23,10 @@ export default function SettingsHeader() {
 
     const isProfileOrSettings = pathname === '/profile' || pathname === '/settings';
 
+    // When on Profile/Settings, show "Dashboard" in the main nav.
+    // Otherwise (which shouldn't happen with this header), show "Dashboard".
     const navLinks = isProfileOrSettings 
-        ? [{ href: '/', label: 'Home' }, ...baseNavLinks]
+        ? [{ href: '/dashboard', label: 'Dashboard' }, ...baseNavLinks]
         : [{ href: '/dashboard', label: 'Dashboard' }, ...baseNavLinks];
 
     return (
