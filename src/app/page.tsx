@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { BookOpen, Target, TrendingUp, Bot, ArrowRight, Star, Menu } from 'lucide-react';
 import Image from 'next/image';
 import { Logo } from '@/components/Logo';
-import FeatureCarousel from '@/components/FeatureCarousel';
 import { UserNav } from '@/components/UserNav';
 import { useAuth } from '@/hooks/use-auth';
 import { usePathname, useRouter } from 'next/navigation';
@@ -46,6 +45,29 @@ const navLinks = [
   { href: '/ai-revision', label: 'AI Revision' },
   { href: '/community', label: 'Community' },
   { href: '/leaderboard', label: 'Leaderboard' },
+];
+
+const features = [
+  {
+    Icon: BookOpen,
+    title: 'Structured Notes',
+    description: 'Access well-organized course notes by subject and topic, tailored for effective learning.',
+  },
+  {
+    Icon: Target,
+    title: 'Interactive Quizzes',
+    description: 'Test your knowledge with engaging, timer-based assessments and solidify your understanding.',
+  },
+  {
+    Icon: TrendingUp,
+    title: 'Progress Tracking',
+    description: 'Visualize your learning journey with insightful analytics and stay motivated.',
+  },
+  {
+    Icon: Bot,
+    title: 'AI Revision',
+    description: 'Get personalized revision prompts from our AI to focus on your specific weak areas.',
+  },
 ];
 
 
@@ -148,8 +170,17 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto max-w-7xl pt-12">
-              <FeatureCarousel />
+            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:grid-cols-4 pt-12">
+               {features.map((feature) => {
+                const Icon = feature.Icon;
+                return (
+                  <div key={feature.title} className="flex flex-col items-center text-center gap-2">
+                    <Icon className="h-10 w-10 text-primary mb-2" />
+                    <h3 className="text-lg font-bold">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>
