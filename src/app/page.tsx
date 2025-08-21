@@ -57,8 +57,8 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col min-h-screen animate-zoom-in">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
+    <div className="flex flex-col min-h-screen">
+      <header className="px-4 lg:px-6 h-16 flex items-center justify-between bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
         <div className="flex items-center gap-4">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -90,7 +90,7 @@ export default function Home() {
           </Sheet>
           <Logo />
         </div>
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium justify-center flex-1">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
              pathname !== link.href && (
               <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
