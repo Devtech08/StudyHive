@@ -51,7 +51,7 @@ export function UserNav() {
     return <Loader2 className="w-6 h-6 animate-spin" />;
   }
 
-  const isProfileOrSettings = pathname === '/profile' || pathname === '/settings';
+  const isHomepage = pathname === '/';
 
   if (user) {
     return (
@@ -77,8 +77,8 @@ export function UserNav() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-             {isProfileOrSettings ? (
-                <Link href="/"><DropdownMenuItem>Home</DropdownMenuItem></Link>
+             {isHomepage ? (
+                <Link href="/dashboard"><DropdownMenuItem>Dashboard</DropdownMenuItem></Link>
              ) : (
                 <Link href="/"><DropdownMenuItem>Home</DropdownMenuItem></Link>
              )}
