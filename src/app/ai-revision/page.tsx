@@ -162,7 +162,7 @@ export default function AiRevisionPage() {
     };
 
     return (
-        <div className="flex flex-col min-h-screen animate-zoom-in">
+        <div className="flex flex-col min-h-screen">
              <DashboardHeader />
             <main className="flex-1 p-4 md:p-8 lg:p-12 bg-muted/20">
                 <div className="container mx-auto">
@@ -181,7 +181,7 @@ export default function AiRevisionPage() {
                             <TabsTrigger value="gamify"><Award className="w-4 h-4 mr-2"/>Challenges</TabsTrigger>
                         </TabsList>
                         <TabsContent value="generate">
-                             <div className="grid lg:grid-cols-2 gap-8">
+                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <Card>
                                     <CardHeader>
                                         <CardTitle className="flex items-center"><BookCopy className="w-6 h-6 mr-3 text-primary" />Smart Question Generation</CardTitle>
