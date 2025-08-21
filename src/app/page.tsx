@@ -99,14 +99,14 @@ export default function Home() {
             )
           ))}
         </nav>
-        <div className="flex justify-end items-center gap-4 sm:gap-6">
+        <div className="flex justify-end items-center gap-4 sm:gap-6 flex-1">
           <UserNav />
         </div>
       </header>
       <main className="flex-1">
         <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 flex items-center justify-center text-white">
           <Image
-              src="https://i.pinimg.com/originals/e7/71/5e/e7715e2195f1e14f17a809981881079d.jpg"
+              src="https://i.pinimg.com/736x/8c/b8/ad/8cb8adb88f27a09eedffff048db943ed.jpg"
               alt="Students studying"
               fill
               className="object-cover -z-10"
