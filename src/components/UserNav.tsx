@@ -78,7 +78,7 @@ export function UserNav() {
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
              {isProfileOrSettings ? (
-                <Link href="/dashboard"><DropdownMenuItem>Dashboard</DropdownMenuItem></Link>
+                <Link href="/"><DropdownMenuItem>Home</DropdownMenuItem></Link>
              ) : (
                 <Link href="/"><DropdownMenuItem>Home</DropdownMenuItem></Link>
              )}
