@@ -106,7 +106,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 flex items-center justify-center text-white">
           <Image
-              src="https://i.pinimg.com/564x/a0/0b/40/a00b4074b0f2a7493b70a78241b14a84.jpg"
+              src="https://i.pinimg.com/originals/e7/71/5e/e7715e2195f1e14f17a809981881079d.jpg"
               alt="Students studying"
               fill
               className="object-cover -z-10"
