@@ -10,7 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2 } from 'lucide-react';
+import { Loader2, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
 
@@ -42,7 +42,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-muted/20">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-muted/20">
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
           <Logo className="mb-4 justify-center" />
@@ -84,6 +84,12 @@ export default function LoginPage() {
           </div>
         </CardContent>
       </Card>
+      <Button variant="link" asChild className="mt-4 text-muted-foreground">
+        <Link href="/">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Home
+        </Link>
+      </Button>
     </div>
   );
 }
