@@ -222,11 +222,11 @@ export default function Home() {
             </div>
             <div className="mx-auto grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3 pt-12">
               {testimonials.map((testimonial) => (
-                <Card key={testimonial.name} className="flex flex-col">
+                <Card key={testimonial.name} className="flex flex-col text-center">
                   <CardContent className="pt-6 flex-grow">
                     <p className="text-muted-foreground">"{testimonial.quote}"</p>
                   </CardContent>
-                  <CardFooter className="pt-4 flex items-center gap-4">
+                  <CardFooter className="pt-4 flex flex-col items-center gap-4">
                     <Avatar>
                        <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.dataAiHint} />
                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
