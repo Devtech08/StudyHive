@@ -64,7 +64,7 @@ const features = [
     Icon: TrendingUp,
     title: 'Progress Tracking',
     description: 'Visualize your learning journey with insightful analytics and stay motivated.',
-    href: '#',
+    href: '/features/progress-tracking',
   },
   {
     Icon: Bot,
