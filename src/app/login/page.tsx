@@ -84,12 +84,6 @@ export default function LoginPage() {
           </div>
         </CardContent>
       </Card>
-      <Button variant="link" asChild className="mt-4 text-muted-foreground">
-        <Link href="/">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
-        </Link>
-      </Button>
     </div>
   );
 }
