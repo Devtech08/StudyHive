@@ -81,6 +81,7 @@ export default function Home() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  const isHomepage = pathname === '/';
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -99,6 +100,15 @@ export default function Home() {
                 </SheetHeader>
               <nav className="grid gap-6 text-lg font-medium mt-6">
                 <Logo />
+                {!isHomepage && (
+                    <Link
+                      href="/"
+                      onClick={() => setOpen(false)}
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      Home
+                    </Link>
+                )}
                 {navLinks.map((link) => (
                   pathname !== link.href && (
                     <Link
@@ -117,7 +127,12 @@ export default function Home() {
           <Logo />
         </div>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
-          {navLinks.map((link) => (
+            {!isHomepage && (
+                <Link href="/" className="text-muted-foreground transition-colors hover:text-foreground">
+                    Home
+                </Link>
+            )}
+            {navLinks.map((link) => (
              pathname !== link.href && (
               <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
                 {link.label}
