@@ -160,7 +160,7 @@ export default function DashboardPage() {
                             </Card>
                             {/* Leaderboard */}
                             <Card>
-                                <CardHeader>
+                                <CardHeader className="text-center md:text-left">
                                     <CardTitle>Leaderboard Snapshot</CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
