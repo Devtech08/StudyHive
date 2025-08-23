@@ -13,6 +13,21 @@ import { UserNav } from "@/components/UserNav";
 import DashboardHeader from "@/components/DashboardHeader";
 
 export default function CoursesPage() {
+
+  const calculateProgress = (course: (typeof subjects)[0]['courses'][0]) => {
+    if (!course.modules || course.modules.length === 0) {
+        return 0;
+    }
+    const totalTopics = course.modules.reduce((acc, module) => acc + (module.topics?.length || 0), 0);
+    if (totalTopics === 0) {
+        return 0;
+    }
+    const completedTopics = course.modules.reduce((acc, module) => {
+        return acc + (module.topics?.filter(t => t.completed).length || 0);
+    }, 0);
+    return Math.round((completedTopics / totalTopics) * 100);
+  };
+
   return (
     <div className="flex flex-col min-h-screen animate-zoom-in">
       <DashboardHeader />
@@ -32,43 +47,46 @@ export default function CoursesPage() {
                  <h2 className="text-3xl font-bold font-headline">{subject.name}</h2>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {subject.courses.map((course) => (
-                  <Card key={course.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                    <CardHeader className="p-0">
-                      <div className="relative h-56 w-full">
-                        <Image
-                          src={course.thumbnail}
-                          alt={course.title}
-                          fill
-                          className="object-cover"
-                          data-ai-hint={course.dataAiHint}
-                        />
-                      </div>
-                    </CardHeader>
-                    <CardContent className="p-4 flex-grow flex flex-col">
-                      <h3 className="text-lg font-bold mb-2">{course.title}</h3>
-                      <div className="flex items-center text-sm text-muted-foreground mb-4">
-                        <User className="w-4 h-4 mr-2" />
-                        <span>{course.instructor}</span>
-                      </div>
-                      <div className="w-full mt-auto">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm text-muted-foreground">Progress</span>
-                          <span className="text-sm font-semibold">{course.progress}%</span>
+                {subject.courses.map((course) => {
+                  const progress = calculateProgress(course);
+                  return (
+                    <Card key={course.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                      <CardHeader className="p-0">
+                        <div className="relative h-56 w-full">
+                          <Image
+                            src={course.thumbnail}
+                            alt={course.title}
+                            fill
+                            className="object-cover"
+                            data-ai-hint={course.dataAiHint}
+                          />
                         </div>
-                        <Progress value={course.progress} className="h-2" />
-                      </div>
-                    </CardContent>
-                    <CardFooter className="p-4 bg-muted/50">
-                      <Button asChild className="w-full group">
-                          <Link href={`/courses/${subject.id}/${course.id}`}>
-                              {course.progress > 0 ? 'Continue Learning' : 'Start Course'}
-                              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                          </Link>
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                ))}
+                      </CardHeader>
+                      <CardContent className="p-4 flex-grow flex flex-col">
+                        <h3 className="text-lg font-bold mb-2">{course.title}</h3>
+                        <div className="flex items-center text-sm text-muted-foreground mb-4">
+                          <User className="w-4 h-4 mr-2" />
+                          <span>{course.instructor}</span>
+                        </div>
+                        <div className="w-full mt-auto">
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-sm text-muted-foreground">Progress</span>
+                            <span className="text-sm font-semibold">{progress}%</span>
+                          </div>
+                          <Progress value={progress} className="h-2" />
+                        </div>
+                      </CardContent>
+                      <CardFooter className="p-4 bg-muted/50">
+                        <Button asChild className="w-full group">
+                            <Link href={`/courses/${subject.id}/${course.id}`}>
+                                {progress > 0 ? 'Continue Learning' : 'Start Course'}
+                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  )
+                })}
               </div>
             </section>
           ))}
