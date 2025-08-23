@@ -112,16 +112,6 @@ export default function StructuredNotesPage() {
                         </div>
                     </div>
                 </section>
-                <section className="w-full py-12 md:py-24 text-center">
-                    <div className="container">
-                        <Button variant="outline" asChild size="lg">
-                            <Link href="/">
-                                <ArrowLeft className="w-4 h-4 mr-2" />
-                                Back to Home
-                            </Link>
-                        </Button>
-                    </div>
-                </section>
             </main>
         </div>
     );
