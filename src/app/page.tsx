@@ -23,7 +23,7 @@ const testimonials = [
       'StudyHive has been a total game-changer for my study routine. The AI revision prompts helped me ace my finals!',
   },
   {
-    name: 'Sybil AZRAEL',
+    name: 'Sybil Azrael',
     role: 'High School Student',
     avatar: 'https://i.pinimg.com/736x/e5/45/ca/e545ca570256c9b88969b8fedb4c43b13.jpg',
     dataAiHint: 'man portrait',
