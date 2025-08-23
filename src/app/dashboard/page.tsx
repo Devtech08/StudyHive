@@ -44,7 +44,7 @@ export default function DashboardPage() {
             <DashboardHeader />
             <main className="flex-1 p-4 md:p-8 lg:p-12">
                 <div className="container mx-auto">
-                    <header className="mb-12">
+                    <header className="mb-12 text-center">
                         <h1 className="text-4xl font-bold font-headline">
                             Welcome back, {user?.displayName || user?.email?.split('@')[0] || 'scholar'}!
                         </h1>
