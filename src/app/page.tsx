@@ -52,21 +52,25 @@ const features = [
     Icon: BookOpen,
     title: 'Structured Notes',
     description: 'Access well-organized course notes by subject and topic, tailored for effective learning.',
+    href: '/features/structured-notes',
   },
   {
     Icon: Target,
     title: 'Interactive Quizzes',
     description: 'Test your knowledge with engaging, timer-based assessments and solidify your understanding.',
+    href: '#',
   },
   {
     Icon: TrendingUp,
     title: 'Progress Tracking',
     description: 'Visualize your learning journey with insightful analytics and stay motivated.',
+    href: '#',
   },
   {
     Icon: Bot,
     title: 'AI Revision',
     description: 'Get personalized revision prompts from our AI to focus on your specific weak areas.',
+    href: '/ai-revision',
   },
 ];
 
@@ -178,7 +182,9 @@ export default function Home() {
                     <Icon className="h-10 w-10 text-primary mb-2" />
                     <h3 className="text-lg font-bold">{feature.title}</h3>
                     <p className="text-sm text-muted-foreground flex-grow">{feature.description}</p>
-                    <Button variant="ghost" className="mt-2">Learn More</Button>
+                    <Button variant="ghost" className="mt-2" asChild>
+                      <Link href={feature.href}>Learn More</Link>
+                    </Button>
                   </div>
                 )
               })}
