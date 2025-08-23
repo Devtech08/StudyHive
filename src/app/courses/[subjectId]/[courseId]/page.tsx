@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle, Circle, Home, ChevronLeft, ChevronRight, FileText, MessageSquare } from "lucide-react";
+import { CheckCircle, Circle, Home, ChevronRight, MessageSquare } from "lucide-react";
 import Image from "next/image";
 
 export default function CourseDetailPage({ params }: { params: { subjectId: string, courseId: string } }) {
