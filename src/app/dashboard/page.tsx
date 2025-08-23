@@ -140,7 +140,7 @@ export default function DashboardPage() {
                         <aside className="space-y-8">
                              {/* My Courses */}
                             <Card>
-                                <CardHeader>
+                                <CardHeader className="text-center md:text-left">
                                     <CardTitle>My Courses</CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-3">
