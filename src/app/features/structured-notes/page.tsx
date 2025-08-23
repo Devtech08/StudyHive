@@ -83,7 +83,7 @@ export default function StructuredNotesPage() {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="p-4">
+                             <div className="p-4">
                                 <Card className="shadow-2xl">
                                     <CardHeader>
                                         <CardTitle>Example: Biology 101</CardTitle>
@@ -92,15 +92,15 @@ export default function StructuredNotesPage() {
                                         <div className="flex items-center gap-2 p-2 rounded-md bg-muted/50">
                                             <Layers className="w-4 h-4 text-muted-foreground" /> Science
                                         </div>
-                                        <div className="ml-4 space-y-2">
-                                            <div className="flex items-center gap-2 p-2 rounded-md bg-muted/50">
+                                        <div className="space-y-2">
+                                            <div className="flex items-center gap-2 p-2 rounded-md bg-muted/50 ml-4">
                                                 <Folder className="w-4 h-4 text-muted-foreground" /> Biology 101
                                             </div>
-                                            <div className="ml-4 space-y-2">
-                                                <div className="flex items-center gap-2 p-2 rounded-md bg-muted/50">
+                                            <div className="space-y-2">
+                                                <div className="flex items-center gap-2 p-2 rounded-md bg-muted/50 ml-8">
                                                     <BookOpen className="w-4 h-4 text-muted-foreground" /> Module 2: Genetics
                                                 </div>
-                                                <div className="ml-4 space-y-2">
+                                                <div className="space-y-2 ml-12">
                                                     <div className="flex items-center justify-between p-3 rounded-lg bg-background border hover:bg-primary/5 cursor-pointer">
                                                         <span className="font-medium">DNA and RNA</span>
                                                         <ChevronRight className="w-5 h-5" />
