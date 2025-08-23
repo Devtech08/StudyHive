@@ -23,12 +23,20 @@ import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function UserNav() {
   const { user, loading } = useAuth();
   const { toast } = useToast();
   const router = useRouter();
   const pathname = usePathname();
+  
+  // Local state to force re-render when displayName changes
+  const [displayName, setDisplayName] = useState(user?.displayName);
+  useEffect(() => {
+    setDisplayName(user?.displayName);
+  }, [user?.displayName]);
+
 
   const handleSignOut = async () => {
     try {
@@ -59,7 +67,7 @@ export function UserNav() {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">
             <Avatar className="h-8 w-8">
-              <AvatarImage src={user.photoURL ?? ''} alt={user.displayName ?? ''} />
+              <AvatarImage src={user.photoURL ?? ''} alt={displayName ?? ''} />
               <AvatarFallback>{user.email?.charAt(0).toUpperCase()}</AvatarFallback>
             </Avatar>
           </Button>
@@ -68,7 +76,7 @@ export function UserNav() {
           <DropdownMenuLabel className="font-normal">
             <div className="flex flex-col space-y-1">
               <p className="text-sm font-medium leading-none">
-                {user.displayName || user.email?.split('@')[0]}
+                {displayName || user.email?.split('@')[0]}
               </p>
               <p className="text-xs leading-none text-muted-foreground">
                 {user.email}

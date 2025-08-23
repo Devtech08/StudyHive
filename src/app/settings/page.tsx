@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -20,11 +21,40 @@ import {
 } from "@/components/ui/dialog";
 import { useTheme } from "next-themes";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { updateProfile } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import { useToast } from "@/hooks/use-toast";
+import { Loader2 } from "lucide-react";
 
 export default function SettingsPage() {
     useRequireAuth();
     const { user } = useAuth();
     const { setTheme, theme } = useTheme();
+    const { toast } = useToast();
+
+    const [name, setName] = useState(user?.displayName || '');
+    const [loading, setLoading] = useState(false);
+
+    const handleSaveChanges = async () => {
+        if (!auth.currentUser) return;
+        setLoading(true);
+        try {
+            await updateProfile(auth.currentUser, {
+                displayName: name,
+            });
+            toast({
+                title: "Success!",
+                description: "Your profile has been updated.",
+            });
+        } catch (error: any) {
+            toast({
+                variant: "destructive",
+                title: "Uh oh! Something went wrong.",
+                description: error.message,
+            });
+        }
+        setLoading(false);
+    };
 
     return (
         <div className="flex flex-col min-h-screen bg-muted/40 animate-zoom-in">
@@ -54,7 +84,7 @@ export default function SettingsPage() {
                                 <CardContent className="space-y-4">
                                     <div className="space-y-2">
                                         <Label htmlFor="name">Name</Label>
-                                        <Input id="name" defaultValue="QuantumLeaper" />
+                                        <Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="email">Email</Label>
@@ -87,7 +117,9 @@ export default function SettingsPage() {
                                     </div>
                                 </CardContent>
                                 <CardFooter>
-                                    <Button>Save Changes</Button>
+                                    <Button onClick={handleSaveChanges} disabled={loading}>
+                                        {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Save Changes'}
+                                    </Button>
                                 </CardFooter>
                             </Card>
                         </TabsContent>
