@@ -83,14 +83,14 @@ export default function DashboardPage() {
                             {/* Quick Actions */}
                             <div className="grid md:grid-cols-2 gap-6">
                                 <Card className="hover:shadow-md transition-shadow">
-                                    <CardHeader className="text-center md:text-left">
-                                        <CardTitle className="flex items-center gap-3 justify-center md:justify-start">
+                                    <CardHeader className="text-left">
+                                        <CardTitle className="flex items-center gap-3 justify-start">
                                             <Bot className="w-6 h-6 text-primary" />
                                             AI Revision Studio
                                         </CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-muted-foreground text-sm mb-4 text-center md:text-left">Sharpen your knowledge with personalized quizzes and study plans.</p>
+                                        <p className="text-muted-foreground text-sm mb-4 text-left">Sharpen your knowledge with personalized quizzes and study plans.</p>
                                     </CardContent>
                                     <CardFooter>
                                         <Button variant="outline" className="w-full" asChild>
@@ -99,14 +99,14 @@ export default function DashboardPage() {
                                     </CardFooter>
                                 </Card>
                                  <Card className="hover:shadow-md transition-shadow">
-                                     <CardHeader className="text-center md:text-left">
-                                        <CardTitle className="flex items-center gap-3 justify-center md:justify-start">
+                                     <CardHeader className="text-left">
+                                        <CardTitle className="flex items-center gap-3 justify-start">
                                             <Zap className="w-6 h-6 text-primary" />
                                             Start a Challenge
                                         </CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-muted-foreground text-sm mb-4 text-center md:text-left">Test your skills with a timed quiz and climb the leaderboard.</p>
+                                        <p className="text-muted-foreground text-sm mb-4 text-left">Test your skills with a timed quiz and climb the leaderboard.</p>
                                     </CardContent>
                                     <CardFooter>
                                          <Button variant="outline" className="w-full" asChild>
