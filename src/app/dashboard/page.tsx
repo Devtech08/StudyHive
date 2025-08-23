@@ -83,8 +83,8 @@ export default function DashboardPage() {
                             {/* Quick Actions */}
                             <div className="grid md:grid-cols-2 gap-6">
                                 <Card className="hover:shadow-md transition-shadow">
-                                    <CardHeader>
-                                        <CardTitle className="flex items-center gap-3">
+                                    <CardHeader className="text-center md:text-left">
+                                        <CardTitle className="flex items-center gap-3 justify-center md:justify-start">
                                             <Bot className="w-6 h-6 text-primary" />
                                             AI Revision Studio
                                         </CardTitle>
@@ -99,8 +99,8 @@ export default function DashboardPage() {
                                     </CardFooter>
                                 </Card>
                                  <Card className="hover:shadow-md transition-shadow">
-                                     <CardHeader>
-                                        <CardTitle className="flex items-center gap-3">
+                                     <CardHeader className="text-center md:text-left">
+                                        <CardTitle className="flex items-center gap-3 justify-center md:justify-start">
                                             <Zap className="w-6 h-6 text-primary" />
                                             Start a Challenge
                                         </CardTitle>
@@ -118,7 +118,7 @@ export default function DashboardPage() {
 
                              {/* Community Highlights */}
                             <Card>
-                                <CardHeader>
+                                <CardHeader className="text-center md:text-left">
                                     <CardTitle>Hot in the Community</CardTitle>
                                     <CardDescription>Join the conversation with your peers.</CardDescription>
                                 </CardHeader>
