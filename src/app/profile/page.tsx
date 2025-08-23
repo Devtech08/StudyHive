@@ -78,7 +78,7 @@ export default function ProfilePage() {
             <DashboardHeader />
             <main className="flex-1 p-4 md:p-8 lg:p-12">
                 <div className="container mx-auto">
-                    <header className="mb-12">
+                    <header className="mb-12 text-center lg:text-left">
                         <h1 className="text-4xl font-bold font-headline">
                             My Profile
                         </h1>
