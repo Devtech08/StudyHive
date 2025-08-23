@@ -48,8 +48,8 @@ export default function StructuredNotesPage() {
                     <div className="container px-4 md:px-6">
                         <div className="grid md:grid-cols-2 gap-12 items-center">
                             <div className="space-y-6">
-                                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">A Clear Path to Knowledge</h2>
-                                <p className="text-muted-foreground text-lg">
+                                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-center md:text-left">A Clear Path to Knowledge</h2>
+                                <p className="text-muted-foreground text-lg text-center md:text-left">
                                     We believe that organized material is the key to effective learning. Our platform uses a hierarchical structure that mirrors how you learn best:
                                 </p>
                                 <ul className="space-y-4 text-lg">
