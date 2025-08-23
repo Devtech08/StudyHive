@@ -149,7 +149,7 @@ export default function ProfilePage() {
                                 </CardContent>
                             </Card>
                              <Card>
-                                <CardHeader>
+                                <CardHeader className="text-center lg:text-left">
                                     <CardTitle>My Stats</CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
@@ -172,7 +172,7 @@ export default function ProfilePage() {
                         {/* Main Content */}
                         <div className="lg:col-span-2 space-y-8">
                              <Card>
-                                <CardHeader>
+                                <CardHeader className="text-center lg:text-left">
                                     <CardTitle>My Achievements</CardTitle>
                                     <CardDescription>Badges you've earned through your hard work.</CardDescription>
                                 </CardHeader>
