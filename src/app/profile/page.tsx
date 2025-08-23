@@ -189,7 +189,7 @@ export default function ProfilePage() {
                                 </CardContent>
                             </Card>
                             <Card>
-                                <CardHeader>
+                                <CardHeader className="text-center lg:text-left">
                                     <CardTitle>My Courses</CardTitle>
                                     <CardDescription>Courses you are currently enrolled in.</CardDescription>
                                 </CardHeader>
