@@ -92,19 +92,25 @@ export default function StructuredNotesPage() {
                                         <div className="flex items-center gap-2 p-2 rounded-md bg-muted/50">
                                             <Layers className="w-4 h-4 text-muted-foreground" /> Science
                                         </div>
-                                        <div className="flex items-center gap-2 p-2 pl-6 rounded-md bg-muted/50">
-                                            <Folder className="w-4 h-4 text-muted-foreground" /> Biology 101
-                                        </div>
-                                        <div className="flex items-center gap-2 p-2 pl-10 rounded-md bg-muted/50">
-                                            <BookOpen className="w-4 h-4 text-muted-foreground" /> Module 2: Genetics
-                                        </div>
-                                        <div className="flex items-center justify-between p-3 pl-14 rounded-lg bg-background border hover:bg-primary/5 cursor-pointer">
-                                            <span className="font-medium">DNA and RNA</span>
-                                            <ChevronRight className="w-5 h-5" />
-                                        </div>
-                                        <div className="flex items-center justify-between p-3 pl-14 rounded-lg bg-background border hover:bg-primary/5 cursor-pointer">
-                                            <span className="font-medium">Meiosis and Mitosis</span>
-                                            <ChevronRight className="w-5 h-5" />
+                                        <div className="ml-4 space-y-2">
+                                            <div className="flex items-center gap-2 p-2 rounded-md bg-muted/50">
+                                                <Folder className="w-4 h-4 text-muted-foreground" /> Biology 101
+                                            </div>
+                                            <div className="ml-4 space-y-2">
+                                                <div className="flex items-center gap-2 p-2 rounded-md bg-muted/50">
+                                                    <BookOpen className="w-4 h-4 text-muted-foreground" /> Module 2: Genetics
+                                                </div>
+                                                <div className="ml-4 space-y-2">
+                                                    <div className="flex items-center justify-between p-3 rounded-lg bg-background border hover:bg-primary/5 cursor-pointer">
+                                                        <span className="font-medium">DNA and RNA</span>
+                                                        <ChevronRight className="w-5 h-5" />
+                                                    </div>
+                                                    <div className="flex items-center justify-between p-3 rounded-lg bg-background border hover:bg-primary/5 cursor-pointer">
+                                                        <span className="font-medium">Meiosis and Mitosis</span>
+                                                        <ChevronRight className="w-5 h-5" />
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </CardContent>
                                 </Card>
