@@ -83,6 +83,11 @@ export default function Home() {
 
   const isHomepage = pathname === '/';
 
+  const loggedInNavLinks = [
+    { href: '/dashboard', label: 'Dashboard' },
+    ...navLinks
+  ];
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-16 flex items-center justify-between bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
@@ -109,7 +114,7 @@ export default function Home() {
                       Home
                     </Link>
                 )}
-                {navLinks.map((link) => (
+                {(user ? loggedInNavLinks : navLinks).map((link) => (
                   pathname !== link.href && (
                     <Link
                       key={link.label}
@@ -132,7 +137,7 @@ export default function Home() {
                     Home
                 </Link>
             )}
-            {navLinks.map((link) => (
+            {(user ? loggedInNavLinks : navLinks).map((link) => (
              pathname !== link.href && (
               <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
                 {link.label}

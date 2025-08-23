@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from 'next/link';
 import { ArrowRight, BarChart, BookCopy, Bot, CheckCircle, MessageSquare, Trophy, User, Zap, Users } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
-import { useAuth } from "@/hooks/use-auth";
+import { useAuth, useRequireAuth } from "@/hooks/use-auth";
 import { subjects } from "@/lib/courses";
 import { Badge } from "@/components/ui/badge";
 import DashboardHeader from "@/components/DashboardHeader";
@@ -31,8 +31,13 @@ const communityHighlights = [
 ];
 
 export default function DashboardPage() {
+    useRequireAuth();
     const { user } = useAuth();
     const firstCourse = subjects.flatMap(s => s.courses).find(c => c.progress > 0);
+
+    if (!user) {
+        return null; // or a loading skeleton
+    }
 
     return (
         <div className="flex flex-col min-h-screen bg-muted/40 animate-zoom-in">
