@@ -90,7 +90,7 @@ export default function AiRevisionPage() {
         setIsGeneratingExplanation(true);
 
         try {
-            const response = await explainConcept({query: currentInput});
+            const response = await explainConcept(currentInput);
             const botMessage: Message = { role: 'bot', content: response };
             setMessages(prev => [...prev, botMessage]);
         } catch (error) {
@@ -382,3 +382,5 @@ export default function AiRevisionPage() {
         </div>
     )
 }
+
+    
