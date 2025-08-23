@@ -58,7 +58,7 @@ const features = [
     Icon: Target,
     title: 'Interactive Quizzes',
     description: 'Test your knowledge with engaging, timer-based assessments and solidify your understanding.',
-    href: '#',
+    href: '/features/interactive-quizzes',
   },
   {
     Icon: TrendingUp,
