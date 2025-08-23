@@ -90,7 +90,7 @@ export default function DashboardPage() {
                                         </CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-muted-foreground text-sm mb-4">Sharpen your knowledge with personalized quizzes and study plans.</p>
+                                        <p className="text-muted-foreground text-sm mb-4 text-center md:text-left">Sharpen your knowledge with personalized quizzes and study plans.</p>
                                     </CardContent>
                                     <CardFooter>
                                         <Button variant="outline" className="w-full" asChild>
@@ -106,7 +106,7 @@ export default function DashboardPage() {
                                         </CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-muted-foreground text-sm mb-4">Test your skills with a timed quiz and climb the leaderboard.</p>
+                                        <p className="text-muted-foreground text-sm mb-4 text-center md:text-left">Test your skills with a timed quiz and climb the leaderboard.</p>
                                     </CardContent>
                                     <CardFooter>
                                          <Button variant="outline" className="w-full" asChild>
