@@ -45,11 +45,11 @@ export default function InteractiveQuizzesPage() {
             <main className="flex-1">
                 <section className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-center">
                     <Image
-                        src="https://i.pinimg.com/originals/b6/2a/a8/b62aa8f02001a43a81ad75b0a70135d5.jpg"
-                        alt="Student focused on a quiz"
+                        src="https://media.istockphoto.com/id/2221305528/photo/did-you-know-question-mark.jpg?s=2048x2048&w=is&k=20&c=AP0JfiWSwwTeLGOxpJWMhncvMul1RP2SlXIn_70X508="
+                        alt="Question mark background"
                         fill
                         className="object-cover -z-10"
-                        data-ai-hint="student quiz"
+                        data-ai-hint="question mark"
                     />
                     <div className="absolute inset-0 bg-black/70 -z-10" />
                     <div className="container px-4 md:px-6 text-white">
