@@ -10,7 +10,7 @@ import { Menu } from "lucide-react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
-const baseNavLinks = [
+const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
@@ -21,15 +21,6 @@ const baseNavLinks = [
 export default function DashboardHeader() {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
-
-    const isProfileOrSettings = pathname === '/profile' || pathname === '/settings';
-
-    // When on Profile/Settings, show "Dashboard" in the main nav.
-    // Otherwise, show "Dashboard" (as the default for logged-in areas).
-    const navLinks = isProfileOrSettings 
-        ? [{ href: '/dashboard', label: 'Dashboard' }, ...baseNavLinks.filter(l => l.href !== '/')]
-        : [{ href: '/dashboard', label: 'Dashboard' }, ...baseNavLinks];
-
 
     return (
         <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
