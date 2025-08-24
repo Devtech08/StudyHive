@@ -28,11 +28,11 @@ export default function ProgressTrackingPage() {
             <main className="flex-1">
                 <section className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-center">
                     <Image
-                        src="https://i.pinimg.com/originals/f4/15/8a/f4158a5e016a27e0b5756c2f943537e2.jpg"
-                        alt="Charts and graphs on a screen"
+                        src="https://img.freepik.com/premium-vector/starting-career-concept-illustration_114360-20563.jpg"
+                        alt="A person climbing stairs towards a goal"
                         fill
                         className="object-cover -z-10"
-                        data-ai-hint="data charts"
+                        data-ai-hint="learning journey"
                     />
                     <div className="absolute inset-0 bg-black/70 -z-10" />
                     <div className="container px-4 md:px-6 text-white">
