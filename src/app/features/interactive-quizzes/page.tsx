@@ -165,7 +165,7 @@ export default function InteractiveQuizzesPage() {
                                     </CardFooter>
                                 </Card>
                             </div>
-                            <div className="space-y-6">
+                            <div className="space-y-6 text-center md:text-left">
                                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Active Recall for Better Retention</h2>
                                 <p className="text-muted-foreground text-lg">
                                     Testing yourself is one of the most effective ways to study. StudyHive's quizzes are designed to make this process seamless and effective.
