@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Logo } from "@/components/Logo";
 import { Button } from "@/components/ui/button";
 import { UserNav } from "@/components/UserNav";
@@ -13,10 +13,60 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { cn } from '@/lib/utils';
 
+const exampleQuestions = [
+    {
+        id: 'q1',
+        questionText: "What is the powerhouse of the cell?",
+        options: [
+            { id: 'a', text: 'Nucleus' },
+            { id: 'b', text: 'Mitochondria' },
+            { id: 'c', text: 'Ribosome' },
+        ],
+        correctAnswer: 'b',
+        explanation: 'Correct! The mitochondria is the powerhouse of the cell.'
+    },
+    {
+        id: 'q2',
+        questionText: "Which planet is known as the Red Planet?",
+        options: [
+            { id: 'a', text: 'Earth' },
+            { id: 'b', text: 'Mars' },
+            { id: 'c', text: 'Jupiter' },
+        ],
+        correctAnswer: 'b',
+        explanation: 'Correct! Mars is often called the Red Planet due to its reddish appearance.'
+    },
+    {
+        id: 'q3',
+        questionText: "What is the capital of Japan?",
+        options: [
+            { id: 'a', text: 'Beijing' },
+            { id: 'b', text: 'Seoul' },
+            { id: 'c', text: 'Tokyo' },
+        ],
+        correctAnswer: 'c',
+        explanation: 'Correct! Tokyo is the capital city of Japan.'
+    }
+];
+
 export default function InteractiveQuizzesPage() {
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
     const [feedback, setFeedback] = useState<{ type: 'correct' | 'incorrect'; message: string } | null>(null);
-    const correctAnswer = "b";
+    
+    const currentQuestion = exampleQuestions[currentQuestionIndex];
+    const correctAnswer = currentQuestion.correctAnswer;
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % exampleQuestions.length);
+            setSelectedAnswer(null);
+            setFeedback(null);
+        }, 60000); // Change question every 60 seconds
+
+        return () => clearInterval(interval); // Cleanup interval on component unmount
+    }, []);
+
 
     const handleSubmit = () => {
         if (!selectedAnswer) {
@@ -25,9 +75,10 @@ export default function InteractiveQuizzesPage() {
         }
 
         if (selectedAnswer === correctAnswer) {
-            setFeedback({ type: 'correct', message: 'Correct! The mitochondria is the powerhouse of the cell.' });
+            setFeedback({ type: 'correct', message: currentQuestion.explanation });
         } else {
-            setFeedback({ type: 'incorrect', message: 'Not quite. The correct answer is Mitochondria.' });
+            const correctOption = currentQuestion.options.find(opt => opt.id === correctAnswer);
+            setFeedback({ type: 'incorrect', message: `Not quite. The correct answer is ${correctOption?.text}.` });
         }
     };
 
@@ -77,7 +128,7 @@ export default function InteractiveQuizzesPage() {
                                 <Card className="shadow-2xl">
                                     <CardHeader>
                                         <CardTitle>Example Question</CardTitle>
-                                        <CardDescription>What is the powerhouse of the cell?</CardDescription>
+                                        <CardDescription>{currentQuestion.questionText}</CardDescription>
                                     </CardHeader>
                                     <CardContent>
                                         <RadioGroup 
@@ -85,30 +136,17 @@ export default function InteractiveQuizzesPage() {
                                             onValueChange={handleValueChange}
                                             className="space-y-2"
                                         >
-                                            <Label htmlFor="q1-a" className={cn(
-                                                "flex items-center gap-4 p-3 rounded-lg border transition-all cursor-pointer",
-                                                "has-[:checked]:border-primary has-[:checked]:bg-primary/5",
-                                                feedback && selectedAnswer === 'a' && feedback.type === 'incorrect' && "border-destructive bg-destructive/5 text-destructive has-[:checked]:border-destructive"
-                                            )}>
-                                                <RadioGroupItem value="a" id="q1-a" />
-                                                <span>Nucleus</span>
-                                            </Label>
-                                             <Label htmlFor="q1-b" className={cn(
-                                                "flex items-center gap-4 p-3 rounded-lg border transition-all cursor-pointer",
-                                                "has-[:checked]:border-primary has-[:checked]:bg-primary/5",
-                                                feedback && selectedAnswer === 'b' && feedback.type === 'correct' && "border-green-500 bg-green-500/5 text-green-600 has-[:checked]:border-green-500"
-                                             )}>
-                                                <RadioGroupItem value="b" id="q1-b" />
-                                                <span>Mitochondria</span>
-                                            </Label>
-                                             <Label htmlFor="q1-c" className={cn(
-                                                 "flex items-center gap-4 p-3 rounded-lg border transition-all cursor-pointer",
-                                                 "has-[:checked]:border-primary has-[:checked]:bg-primary/5",
-                                                 feedback && selectedAnswer === 'c' && feedback.type === 'incorrect' && "border-destructive bg-destructive/5 text-destructive has-[:checked]:border-destructive"
-                                             )}>
-                                                <RadioGroupItem value="c" id="q1-c" />
-                                                <span>Ribosome</span>
-                                            </Label>
+                                            {currentQuestion.options.map(option => (
+                                                <Label key={option.id} htmlFor={`${currentQuestion.id}-${option.id}`} className={cn(
+                                                    "flex items-center gap-4 p-3 rounded-lg border transition-all cursor-pointer",
+                                                    "has-[:checked]:border-primary has-[:checked]:bg-primary/5",
+                                                    feedback && selectedAnswer === option.id && feedback.type === 'incorrect' && "border-destructive bg-destructive/5 text-destructive has-[:checked]:border-destructive",
+                                                    feedback && option.id === correctAnswer && feedback.type === 'correct' && "border-green-500 bg-green-500/5 text-green-600 has-[:checked]:border-green-500"
+                                                )}>
+                                                    <RadioGroupItem value={option.id} id={`${currentQuestion.id}-${option.id}`} />
+                                                    <span>{option.text}</span>
+                                                </Label>
+                                            ))}
                                         </RadioGroup>
                                     </CardContent>
                                     <CardFooter className="flex-col items-start">
