@@ -163,10 +163,10 @@ export default function Home() {
             <div className="flex flex-col justify-center space-y-4 max-w-2xl text-center items-center">
               <div className="space-y-4">
                 <h1 className="text-5xl font-bold font-headline tracking-tighter sm:text-7xl xl:text-8xl/none">
-                  Unlock Your Learning Potential
+                  Study Smarter, Not Harder
                 </h1>
                 <p className="text-lg text-white/80 max-w-[700px]">
-                  StudyHive is an intelligent, AI-powered learning platform designed to help you study more effectively, retain information better, and collaborate with a community of learners.
+                  Leverage the power of AI to ace your exams, understand complex topics, and collaborate with a community of students just like you.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
