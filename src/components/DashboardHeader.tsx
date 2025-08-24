@@ -11,6 +11,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 const baseNavLinks = [
+  { href: '/', label: 'Home' },
   { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
   { href: '/community', label: 'Community' },
@@ -26,7 +27,7 @@ export default function DashboardHeader() {
     // When on Profile/Settings, show "Dashboard" in the main nav.
     // Otherwise, show "Dashboard" (as the default for logged-in areas).
     const navLinks = isProfileOrSettings 
-        ? [{ href: '/dashboard', label: 'Dashboard' }, ...baseNavLinks]
+        ? [{ href: '/dashboard', label: 'Dashboard' }, ...baseNavLinks.filter(l => l.href !== '/')]
         : [{ href: '/dashboard', label: 'Dashboard' }, ...baseNavLinks];
 
 
