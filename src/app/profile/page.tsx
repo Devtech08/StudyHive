@@ -96,7 +96,7 @@ export default function ProfilePage() {
                                         <AvatarImage src={avatarPreview || ''} />
                                         <AvatarFallback>{user.email?.charAt(0).toUpperCase()}</AvatarFallback>
                                     </Avatar>
-                                    <h2 className="text-2xl font-bold">{userProfile.name}</h2>
+                                    <h2 className="text-2xl font-bold">{user.displayName || user.email?.split('@')[0]}</h2>
                                     <p className="text-muted-foreground">{user.email}</p>
                                     
                                     <Dialog open={isEditing} onOpenChange={setIsEditing}>
