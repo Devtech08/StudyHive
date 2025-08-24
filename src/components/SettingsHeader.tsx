@@ -10,24 +10,18 @@ import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-const baseNavLinks = [
+const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/courses', label: 'Courses' },
   { href: '/ai-revision', label: 'AI Revision' },
   { href: '/community', label: 'Community' },
   { href: '/leaderboard', label: 'Leaderboard' },
 ];
 
+
 export default function SettingsHeader() {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
-
-    const isProfileOrSettings = pathname === '/profile' || pathname === '/settings';
-
-    // When on Profile/Settings, show "Dashboard" in the main nav.
-    // Otherwise (which shouldn't happen with this header), show "Dashboard".
-    const navLinks = isProfileOrSettings 
-        ? [{ href: '/dashboard', label: 'Dashboard' }, ...baseNavLinks]
-        : [{ href: '/dashboard', label: 'Dashboard' }, ...baseNavLinks];
 
     return (
         <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
