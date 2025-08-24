@@ -88,7 +88,7 @@ export function UserNav() {
              {isHomepage ? (
                 <Link href="/dashboard"><DropdownMenuItem>Dashboard</DropdownMenuItem></Link>
              ) : (
-                <Link href="/"><DropdownMenuItem>Home</DropdownMenuItem></Link>
+                <Link href="/dashboard"><DropdownMenuItem>Dashboard</DropdownMenuItem></Link>
              )}
             <Link href="/profile"><DropdownMenuItem>Profile</DropdownMenuItem></Link>
             <Link href="/settings"><DropdownMenuItem>Settings</DropdownMenuItem></Link>
