@@ -105,7 +105,6 @@ export default function InteractiveQuizzesPage() {
                     <div className="absolute inset-0 bg-black/70 -z-10" />
                     <div className="container px-4 md:px-6 text-white">
                         <div className="space-y-4 max-w-3xl mx-auto">
-                            <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">Feature Highlight</div>
                             <h1 className="text-4xl font-bold font-headline tracking-tighter sm:text-5xl md:text-6xl">
                                 Solidify Your Knowledge with Interactive Quizzes
                             </h1>
