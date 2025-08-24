@@ -216,7 +216,7 @@ export default function Home() {
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Join Thousands of Successful Students</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  See how StudyHive is helping students achieve their academic goals.
+                  Discover why students like you love learning with StudyHive.
                 </p>
               </div>
             </div>
