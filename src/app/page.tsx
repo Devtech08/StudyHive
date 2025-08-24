@@ -24,7 +24,7 @@ const testimonials = [
   },
   {
     name: 'Prince Okumtey',
-    role: 'Cyber Security Student',
+    role: 'High School Student',
     avatar: 'https://i.pinimg.com/736x/e5/45/ca/e545ca570256c9b88969b8fedb4c43b13.jpg',
     dataAiHint: 'man portrait',
     quote:
@@ -252,3 +252,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
