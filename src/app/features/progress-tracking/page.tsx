@@ -1,15 +1,26 @@
 
 'use client';
 
+import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Logo } from "@/components/Logo";
 import { Button } from "@/components/ui/button";
 import { UserNav } from "@/components/UserNav";
 import Link from "next/link";
-import { BarChart, CheckCircle, Percent, TrendingUp } from "lucide-react";
+import { BarChart, CheckCircle, Percent, TrendingUp, Menu } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 import { Progress } from "@/components/ui/progress";
 import { Bar, BarChart as RechartsBarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { useAuth } from '@/hooks/use-auth';
+
+const navLinks = [
+  { href: '/courses', label: 'Courses' },
+  { href: '/ai-revision', label: 'AI Revision' },
+  { href: '/community', label: 'Community' },
+  { href: '/leaderboard', label: 'Leaderboard' },
+];
 
 const chartData = [
   { name: "Biology", score: 88 },
@@ -19,11 +30,68 @@ const chartData = [
 ]
 
 export default function ProgressTrackingPage() {
+    const { user } = useAuth();
+    const [open, setOpen] = useState(false);
+    const pathname = usePathname();
+
+    const loggedInNavLinks = navLinks;
+
     return (
         <div className="flex flex-col min-h-screen">
             <header className="px-4 lg:px-6 h-16 flex items-center justify-between bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
-                <Logo />
-                <UserNav />
+                <div className="flex items-center gap-4">
+                  <Sheet open={open} onOpenChange={setOpen}>
+                    <SheetTrigger asChild>
+                      <Button variant="outline" size="icon" className="md:hidden">
+                        <Menu className="h-6 w-6" />
+                        <span className="sr-only">Open navigation menu</span>
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent side="left">
+                        <SheetHeader>
+                            <SheetTitle>Navigation Menu</SheetTitle>
+                        </SheetHeader>
+                      <nav className="grid gap-6 text-lg font-medium mt-6">
+                        <Logo />
+                        <Link
+                          href="/"
+                          onClick={() => setOpen(false)}
+                          className="text-muted-foreground transition-colors hover:text-foreground"
+                        >
+                          Home
+                        </Link>
+                        {(user ? loggedInNavLinks : navLinks).map((link) => (
+                          pathname !== link.href && (
+                            <Link
+                              key={link.label}
+                              href={link.href}
+                              onClick={() => setOpen(false)}
+                              className="text-muted-foreground transition-colors hover:text-foreground"
+                            >
+                              {link.label}
+                            </Link>
+                          )
+                        ))}
+                      </nav>
+                    </SheetContent>
+                  </Sheet>
+                  <Logo />
+                </div>
+                <nav className="hidden md:flex items-center gap-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
+                    <Link href="/" className="text-muted-foreground transition-colors hover:text-foreground">
+                        Home
+                    </Link>
+                    {(user ? loggedInNavLinks : navLinks).map((link) => (
+                     pathname !== link.href && (
+                      <Link key={link.label} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
+                        {link.label}
+                      </Link>
+                    )
+                  ))}
+                </nav>
+                <div className="flex justify-end items-center gap-4 sm:gap-6 flex-1">
+                  <UserNav />
+                </div>
             </header>
             <main className="flex-1">
                 <section className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-center">
@@ -57,8 +125,8 @@ export default function ProgressTrackingPage() {
                     <div className="container px-4 md:px-6">
                         <div className="grid md:grid-cols-2 gap-12 items-center">
                              <div className="space-y-6 text-center md:text-left">
-                                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Data-Driven Motivation</h2>
-                                <p className="text-muted-foreground text-lg">
+                                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-center">Data-Driven Motivation</h2>
+                                <p className="text-muted-foreground text-lg text-center">
                                     StudyHive transforms your hard work into clear, visual data, helping you understand your strengths and identify areas for improvement.
                                 </p>
                                 <ul className="space-y-4 text-lg">
