@@ -56,7 +56,7 @@ export default function ProgressTrackingPage() {
                 <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/20">
                     <div className="container px-4 md:px-6">
                         <div className="grid md:grid-cols-2 gap-12 items-center">
-                             <div className="space-y-6">
+                             <div className="space-y-6 text-center md:text-left">
                                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Data-Driven Motivation</h2>
                                 <p className="text-muted-foreground text-lg">
                                     StudyHive transforms your hard work into clear, visual data, helping you understand your strengths and identify areas for improvement.
