@@ -15,7 +15,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/co
 
 const testimonials = [
   {
-    name: 'Caleb Bortey',
+    name: 'Marina Mantey',
     role: 'University Student',
     avatar: 'https://i.pinimg.com/1200x/94/cb/c2/94cbc278269c859320b22b64ebfe70f8.jpg',
     dataAiHint: 'woman portrait',
@@ -23,7 +23,7 @@ const testimonials = [
       'StudyHive has been a total game-changer for my study routine. The AI revision prompts helped me ace my finals!',
   },
   {
-    name: 'Sybil Azrael',
+    name: 'Prince Okumtey',
     role: 'High School Student',
     avatar: 'https://i.pinimg.com/736x/e5/45/ca/e545ca570256c9b88969b8fedb4c43b13.jpg',
     dataAiHint: 'man portrait',
