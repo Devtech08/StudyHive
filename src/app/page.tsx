@@ -31,7 +31,7 @@ const testimonials = [
       'I love the interactive quizzes. They make learning fun and I\'ve seen a huge improvement in my grades.',
   },
   {
-    name: 'Sewa',
+    name: 'Serwa',
     role: 'Medical Student',
     avatar: 'https://i.pinimg.com/736x/e5/39/49/e5394915262d78aacd2ee18562dae9d3.jpg',
     dataAiHint: 'woman portrait',
@@ -160,7 +160,7 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-black/60 -z-10" />
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col justify-center space-y-4 max-w-2xl text-center items-center">
+            <div className="flex flex-col justify-center space-y-4 max-w-2xl mx-auto text-center items-center">
               <div className="space-y-4">
                 <h1 className="text-5xl font-bold font-headline tracking-tighter sm:text-7xl xl:text-8xl/none">
                   Study Smarter, Not Harder
