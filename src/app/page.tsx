@@ -231,7 +231,7 @@ export default function Home() {
                        <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.dataAiHint} />
                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    <div>
+                    <div className="text-center">
                       <p className="font-semibold">{testimonial.name}</p>
                       <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                     </div>
@@ -252,5 +252,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
