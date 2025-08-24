@@ -26,10 +26,7 @@ export default function StructuredNotesPage() {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
 
-    const loggedInNavLinks = [
-        { href: '/dashboard', label: 'Dashboard' },
-        ...navLinks
-    ];
+    const loggedInNavLinks = navLinks;
 
     return (
         <div className="flex flex-col min-h-screen">
