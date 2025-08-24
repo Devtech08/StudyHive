@@ -187,9 +187,9 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Everything You Need to Succeed</h2>
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Your All-in-One Study Companion</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  StudyHive provides a comprehensive suite of tools designed to enhance your study experience and boost your academic performance.
+                  StudyHive brings together everything you need in one place. Explore our features and discover a smarter way to learn.
                 </p>
               </div>
             </div>
