@@ -24,7 +24,7 @@ const testimonials = [
   },
   {
     name: 'Prince Okumtey',
-    role: 'High School Student',
+    role: 'Cyber Security Student',
     avatar: 'https://i.pinimg.com/736x/e5/45/ca/e545ca570256c9b88969b8fedb4c43b13.jpg',
     dataAiHint: 'man portrait',
     quote:
@@ -222,8 +222,8 @@ export default function Home() {
             </div>
             <div className="mx-auto grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3 pt-12">
               {testimonials.map((testimonial) => (
-                <Card key={testimonial.name} className="flex flex-col text-center">
-                  <CardContent className="pt-6 flex-grow">
+                <Card key={testimonial.name} className="flex flex-col">
+                  <CardContent className="pt-6 flex-grow text-center">
                     <p className="text-muted-foreground">"{testimonial.quote}"</p>
                   </CardContent>
                   <CardFooter className="pt-4 flex flex-col items-center gap-4">
