@@ -42,7 +42,7 @@ export default function ProgressTrackingPage() {
                 <div className="flex items-center gap-4">
                   <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>
-                      <Button variant="outline" size="icon" className="md:hidden">
+                      <Button variant="outline" size="icon" className="md-hidden">
                         <Menu className="h-6 w-6" />
                         <span className="sr-only">Open navigation menu</span>
                       </Button>
@@ -96,7 +96,7 @@ export default function ProgressTrackingPage() {
             <main className="flex-1">
                 <section className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-center">
                     <Image
-                        src="https://img.freepik.com/premium-vector/starting-career-concept-illustration_114360-20563.jpg"
+                        src="https://picsum.photos/1200/800"
                         alt="A person climbing stairs towards a goal"
                         fill
                         className="object-cover -z-10"

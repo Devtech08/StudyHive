@@ -20,9 +20,9 @@ const recentActivity = {
 };
 
 const leaderboardHighlights = [
-    { rank: 1, name: 'QuantumLeaper', avatar: 'https://i.pinimg.com/736x/4a/18/4a/4a184a39b131b8c7a361a94125b2933d.jpg' },
-    { rank: 2, name: 'BioNinja', avatar: 'https://i.pinimg.com/736x/9b/79/4d/9b794d0c8d197364f3319ed025516a50.jpg' },
-    { rank: 3, name: 'HistoryBuff', avatar: 'https://i.pinimg.com/736x/1b/54/b4/1b54b4231f28b7e2182b8a4a584c31e4.jpg' },
+    { rank: 1, name: 'QuantumLeaper', avatar: 'https://picsum.photos/100/100' },
+    { rank: 2, name: 'BioNinja', avatar: 'https://picsum.photos/100/100' },
+    { rank: 3, name: 'HistoryBuff', avatar: 'https://picsum.photos/100/100' },
 ];
 
 const communityHighlights = [

@@ -162,7 +162,7 @@ export default function InteractiveQuizzesPage() {
             <main className="flex-1">
                 <section className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-center">
                     <Image
-                        src="https://media.istockphoto.com/id/2221305528/photo/did-you-know-question-mark.jpg?s=2048x2048&w=is&k=20&c=AP0JfiWSwwTeLGOxpJWMhncvMul1RP2SlXIn_70X508="
+                        src="https://picsum.photos/1200/800"
                         alt="Question mark background"
                         fill
                         className="object-cover -z-10"
@@ -266,5 +266,3 @@ export default function InteractiveQuizzesPage() {
         </div>
     );
 }
-
-    

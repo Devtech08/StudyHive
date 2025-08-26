@@ -15,30 +15,30 @@ import DashboardHeader from '@/components/DashboardHeader';
 
 
 const allTimeLeaderboard = [
-  { rank: 1, name: 'QuantumLeaper', points: 15200, avatar: 'https://i.pinimg.com/736x/4a/18/4a/4a184a39b131b8c7a361a94125b2933d.jpg', badges: ['Quiz Master', 'Top Contributor'] },
-  { rank: 2, name: 'BioNinja', points: 14800, avatar: 'https://i.pinimg.com/736x/9b/79/4d/9b794d0c8d197364f3319ed025516a50.jpg', badges: ['Biology Pro'] },
-  { rank: 3, name: 'HistoryBuff', points: 14500, avatar: 'https://i.pinimg.com/736x/1b/54/b4/1b54b4231f28b7e2182b8a4a584c31e4.jpg', badges: ['Archivist'] },
-  { rank: 4, name: 'CodeWizard', points: 13900, avatar: 'https://i.pinimg.com/736x/6f/37/47/6f37474495e5b6a713b1981881775f0f.jpg', badges: ['Bug Squasher'] },
-  { rank: 5, name: 'MathMagician', points: 13500, avatar: 'https://i.pinimg.com/736x/ad/37/87/ad378772338d721111a84f3c77395c8c.jpg', badges: ['Calculus King'] },
-  { rank: 6, name: 'ArtExplorer', points: 12800, avatar: 'https://i.pinimg.com/736x/09/a4/09/09a409f9f53859a444983d596a2b8423.jpg', badges: ['Creative Mind'] },
-  { rank: 7, name: 'StarSeeker', points: 12100, avatar: 'https://i.pinimg.com/736x/d4/0f/50/d40f507b469b89a8ac819280d56b2bab.jpg', badges: ['Astronomer'] },
-  { rank: 8, name: 'EcoWarrior', points: 11500, avatar: 'https://i.pinimg.com/736x/88/c5/a7/88c5a7776d66e74421d01a1829986321.jpg', badges: ['Planet Saver'] },
+  { rank: 1, name: 'QuantumLeaper', points: 15200, avatar: 'https://picsum.photos/100/100', badges: ['Quiz Master', 'Top Contributor'] },
+  { rank: 2, name: 'BioNinja', points: 14800, avatar: 'https://picsum.photos/100/100', badges: ['Biology Pro'] },
+  { rank: 3, name: 'HistoryBuff', points: 14500, avatar: 'https://picsum.photos/100/100', badges: ['Archivist'] },
+  { rank: 4, name: 'CodeWizard', points: 13900, avatar: 'https://picsum.photos/100/100', badges: ['Bug Squasher'] },
+  { rank: 5, name: 'MathMagician', points: 13500, avatar: 'https://picsum.photos/100/100', badges: ['Calculus King'] },
+  { rank: 6, name: 'ArtExplorer', points: 12800, avatar: 'https://picsum.photos/100/100', badges: ['Creative Mind'] },
+  { rank: 7, name: 'StarSeeker', points: 12100, avatar: 'https://picsum.photos/100/100', badges: ['Astronomer'] },
+  { rank: 8, name: 'EcoWarrior', points: 11500, avatar: 'https://picsum.photos/100/100', badges: ['Planet Saver'] },
 ];
 
 const weeklyLeaderboard = [
-    { rank: 1, name: 'CodeWizard', points: 550, avatar: 'https://i.pinimg.com/736x/6f/37/47/6f37474495e5b6a713b1981881775f0f.jpg', badges: ['Bug Squasher'] },
-    { rank: 2, name: 'QuantumLeaper', points: 530, avatar: 'https://i.pinimg.com/736x/4a/18/4a/4a184a39b131b8c7a361a94125b2933d.jpg', badges: ['Quiz Master', 'Top Contributor'] },
-    { rank: 3, name: 'MathMagician', points: 510, avatar: 'https://i.pinimg.com/736x/ad/37/87/ad378772338d721111a84f3c77395c8c.jpg', badges: ['Calculus King'] },
-    { rank: 4, name: 'BioNinja', points: 480, avatar: 'https://i.pinimg.com/736x/9b/79/4d/9b794d0c8d197364f3319ed025516a50.jpg', badges: ['Biology Pro'] },
-    { rank: 5, name: 'HistoryBuff', points: 450, avatar: 'https://i.pinimg.com/736x/1b/54/b4/1b54b4231f28b7e2182b8a4a584c31e4.jpg', badges: ['Archivist'] },
+    { rank: 1, name: 'CodeWizard', points: 550, avatar: 'https://picsum.photos/100/100', badges: ['Bug Squasher'] },
+    { rank: 2, name: 'QuantumLeaper', points: 530, avatar: 'https://picsum.photos/100/100', badges: ['Quiz Master', 'Top Contributor'] },
+    { rank: 3, name: 'MathMagician', points: 510, avatar: 'https://picsum.photos/100/100', badges: ['Calculus King'] },
+    { rank: 4, name: 'BioNinja', points: 480, avatar: 'https://picsum.photos/100/100', badges: ['Biology Pro'] },
+    { rank: 5, name: 'HistoryBuff', points: 450, avatar: 'https://picsum.photos/100/100', badges: ['Archivist'] },
 ];
 
 const monthlyLeaderboard = [
-    { rank: 1, name: 'BioNinja', points: 2100, avatar: 'https://i.pinimg.com/736x/9b/79/4d/9b794d0c8d197364f3319ed025516a50.jpg', badges: ['Biology Pro'] },
-    { rank: 2, name: 'HistoryBuff', points: 2050, avatar: 'https://i.pinimg.com/736x/1b/54/b4/1b54b4231f28b7e2182b8a4a584c31e4.jpg', badges: ['Archivist'] },
-    { rank: 3, name: 'QuantumLeaper', points: 1950, avatar: 'https://i.pinimg.com/736x/4a/18/4a/4a184a39b131b8c7a361a94125b2933d.jpg', badges: ['Quiz Master', 'Top Contributor'] },
-    { rank: 4, name: 'CodeWizard', points: 1800, avatar: 'https://i.pinimg.com/736x/6f/37/47/6f37474495e5b6a713b1981881775f0f.jpg', badges: ['Bug Squasher'] },
-    { rank: 5, name: 'MathMagician', points: 1750, avatar: 'https://i.pinimg.com/736x/ad/37/87/ad378772338d721111a84f3c77395c8c.jpg', badges: ['Calculus King'] },
+    { rank: 1, name: 'BioNinja', points: 2100, avatar: 'https://picsum.photos/100/100', badges: ['Biology Pro'] },
+    { rank: 2, name: 'HistoryBuff', points: 2050, avatar: 'https://picsum.photos/100/100', badges: ['Archivist'] },
+    { rank: 3, name: 'QuantumLeaper', points: 1950, avatar: 'https://picsum.photos/100/100', badges: ['Quiz Master', 'Top Contributor'] },
+    { rank: 4, name: 'CodeWizard', points: 1800, avatar: 'https://picsum.photos/100/100', badges: ['Bug Squasher'] },
+    { rank: 5, name: 'MathMagician', points: 1750, avatar: 'https://picsum.photos/100/100', badges: ['Calculus King'] },
 ];
 
 const badgeIcons: { [key: string]: React.ElementType } = {

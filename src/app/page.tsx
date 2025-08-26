@@ -17,7 +17,7 @@ const testimonials = [
   {
     name: 'Marina Mantey',
     role: 'University Student',
-    avatar: 'https://i.pinimg.com/1200x/94/cb/c2/94cbc278269c859320b22b64ebfe70f8.jpg',
+    avatar: 'https://picsum.photos/100/100',
     dataAiHint: 'woman portrait',
     quote:
       'StudyHive has been a total game-changer for my study routine. The AI revision prompts helped me ace my finals!',
@@ -25,7 +25,7 @@ const testimonials = [
   {
     name: 'Prince Okumtey',
     role: 'High School Student',
-    avatar: 'https://i.pinimg.com/736x/e5/45/ca/e545ca570256c9b88969b8fedb4c43b13.jpg',
+    avatar: 'https://picsum.photos/100/100',
     dataAiHint: 'man portrait',
     quote:
       'I love the interactive quizzes. They make learning fun and I\'ve seen a huge improvement in my grades.',
@@ -33,7 +33,7 @@ const testimonials = [
   {
     name: 'Serwa',
     role: 'Medical Student',
-    avatar: 'https://i.pinimg.com/736x/e5/39/49/e5394915262d78aacd2ee18562dae9d3.jpg',
+    avatar: 'https://picsum.photos/100/100',
     dataAiHint: 'woman portrait',
     quote:
       'The ability to see my progress visually is incredibly motivating. It keeps me on track and focused on my goals.',
@@ -152,7 +152,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 flex items-center justify-center text-white">
           <Image
-              src="https://i.pinimg.com/736x/8c/b8/ad/8cb8adb88f27a09eedffff048db943ed.jpg"
+              src="https://picsum.photos/1200/800"
               alt="Students studying"
               fill
               className="object-cover -z-10"

@@ -26,7 +26,7 @@ import { Input } from '@/components/ui/input';
 const userProfile = {
     name: 'QuantumLeaper',
     email: 'scholar@studyhive.com',
-    avatar: 'https://i.pinimg.com/736x/4a/18/4a/4a184a39b131b8c7a361a94125b2933d.jpg',
+    avatar: 'https://picsum.photos/100/100',
     points: 15200,
     rank: 1,
     badges: ['Quiz Master', 'Top Contributor', 'Biology Pro', 'Archivist'],
