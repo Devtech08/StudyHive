@@ -190,7 +190,7 @@ export default function AiRevisionPage() {
                                         <CardDescription>Upload course notes or a PDF and let AI create a quiz for you. Select difficulty and question types.</CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
-                                       {renderFileUpload(quizFile, setQuizFile, quizFileInputRef, "secondary")}
+                                       {renderFileUpload(quizFile, setQuizFile, quizFileInputRef, "secondary", "bg-accent text-accent-foreground hover:bg-accent/90")}
                                     </CardContent>
                                     <CardFooter>
                                          <Button className="w-full" disabled={!quizFile}><Zap className="w-4 h-4 mr-2" />Generate Quiz</Button>
@@ -384,5 +384,3 @@ export default function AiRevisionPage() {
         </div>
     )
 }
-
-    
