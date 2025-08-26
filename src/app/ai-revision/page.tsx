@@ -186,7 +186,7 @@ export default function AiRevisionPage() {
                              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle className="flex items-center justify-center md:justify-start"><BookCopy className="w-6 h-6 mr-3 text-primary" />Smart Question Generation</CardTitle>
+                                        <CardTitle className="flex items-center justify-center md:justify-start"><BookCopy className="w-6 h-6 mr-3 md:ml-2 text-primary" />Smart Question Generation</CardTitle>
                                         <CardDescription className="text-center md:text-left">Upload course notes or a PDF and let AI create a quiz for you. Select difficulty and question types.</CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
