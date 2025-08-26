@@ -268,8 +268,8 @@ export default function AiRevisionPage() {
                         <TabsContent value="explain">
                              <Card>
                                 <CardHeader>
-                                    <CardTitle className="flex items-center"><HelpCircle className="w-6 h-6 mr-3 text-primary" />Instant Explanations</CardTitle>
-                                    <CardDescription>Stuck on a concept? Ask our AI assistant for a simple explanation, or to quiz you on a topic.</CardDescription>
+                                    <CardTitle className="flex items-center text-lg md:text-2xl"><HelpCircle className="w-6 h-6 mr-3 text-primary" />Instant Explanations</CardTitle>
+                                    <CardDescription className="text-sm md:text-base">Stuck on a concept? Ask our AI assistant for a simple explanation, or to quiz you on a topic.</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
                                    <div className="p-4 bg-background rounded-lg border flex flex-col h-96">
