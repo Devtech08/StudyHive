@@ -198,7 +198,7 @@ export default function Home() {
                 const Icon = feature.Icon;
                 return (
                   <div key={feature.title} className="flex flex-col items-center text-center gap-2">
-                    <Icon className="h-10 w-10 text-primary mb-2" />
+                    <Icon className="h-10 w-10 text-yellow-500 mb-2" />
                     <h3 className="text-lg font-bold">{feature.title}</h3>
                     <p className="text-sm text-muted-foreground flex-grow">{feature.description}</p>
                     <Button variant="secondary" className="mt-2" asChild>
