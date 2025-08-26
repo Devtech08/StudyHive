@@ -46,8 +46,6 @@ export default function CourseDetailPage({ params }: { params: { subjectId: stri
                         alt={course.title}
                         fill
                         className="object-cover"
-                        width={600}
-                        height={400}
                         data-ai-hint={course.dataAiHint}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

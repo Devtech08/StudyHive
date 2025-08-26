@@ -58,8 +58,6 @@ export default function CoursesPage() {
                             alt={course.title}
                             fill
                             className="object-cover"
-                            width={600}
-                            height={400}
                             data-ai-hint={course.dataAiHint}
                           />
                         </div>
