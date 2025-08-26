@@ -66,7 +66,7 @@ export const subjects = [
     courses: [
         {
             id: 'algebra-basics',
-            title: 'Algebra Basics',
+            title: 'Algebra',
             instructor: 'Prof. Leonhard Euler',
             thumbnail: 'https://picsum.photos/600/400',
             dataAiHint: 'math blackboard',
