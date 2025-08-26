@@ -204,7 +204,7 @@ export default function AiRevisionPage() {
                                     <CardContent className="space-y-4">
                                          {renderFileUpload(flashcardFile, setFlashcardFile, flashcardFileInputRef, "secondary", "bg-accent text-accent-foreground hover:bg-accent/90")}
                                     </CardContent>
-                                    <CardFooter className="grid grid-cols-2 gap-4">
+                                    <CardFooter className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <Button className="w-full" disabled={!flashcardFile}>Create Flashcards</Button>
                                         <Button className="w-full" disabled={!flashcardFile}>Summarize Notes</Button>
                                     </CardFooter>
