@@ -201,7 +201,7 @@ export default function AiRevisionPage() {
                                         <CardDescription>AI can turn your notes into flashcards or summarize long chapters for quick revision.</CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
-                                         {renderFileUpload(flashcardFile, setFlashcardFile, flashcardFileInputRef)}
+                                         {renderFileUpload(flashcardFile, setFlashcardFile, flashcardFileInputRef, "secondary")}
                                     </CardContent>
                                     <CardFooter className="grid grid-cols-2 gap-4">
                                         <Button className="w-full" disabled={!flashcardFile}>Create Flashcards</Button>
@@ -383,3 +383,5 @@ export default function AiRevisionPage() {
         </div>
     )
 }
+
+    

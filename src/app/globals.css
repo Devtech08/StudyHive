@@ -16,7 +16,7 @@
     --primary: 181 48% 33%; /* Teal */
     --primary-foreground: 210 40% 98%;
  
-    --secondary: 172 63% 70%; /* Mint Green */
+    --secondary: 48 96% 61%; /* Yellow */
     --secondary-foreground: 220 13% 11%;
  
     --muted: 210 40% 96.1%;
@@ -54,7 +54,7 @@
     --primary: 181 48% 33%; /* Teal */
     --primary-foreground: 210 40% 98%;
  
-    --secondary: 172 63% 70%; /* Mint Green */
+    --secondary: 48 96% 61%; /* Yellow */
     --secondary-foreground: 220 13% 11%;
  
     --muted: 217.2 32.6% 17.5%;
@@ -89,3 +89,5 @@
     @apply bg-background text-foreground;
   }
 }
+
+    
