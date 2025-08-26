@@ -171,7 +171,7 @@ export default function ProgressTrackingPage() {
                                 <Card className="shadow-2xl">
                                     <CardHeader>
                                         <CardTitle>Course Progress</CardTitle>
-                                        <CardDescription>{course?.title}</CardDescription>
+                                        <CardDescription>Biology</CardDescription>
                                     </CardHeader>
                                     <CardContent>
                                         <div className="flex justify-between items-center mb-1">
