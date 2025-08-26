@@ -10,7 +10,7 @@ export const subjects = [
         id: 'biology-101',
         title: 'Biology 101',
         instructor: 'Dr. Jane Goodall',
-        thumbnail: 'https://picsum.photos/600/400',
+        thumbnail: 'https://i.pinimg.com/1200x/ec/0f/c0/ec0fc0417629ebf71d36bf044fa183ec.jpg',
         dataAiHint: 'biology dna',
         description: 'Explore the fundamental principles of life, from cellular structures to complex ecosystems.',
         objectives: [
@@ -150,6 +150,20 @@ export const subjects = [
     ]
   }
 ];
+
+// Add progress to some courses for demonstration
+const bioCourse = subjects.find(s => s.id === 'science')?.courses.find(c => c.id === 'biology-101');
+if (bioCourse) (bioCourse as any).progress = 65;
+
+const algCourse = subjects.find(s => s.id === 'math')?.courses.find(c => c.id === 'algebra-basics');
+if (algCourse) (algCourse as any).progress = 25;
+
+const geoCourse = subjects.find(s => s.id === 'math')?.courses.find(c => c.id === 'geometry-intro');
+if (geoCourse) (geoCourse as any).progress = 100;
+
+const codeCourse = subjects.find(s => s.id === 'technology')?.courses.find(c => c.id === 'intro-to-coding');
+if (codeCourse) (codeCourse as any).progress = 100;
+
 
 export const getSubject = (subjectId: string) => subjects.find(s => s.id === subjectId);
 
