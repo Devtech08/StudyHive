@@ -103,7 +103,7 @@ export default function InteractiveQuizzesPage() {
     };
 
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen animate-zoom-in">
             <header className="px-4 lg:px-6 h-16 flex items-center justify-between bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
                 <div className="flex items-center gap-4">
                   <Sheet open={open} onOpenChange={setOpen}>
