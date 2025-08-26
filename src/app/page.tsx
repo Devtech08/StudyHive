@@ -201,7 +201,7 @@ export default function Home() {
                     <Icon className="h-10 w-10 text-primary mb-2" />
                     <h3 className="text-lg font-bold">{feature.title}</h3>
                     <p className="text-sm text-muted-foreground flex-grow">{feature.description}</p>
-                    <Button variant="ghost" className="mt-2" asChild>
+                    <Button variant="secondary" className="mt-2" asChild>
                       <Link href={feature.href}>Learn More</Link>
                     </Button>
                   </div>
