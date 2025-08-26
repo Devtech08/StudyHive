@@ -24,8 +24,8 @@ export const subjects = [
             id: 'module-1',
             title: 'Module 1: The Basics of Life',
             topics: [
-              { id: 'topic-1-1', title: 'Introduction to Biology', completed: true },
-              { id: 'topic-1-2', title: 'The Chemistry of Life', completed: true },
+              { id: 'topic-1-1', title: 'Introduction to Biology', completed: false },
+              { id: 'topic-1-2', title: 'The Chemistry of Life', completed: false },
               { id: 'topic-1-3', title: 'Cell Structure and Function', completed: false },
             ],
           },
@@ -77,7 +77,7 @@ export const subjects = [
                     id: 'alg-mod-1',
                     title: 'Module 1: Foundations',
                     topics: [
-                      { id: 'alg-topic-1-1', title: 'Intro to Variables', completed: true },
+                      { id: 'alg-topic-1-1', title: 'Intro to Variables', completed: false },
                       { id: 'alg-topic-1-2', title: 'Solving Equations', completed: false },
                     ],
                 }
@@ -96,8 +96,8 @@ export const subjects = [
                     id: 'geo-mod-1',
                     title: 'Module 1: Shapes',
                     topics: [
-                        { id: 'geo-topic-1-1', title: 'Circles', completed: true },
-                        { id: 'geo-topic-1-2', title: 'Triangles', completed: true },
+                        { id: 'geo-topic-1-1', title: 'Circles', completed: false },
+                        { id: 'geo-topic-1-2', title: 'Triangles', completed: false },
                         { id: 'geo-topic-1-3', title: 'Squares', completed: false },
                     ],
                 }
@@ -140,9 +140,9 @@ export const subjects = [
                     id: 'code-mod-1',
                     title: 'Module 1: First Steps',
                     topics: [
-                        { id: 'code-topic-1-1', title: 'Hello World', completed: true },
-                        { id: 'code-topic-1-2', title: 'Variables', completed: true },
-                        { id: 'code-topic-1-3', title: 'Functions', completed: true },
+                        { id: 'code-topic-1-1', title: 'Hello World', completed: false },
+                        { id: 'code-topic-1-2', title: 'Variables', completed: false },
+                        { id: 'code-topic-1-3', title: 'Functions', completed: false },
                     ],
                 }
             ],
@@ -150,20 +150,6 @@ export const subjects = [
     ]
   }
 ];
-
-// Add progress to some courses for demonstration
-const bioCourse = subjects.find(s => s.id === 'science')?.courses.find(c => c.id === 'biology-101');
-if (bioCourse) (bioCourse as any).progress = 65;
-
-const algCourse = subjects.find(s => s.id === 'math')?.courses.find(c => c.id === 'algebra-basics');
-if (algCourse) (algCourse as any).progress = 25;
-
-const geoCourse = subjects.find(s => s.id === 'math')?.courses.find(c => c.id === 'geometry-intro');
-if (geoCourse) (geoCourse as any).progress = 100;
-
-const codeCourse = subjects.find(s => s.id === 'technology')?.courses.find(c => c.id === 'intro-to-coding');
-if (codeCourse) (codeCourse as any).progress = 100;
-
 
 export const getSubject = (subjectId: string) => subjects.find(s => s.id === subjectId);
 
