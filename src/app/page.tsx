@@ -152,7 +152,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 flex items-center justify-center text-white">
           <Image
-              src="https://picsum.photos/1200/800"
+              src="https://media.istockphoto.com/id/1312211933/photo/focused-young-people-using-laptop-in-the-library.jpg?s=612x612&w=0&k=20&c=XpIK3dDk3bvR-2xGfOF2y7XW5s2xx5tDBlKRb8b0e-E="
               alt="Students studying"
               fill
               className="object-cover -z-10"
