@@ -24,7 +24,7 @@ import {
 import { Input } from '@/components/ui/input';
 
 const userProfile = {
-    name: 'QuantumLeaper',
+    name: 'warrior',
     email: 'scholar@studyhive.com',
     avatar: 'https://picsum.photos/100/100',
     points: 15200,
@@ -32,7 +32,7 @@ const userProfile = {
     badges: ['Quiz Master', 'Top Contributor', 'Biology Pro', 'Archivist'],
 };
 
-const enrolledCourses = subjects.flatMap(s => s.courses).filter(c => c.progress > 0);
+const enrolledCourses = subjects.flatMap(s => s.courses).filter(c => (c as any).progress > 0);
 
 const badgeIcons: { [key: string]: React.ElementType } = {
     'Quiz Master': Trophy,
@@ -163,7 +163,7 @@ export default function ProfilePage() {
                                     </div>
                                     <div className="flex justify-between items-center p-3 bg-muted/50 rounded-lg">
                                         <span className="font-medium">Courses Completed</span>
-                                        <span className="font-bold text-primary">{enrolledCourses.filter(c => c.progress === 100).length}</span>
+                                        <span className="font-bold text-primary">{enrolledCourses.filter(c => (c as any).progress === 100).length}</span>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -194,15 +194,24 @@ export default function ProfilePage() {
                                     <CardDescription>Courses you are currently enrolled in.</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
-                                    {enrolledCourses.map(course => (
-                                        <Link href={`/courses/${(course as any).subjectId}/${course.id}`} key={course.id} className="block p-4 rounded-lg hover:bg-muted border">
-                                             <div className="flex justify-between items-center mb-2">
-                                                <h3 className="font-semibold">{course.title}</h3>
-                                                <span className="text-sm font-bold">{course.progress}%</span>
-                                            </div>
-                                            <Progress value={course.progress} className="h-2" />
-                                        </Link>
-                                    ))}
+                                    {enrolledCourses.length > 0 ? (
+                                        enrolledCourses.map(course => (
+                                            <Link href={`/courses/${(course as any).subjectId}/${course.id}`} key={course.id} className="block p-4 rounded-lg hover:bg-muted border">
+                                                <div className="flex justify-between items-center mb-2">
+                                                    <h3 className="font-semibold">{course.title}</h3>
+                                                    <span className="text-sm font-bold">{(course as any).progress}%</span>
+                                                </div>
+                                                <Progress value={(course as any).progress} className="h-2" />
+                                            </Link>
+                                        ))
+                                    ) : (
+                                        <div className="text-center text-muted-foreground p-8 border-2 border-dashed rounded-lg">
+                                            <p className="mb-4">You haven't started any courses yet.</p>
+                                            <Button asChild>
+                                                <Link href="/courses">Explore Courses</Link>
+                                            </Button>
+                                        </div>
+                                    )}
                                 </CardContent>
                             </Card>
                         </div>
