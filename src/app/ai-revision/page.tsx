@@ -130,7 +130,8 @@ export default function AiRevisionPage() {
         file: File | null, 
         setFile: React.Dispatch<React.SetStateAction<File | null>>, 
         fileInputRef: React.RefObject<HTMLInputElement>,
-        variant: "outline" | "secondary" = "outline"
+        variant: "outline" | "secondary" = "outline",
+        className?: string
     ) => {
         if (file) {
             return (
@@ -154,7 +155,7 @@ export default function AiRevisionPage() {
                     onChange={(e) => handleFileUpload(e, setFile)}
                     accept=".pdf,.doc,.docx,.txt"
                 />
-                <Button variant={variant} className="w-full" onClick={() => fileInputRef.current?.click()}>
+                <Button variant={variant} className={cn("w-full", className)} onClick={() => fileInputRef.current?.click()}>
                     <Upload className="w-4 h-4 mr-2" />
                     Upload Notes or PDF
                 </Button>
@@ -201,7 +202,7 @@ export default function AiRevisionPage() {
                                         <CardDescription>AI can turn your notes into flashcards or summarize long chapters for quick revision.</CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
-                                         {renderFileUpload(flashcardFile, setFlashcardFile, flashcardFileInputRef, "secondary")}
+                                         {renderFileUpload(flashcardFile, setFlashcardFile, flashcardFileInputRef, "secondary", "bg-accent text-accent-foreground hover:bg-accent/90")}
                                     </CardContent>
                                     <CardFooter className="grid grid-cols-2 gap-4">
                                         <Button className="w-full" disabled={!flashcardFile}>Create Flashcards</Button>
