@@ -8,7 +8,7 @@ export const subjects = [
     courses: [
       {
         id: 'biology-101',
-        title: 'Biology 101',
+        title: 'Biology',
         instructor: 'Dr. Jane Goodall',
         thumbnail: 'https://i.pinimg.com/1200x/ec/0f/c0/ec0fc0417629ebf71d36bf044fa183ec.jpg',
         dataAiHint: 'biology dna',
