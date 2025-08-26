@@ -129,7 +129,8 @@ export default function AiRevisionPage() {
     const renderFileUpload = (
         file: File | null, 
         setFile: React.Dispatch<React.SetStateAction<File | null>>, 
-        fileInputRef: React.RefObject<HTMLInputElement>
+        fileInputRef: React.RefObject<HTMLInputElement>,
+        variant: "outline" | "secondary" = "outline"
     ) => {
         if (file) {
             return (
@@ -153,7 +154,7 @@ export default function AiRevisionPage() {
                     onChange={(e) => handleFileUpload(e, setFile)}
                     accept=".pdf,.doc,.docx,.txt"
                 />
-                <Button variant="outline" className="w-full" onClick={() => fileInputRef.current?.click()}>
+                <Button variant={variant} className="w-full" onClick={() => fileInputRef.current?.click()}>
                     <Upload className="w-4 h-4 mr-2" />
                     Upload Notes or PDF
                 </Button>
@@ -188,7 +189,7 @@ export default function AiRevisionPage() {
                                         <CardDescription>Upload course notes or a PDF and let AI create a quiz for you. Select difficulty and question types.</CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
-                                       {renderFileUpload(quizFile, setQuizFile, quizFileInputRef)}
+                                       {renderFileUpload(quizFile, setQuizFile, quizFileInputRef, "secondary")}
                                     </CardContent>
                                     <CardFooter>
                                          <Button className="w-full" disabled={!quizFile}><Zap className="w-4 h-4 mr-2" />Generate Quiz</Button>
@@ -244,7 +245,7 @@ export default function AiRevisionPage() {
                                     )}
                                     {!isLoadingPlan && !studyPlan && (
                                        <div className="p-4 bg-background rounded-lg border">
-                                           <h4 className="font-semibold mb-2">Today's Focus: Biology 101</h4>
+                                           <h4 className="font-semibold mb-2">Today's Focus: Biology</h4>
                                            <ul className="space-y-2 text-sm">
                                                <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-green-500" />Review 'Cell Structure' (Completed)</li>
                                                <li className="flex items-center"><Zap className="w-4 h-4 mr-2 text-yellow-500" />Practice 10 quiz questions on 'Genetics'.</li>
