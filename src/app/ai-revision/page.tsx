@@ -198,8 +198,8 @@ export default function AiRevisionPage() {
                                 </Card>
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle className="flex items-center"><Bot className="w-6 h-6 mr-3 text-primary" />Flashcards & Summaries</CardTitle>
-                                        <CardDescription>AI can turn your notes into flashcards or summarize long chapters for quick revision.</CardDescription>
+                                        <CardTitle className="flex items-center justify-center md:justify-start"><Bot className="w-6 h-6 mr-3 text-primary" />Flashcards & Summaries</CardTitle>
+                                        <CardDescription className="text-center md:text-left">AI can turn your notes into flashcards or summarize long chapters for quick revision.</CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
                                          {renderFileUpload(flashcardFile, setFlashcardFile, flashcardFileInputRef, "secondary", "bg-accent text-accent-foreground hover:bg-accent/90")}
