@@ -41,7 +41,7 @@ export const subjects = [
       },
       {
         id: 'chemistry-basics',
-        title: 'Chemistry Basics',
+        title: 'Chemistry',
         instructor: 'Dr. Marie Curie',
         thumbnail: 'https://picsum.photos/600/400',
         dataAiHint: 'chemistry lab',
