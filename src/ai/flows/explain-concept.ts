@@ -12,7 +12,7 @@ import { z } from 'genkit';
 const ExplainConceptInputSchema = z.object({
   query: z.string(),
 });
-const ExplainConceptOutputSchema = z.string();
+const ExplainConceptOutputSchema = z.string().default('');
 
 export async function explainConcept(query: string): Promise<string> {
   return explainConceptFlow({ query });
@@ -37,7 +37,7 @@ const explainConceptFlow = ai.defineFlow(
   },
   async (input) => {
     const { output } = await prompt(input);
-    return output!;
+    return output;
   }
 );
 
