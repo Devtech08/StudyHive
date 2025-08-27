@@ -198,7 +198,7 @@ export default function AiRevisionPage() {
                                 </Card>
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle className="flex items-center justify-center md:justify-start"><Bot className="w-6 h-6 mr-3 text-primary" />Flashcards & Summaries</CardTitle>
+                                        <CardTitle className="flex items-center justify-center md:text-left md:justify-start"><Bot className="w-6 h-6 mr-3 text-primary" />Flashcards & Summaries</CardTitle>
                                         <CardDescription className="text-center md:text-left">AI can turn your notes into flashcards or summarize long chapters for quick revision.</CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
@@ -245,7 +245,7 @@ export default function AiRevisionPage() {
                                         </div>
                                     )}
                                     {!isLoadingPlan && !studyPlan && (
-                                       <div className="p-4 bg-background rounded-lg border mt-4 mb-2">
+                                       <div className="p-4 bg-background rounded-lg border mt-4 mb-4">
                                            <h4 className="font-semibold mb-2">Today's Focus: Biology</h4>
                                            <ul className="space-y-2 text-sm">
                                                <li className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-green-500" />Review 'Cell Structure' (Completed)</li>
@@ -254,7 +254,7 @@ export default function AiRevisionPage() {
                                            </ul>
                                        </div>
                                     )}
-                                    <Button className="w-full !mt-6" onClick={handleGeneratePlan} disabled={isLoadingPlan}>
+                                    <Button className="w-full !mt-8" onClick={handleGeneratePlan} disabled={isLoadingPlan}>
                                         {isLoadingPlan ? (
                                             <>
                                                 <Loader2 className="w-4 h-4 mr-2 animate-spin"/>
