@@ -198,15 +198,15 @@ export default function AiRevisionPage() {
                                 </Card>
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle className="flex items-center justify-center md:text-left md:justify-start"><Bot className="w-6 h-6 mr-3 text-primary" />Flashcards & Summaries</CardTitle>
+                                        <CardTitle className="flex items-center justify-center md:justify-start"><Bot className="w-6 h-6 mr-3 text-primary" />Flashcards & Summaries</CardTitle>
                                         <CardDescription className="text-center md:text-left">AI can turn your notes into flashcards or summarize long chapters for quick revision.</CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-4">
                                          {renderFileUpload(flashcardFile, setFlashcardFile, flashcardFileInputRef, "secondary", "bg-accent text-accent-foreground hover:bg-accent/90")}
                                     </CardContent>
                                     <CardFooter className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <Button className="w-full" disabled={!flashcardFile}>Create Flashcards</Button>
-                                        <Button className="w-full" disabled={!flashcardFile}>Summarize Notes</Button>
+                                        <Button className="w-full md:order-1" disabled={!flashcardFile}>Create Flashcards</Button>
+                                        <Button className="w-full md:order-2" disabled={!flashcardFile}>Summarize Notes</Button>
                                     </CardFooter>
                                 </Card>
                             </div>
@@ -254,7 +254,7 @@ export default function AiRevisionPage() {
                                            </ul>
                                        </div>
                                     )}
-                                    <Button className="w-full !mt-8" onClick={handleGeneratePlan} disabled={isLoadingPlan}>
+                                    <Button className="w-full mt-8" onClick={handleGeneratePlan} disabled={isLoadingPlan}>
                                         {isLoadingPlan ? (
                                             <>
                                                 <Loader2 className="w-4 h-4 mr-2 animate-spin"/>
@@ -325,7 +325,7 @@ export default function AiRevisionPage() {
                                     <CardTitle className="flex items-center"><FileText className="w-6 h-6 mr-3 text-primary" />Mock Exam Mode</CardTitle>
                                     <CardDescription>Let the AI generate a full practice test from all topics in a course to get you ready for the real exam.</CardDescription>
                                 </CardHeader>
-                                <CardContent className="space-y-4">
+                                <CardContent className="space-y-6 pt-2 pb-4">
                                     <Select onValueChange={setExamSubject} value={examSubject}>
                                         <SelectTrigger>
                                             <SelectValue placeholder="Select a subject..." />
