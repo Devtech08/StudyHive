@@ -25,7 +25,7 @@ const testimonials = [
   {
     name: 'Prince Okumtey',
     role: 'High School Student',
-    avatar: 'https://picsum.photos/100/100',
+    avatar: 'https://i.pinimg.com/1200x/bb/6a/ef/bb6aef8c1bd48cd8b3b41725eaba18e3.jpg',
     dataAiHint: 'man portrait',
     quote:
       'I love the interactive quizzes. They make learning fun and I\'ve seen a huge improvement in my grades.',
