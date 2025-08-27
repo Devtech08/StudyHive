@@ -78,10 +78,10 @@ The project follows a standard Next.js App Router structure. Key directories inc
 
 ### b. AI Revision Studio
 
-This is the core of the application's "smart" functionality, powered by **Google's Genkit**.
+This is the core of the application's "smart" functionality, powered by **Google's Genkit**. The user interface is fully responsive, featuring a full-screen chat experience on mobile devices for better usability.
 
 - **Genkit Flows (`/src/ai/flows`):** Each file in this directory defines a specific AI-powered task.
-  - `explain-concept.ts`: Takes a user's query and provides a simple, clear explanation.
+  - `explain-concept.ts`: Engages in a conversational chat with the student. It takes the entire chat history as context to provide relevant, easy-to-understand explanations for user queries.
   - `generate-study-plan.ts`: Creates a personalized 7-day study plan based on a subject and user-identified weak topics.
   - `generate-mock-exam.ts`: Generates a multi-format mock exam for a given subject.
   - `generate-challenge-quiz.ts`: Creates a fun, gamified quiz with random questions.
