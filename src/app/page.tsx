@@ -33,7 +33,7 @@ const testimonials = [
   {
     name: 'Serwa',
     role: 'Medical Student',
-    avatar: 'https://picsum.photos/100/100',
+    avatar: 'https://i.pinimg.com/736x/20/1f/eb/201feb8e95cd036fe805e9c8f3de7bc2.jpg',
     dataAiHint: 'woman portrait',
     quote:
       'The ability to see my progress visually is incredibly motivating. It keeps me on track and focused on my goals.',
