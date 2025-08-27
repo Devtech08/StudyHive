@@ -1,11 +1,10 @@
-
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Upload, Wand2, BookCopy, Zap, Target, Award, Bot, FileText, CheckCircle, MessageSquare, Speaker, HelpCircle, X, File as FileIcon, Loader2, User } from "lucide-react";
+import { Upload, Wand2, BookCopy, Zap, Target, Award, Bot, FileText, CheckCircle, MessageSquare, Speaker, HelpCircle, X, File as FileIcon, Loader2, User, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { generateStudyPlan, StudyPlan } from '@/ai/flows/generate-study-plan';
@@ -35,6 +34,7 @@ type Message = {
 
 export default function AiRevisionPage() {
     const router = useRouter();
+    const [activeTab, setActiveTab] = useState('generate');
     const [quizFile, setQuizFile] = useState<File | null>(null);
     const [flashcardFile, setFlashcardFile] = useState<File | null>(null);
     const [studyPlan, setStudyPlan] = useState<StudyPlan | null>(null);
@@ -168,14 +168,14 @@ export default function AiRevisionPage() {
              <DashboardHeader />
             <main className="flex-1 p-4 md:p-8 lg:p-12 bg-muted/20">
                 <div className="container mx-auto">
-                    <header className="mb-12 text-center">
+                    <header className={cn("mb-12 text-center", activeTab === 'explain' && 'md:block hidden')}>
                         <h1 className="text-4xl font-bold font-headline">AI Revision Studio</h1>
                         <p className="text-muted-foreground mt-2 text-lg">
                             Your personalized AI-powered study partner.
                         </p>
                     </header>
-                    <Tabs defaultValue="generate">
-                        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mb-8">
+                    <Tabs defaultValue="generate" value={activeTab} onValueChange={setActiveTab}>
+                        <TabsList className={cn("grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mb-8", activeTab === 'explain' && 'md:grid hidden')}>
                             <TabsTrigger value="generate"><Wand2 className="w-4 h-4 mr-2"/>Generate</TabsTrigger>
                             <TabsTrigger value="plan"><Target className="w-4 h-4 mr-2"/>Study Plan</TabsTrigger>
                             <TabsTrigger value="explain"><HelpCircle className="w-4 h-4 mr-2" />Explain</TabsTrigger>
@@ -266,13 +266,16 @@ export default function AiRevisionPage() {
                             </Card>
                         </TabsContent>
                         <TabsContent value="explain">
-                             <Card>
-                                <CardHeader>
+                             <Card className="md:relative fixed inset-0 z-50 md:z-auto bg-background md:bg-card rounded-none md:rounded-lg border-none md:border">
+                                <CardHeader className="flex-row items-center justify-between border-b md:border-none pb-4 md:pb-6">
+                                     <Button variant="ghost" className="md:hidden" onClick={() => setActiveTab('generate')}>
+                                        <ArrowLeft className="w-4 h-4 mr-2"/>
+                                        Back
+                                    </Button>
                                     <CardTitle className="flex items-center text-lg md:text-2xl"><HelpCircle className="w-6 h-6 mr-3 text-primary" />Instant Explanations</CardTitle>
-                                    <CardDescription className="text-sm md:text-base">Stuck on a concept? Ask our AI assistant for a simple explanation, or to quiz you on a topic.</CardDescription>
                                 </CardHeader>
-                                <CardContent className="space-y-4">
-                                   <div className="p-4 bg-background rounded-lg border flex flex-col h-96">
+                                <CardContent className="p-0 md:p-6 md:pt-0 h-[calc(100vh-10rem)] md:h-auto">
+                                   <div className="p-4 bg-background rounded-lg md:border flex flex-col h-full md:h-96">
                                        <ScrollArea className="flex-grow space-y-4 pr-4" ref={chatContainerRef}>
                                             {messages.map((message, index) => (
                                                 <div key={index} className={cn("flex items-start gap-3 my-4", message.role === 'user' && 'justify-end')}>
@@ -304,7 +307,7 @@ export default function AiRevisionPage() {
                                        </ScrollArea>
                                        <div className="flex gap-2 pt-4 border-t">
                                             <Input 
-                                                placeholder="Ask something like 'Explain photosynthesis in simple terms'" 
+                                                placeholder="Ask something like 'Explain photosynthesis...'" 
                                                 value={explanationInput}
                                                 onChange={(e) => setExplanationInput(e.target.value)}
                                                 onKeyDown={(e) => e.key === 'Enter' && !isGeneratingExplanation && handleSendExplanationRequest()}
