@@ -8,7 +8,7 @@ import { Upload, Wand2, BookCopy, Zap, Target, Award, Bot, FileText, CheckCircle
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { generateStudyPlan, StudyPlan } from '@/ai/flows/generate-study-plan';
-import { explainConcept } from '@/ai/flows/explain-concept';
+import { explainConcept, Message } from '@/ai/flows/explain-concept';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -25,11 +25,6 @@ const activityIcons: { [key: string]: React.ElementType } = {
     read: BookCopy,
     quiz: HelpCircle,
     default: CheckCircle,
-};
-
-type Message = {
-    role: 'user' | 'bot';
-    content: string;
 };
 
 export default function AiRevisionPage() {
@@ -84,13 +79,13 @@ export default function AiRevisionPage() {
         if (!explanationInput.trim()) return;
 
         const newUserMessage: Message = { role: 'user', content: explanationInput };
-        setMessages(prev => [...prev, newUserMessage]);
-        const currentInput = explanationInput;
+        const newMessages = [...messages, newUserMessage];
+        setMessages(newMessages);
         setExplanationInput('');
         setIsGeneratingExplanation(true);
 
         try {
-            const response = await explainConcept(currentInput);
+            const response = await explainConcept({ history: newMessages });
             const botMessage: Message = { role: 'bot', content: response };
             setMessages(prev => [...prev, botMessage]);
         } catch (error) {
