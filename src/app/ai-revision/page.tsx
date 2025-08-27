@@ -325,32 +325,34 @@ export default function AiRevisionPage() {
                                     <CardTitle className="flex items-center"><FileText className="w-6 h-6 mr-3 text-primary" />Mock Exam Mode</CardTitle>
                                     <CardDescription>Let the AI generate a full practice test from all topics in a course to get you ready for the real exam.</CardDescription>
                                 </CardHeader>
-                                <CardContent className="space-y-6 pt-2 pb-4">
-                                    <Select onValueChange={setExamSubject} value={examSubject}>
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select a subject..." />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            {subjects.map((subject) => (
-                                                <SelectItem key={subject.id} value={subject.name}>
-                                                    {subject.name}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
-                                    <Button className="w-full" size="lg" onClick={handleGenerateExam} disabled={isGeneratingExam || !examSubject}>
-                                        {isGeneratingExam ? (
-                                            <>
-                                                <Loader2 className="w-5 h-5 mr-2 animate-spin"/>
-                                                Generating...
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Zap className="w-5 h-5 mr-2"/>
-                                                Generate Mock Exam
-                                            </>
-                                        )}
-                                    </Button>
+                                <CardContent className="space-y-6 pt-6 pb-4">
+                                    <div className="space-y-4">
+                                        <Select onValueChange={setExamSubject} value={examSubject}>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Select a subject..." />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {subjects.map((subject) => (
+                                                    <SelectItem key={subject.id} value={subject.name}>
+                                                        {subject.name}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                        <Button className="w-full" size="lg" onClick={handleGenerateExam} disabled={isGeneratingExam || !examSubject}>
+                                            {isGeneratingExam ? (
+                                                <>
+                                                    <Loader2 className="w-5 h-5 mr-2 animate-spin"/>
+                                                    Generating...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Zap className="w-5 h-5 mr-2"/>
+                                                    Generate Mock Exam
+                                                </>
+                                            )}
+                                        </Button>
+                                    </div>
                                 </CardContent>
                                 <CardFooter>
                                     <p className="text-xs text-muted-foreground">The exam will be timed and cover all course material to simulate final exam conditions.</p>
