@@ -17,7 +17,7 @@ const testimonials = [
   {
     name: 'Marina Mantey',
     role: 'University Student',
-    avatar: 'https://picsum.photos/100/100',
+    avatar: 'https://i.pinimg.com/1200x/4a/18/d9/4a18d9f01fffe032b774455bca4c05f6.jpg',
     dataAiHint: 'woman portrait',
     quote:
       'StudyHive has been a total game-changer for my study routine. The AI revision prompts helped me ace my finals!',
