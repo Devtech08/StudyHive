@@ -74,12 +74,27 @@ const features = [
   },
 ];
 
+const heroImages = [
+  'https://i.pinimg.com/1200x/2d/1e/a2/2d1ea215d570756025b33dbb33540c0e.jpg',
+  'https://i.pinimg.com/1200x/06/38/ee/0638ee58331a27256ad1a35507baea29.jpg',
+  'https://i.pinimg.com/1200x/c7/0d/12/c70d12ec23b1b03e4d5d49c3cc368d8c.jpg',
+];
+
 
 export default function Home() {
   const { user, loading } = useAuth();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 50000); // 50 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const isHomepage = pathname === '/';
 
@@ -152,10 +167,11 @@ export default function Home() {
       <main className="flex-1">
         <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 flex items-center justify-center text-white">
           <Image
-              src="https://media.istockphoto.com/id/1312211933/photo/focused-young-people-using-laptop-in-the-library.jpg?s=612x612&w=0&k=20&c=XpIK3dDk3bvR-2xGfOF2y7XW5s2xx5tDBlKRb8b0e-E="
+              src={heroImages[currentImageIndex]}
               alt="Students studying"
               fill
-              className="object-cover -z-10"
+              className="object-cover -z-10 transition-opacity duration-1000"
+              key={currentImageIndex}
               data-ai-hint="library students"
           />
           <div className="absolute inset-0 bg-black/60 -z-10" />
