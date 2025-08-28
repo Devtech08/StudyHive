@@ -96,11 +96,11 @@ export default function ProgressTrackingPage() {
             <main className="flex-1">
                 <section className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-center">
                     <Image
-                        src="https://picsum.photos/1200/800"
-                        alt="A person climbing stairs towards a goal"
+                        src="https://i.pinimg.com/736x/71/2e/49/712e49b12a6c2f98ba51afbd3520c038.jpg"
+                        alt="A path through a sunlit forest representing a learning journey"
                         fill
                         className="object-cover -z-10"
-                        data-ai-hint="learning journey"
+                        data-ai-hint="forest path"
                     />
                     <div className="absolute inset-0 bg-black/70 -z-10" />
                     <div className="container px-4 md:px-6 text-white">
