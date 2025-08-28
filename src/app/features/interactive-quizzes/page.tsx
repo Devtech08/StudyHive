@@ -162,11 +162,11 @@ export default function InteractiveQuizzesPage() {
             <main className="flex-1">
                 <section className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-center">
                     <Image
-                        src="https://picsum.photos/1200/800"
-                        alt="Question mark background"
+                        src="https://i.pinimg.com/736x/6b/28/0b/6b280b960fc507d282a4cb0f6d1ffb85.jpg"
+                        alt="Abstract background"
                         fill
                         className="object-cover -z-10"
-                        data-ai-hint="question mark"
+                        data-ai-hint="abstract texture"
                     />
                     <div className="absolute inset-0 bg-black/70 -z-10" />
                     <div className="container px-4 md:px-6 text-white">
