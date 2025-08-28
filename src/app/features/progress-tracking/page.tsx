@@ -14,6 +14,7 @@ import { Progress } from "@/components/ui/progress";
 import { Bar, BarChart as RechartsBarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useAuth } from '@/hooks/use-auth';
+import { getCourse } from '@/lib/courses';
 
 const navLinks = [
   { href: '/courses', label: 'Courses' },
@@ -35,6 +36,19 @@ export default function ProgressTrackingPage() {
     const pathname = usePathname();
 
     const loggedInNavLinks = navLinks;
+    
+    const course = getCourse('science', 'biology-101');
+    const calculateProgress = (course: any) => {
+        if (!course || !course.modules || course.modules.length === 0) return 0;
+        const totalTopics = course.modules.reduce((acc: number, module: any) => acc + (module.topics?.length || 0), 0);
+        if (totalTopics === 0) return 0;
+        const completedTopics = course.modules.reduce((acc: number, module: any) => {
+            return acc + (module.topics?.filter((t: any) => t.completed).length || 0);
+        }, 0);
+        return Math.round((completedTopics / totalTopics) * 100);
+    };
+    const courseProgress = calculateProgress(course);
+
 
     return (
         <div className="flex flex-col min-h-screen animate-zoom-in">
@@ -42,7 +56,7 @@ export default function ProgressTrackingPage() {
                 <div className="flex items-center gap-4">
                   <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>
-                      <Button variant="outline" size="icon" className="md-hidden">
+                      <Button variant="outline" size="icon" className="md:hidden">
                         <Menu className="h-6 w-6" />
                         <span className="sr-only">Open navigation menu</span>
                       </Button>
@@ -157,14 +171,20 @@ export default function ProgressTrackingPage() {
                                 <Card className="shadow-2xl">
                                     <CardHeader>
                                         <CardTitle>Course Progress</CardTitle>
-                                        <CardDescription>Biology 101</CardDescription>
+                                        <CardDescription>{course?.title || 'Biology 101'}</CardDescription>
                                     </CardHeader>
                                     <CardContent>
-                                        <div className="flex justify-between items-center mb-1">
-                                            <span className="text-sm text-muted-foreground">Overall Progress</span>
-                                            <span className="text-sm font-semibold">65%</span>
-                                        </div>
-                                        <Progress value={65} className="h-2" />
+                                    {courseProgress > 0 ? (
+                                        <>
+                                            <div className="flex justify-between items-center mb-1">
+                                                <span className="text-sm text-muted-foreground">Overall Progress</span>
+                                                <span className="text-sm font-semibold">{courseProgress}%</span>
+                                            </div>
+                                            <Progress value={courseProgress} className="h-2" />
+                                        </>
+                                    ) : (
+                                        <p className="text-sm text-muted-foreground text-center py-4">You haven't started this course yet. Let's get learning!</p>
+                                    )}
                                     </CardContent>
                                 </Card>
                                  <Card className="shadow-2xl">
