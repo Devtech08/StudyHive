@@ -88,11 +88,11 @@ export default function StructuredNotesPage() {
             <main className="flex-1">
                 <section className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-center">
                     <Image
-                        src="https://picsum.photos/1200/800"
+                        src="https://i.pinimg.com/736x/cb/64/7e/cb647e178bbccfb7498002aa2d070f18.jpg"
                         alt="Organized study desk"
                         fill
                         className="object-cover -z-10"
-                        data-ai-hint="study desk"
+                        data-ai-hint="typewriter vintage"
                     />
                     <div className="absolute inset-0 bg-black/70 -z-10" />
                     <div className="container px-4 md:px-6 text-white">
