@@ -12,6 +12,8 @@ import { useAuth } from '@/hooks/use-auth';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { SplashScreen } from '@/components/SplashScreen';
+import { cn } from '@/lib/utils';
 
 const testimonials = [
   {
@@ -87,6 +89,16 @@ export default function Home() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isAppLoading, setIsAppLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsAppLoading(false);
+    }, 2500); // Duration of the splash screen
+
+    return () => clearTimeout(timer);
+  }, []);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -102,9 +114,13 @@ export default function Home() {
     { href: '/dashboard', label: 'Dashboard' },
     ...navLinks
   ];
+  
+  if (isAppLoading) {
+    return <SplashScreen />;
+  }
 
   return (
-    <div className="flex flex-col min-h-screen animate-zoom-in">
+    <div className={cn("flex flex-col min-h-screen", !isAppLoading && "animate-fade-in")}>
       <header className="px-4 lg:px-6 h-16 flex items-center justify-between bg-background/80 backdrop-blur-sm sticky top-0 z-10 border-b">
         <div className="flex items-center gap-4">
           <Sheet open={open} onOpenChange={setOpen}>

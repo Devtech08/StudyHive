@@ -99,18 +99,29 @@ export default {
             transform: 'translateY(0)',
           },
         },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'fade-out': {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'zoom-in': 'zoom-in 0.5s ease-out',
         'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
+        'fade-in': 'fade-in 0.5s ease-out forwards',
+        'fade-out': 'fade-out 0.5s ease-out forwards',
       },
       animationDelay: {
         '100': '100ms',
         '200': '200ms',
         '300': '300ms',
         '500': '500ms',
+        '2s': '2s',
       }
     },
   },
@@ -129,6 +140,9 @@ export default {
         },
         '.animation-delay-500': {
           'animation-delay': theme('animationDelay.500'),
+        },
+         '.animation-delay-\\[2s\\]': {
+          'animation-delay': theme('animationDelay.2s'),
         },
       }
       addUtilities(newUtilities, ['responsive', 'hover'])
