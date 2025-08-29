@@ -103,9 +103,18 @@ export default {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+         'fade-in-slow': {
+          '0%': { opacity: '0' },
+          '50%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         'fade-out': {
           '0%': { opacity: '1' },
           '100%': { opacity: '0' },
+        },
+        'slide-up': {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-2.5rem)' },
         },
       },
       animation: {
