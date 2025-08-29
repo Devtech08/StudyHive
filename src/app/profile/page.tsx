@@ -27,7 +27,7 @@ const userProfile = {
     name: 'warrior',
     email: 'scholar@studyhive.com',
     avatar: 'https://picsum.photos/100/100',
-    points: 15200,
+    points: 0,
     rank: 1,
     badges: ['Quiz Master', 'Top Contributor', 'Biology Pro', 'Archivist'],
 };
