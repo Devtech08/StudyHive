@@ -68,8 +68,8 @@ export const subjects = [
             id: 'algebra-basics',
             title: 'Algebra',
             instructor: 'Prof. Leonhard Euler',
-            thumbnail: 'https://picsum.photos/600/400',
-            dataAiHint: 'math blackboard',
+            thumbnail: 'https://i.pinimg.com/736x/b0/49/a4/b049a47b8921c25565af202cd689457d.jpg',
+            dataAiHint: 'mathematics chalkboard',
             description: 'Learn the fundamentals of algebra, including variables, equations, and functions.',
             objectives: [],
             modules: [
@@ -87,8 +87,8 @@ export const subjects = [
             id: 'geometry-intro',
             title: 'Introduction to Geometry',
             instructor: 'Pythagoras',
-            thumbnail: 'https://picsum.photos/600/400',
-            dataAiHint: 'geometry compass',
+            thumbnail: 'https://i.pinimg.com/736x/b0/49/a4/b049a47b8921c25565af202cd689457d.jpg',
+            dataAiHint: 'mathematics chalkboard',
             description: 'Discover the world of shapes, angles, and spatial reasoning.',
             objectives: [],
             modules: [
