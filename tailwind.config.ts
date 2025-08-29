@@ -88,14 +88,50 @@ export default {
         'zoom-in': {
           '0%': { opacity: '0', transform: 'scale(0.98)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
-        }
+        },
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'zoom-in': 'zoom-in 0.5s ease-out',
+        'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
       },
+      animationDelay: {
+        '100': '100ms',
+        '200': '200ms',
+        '300': '300ms',
+        '500': '500ms',
+      }
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    function ({ addUtilities, theme }: { addUtilities: any, theme: any }) {
+      const newUtilities = {
+        '.animation-delay-100': {
+          'animation-delay': theme('animationDelay.100'),
+        },
+        '.animation-delay-200': {
+          'animation-delay': theme('animationDelay.200'),
+        },
+        '.animation-delay-300': {
+          'animation-delay': theme('animationDelay.300'),
+        },
+        '.animation-delay-500': {
+          'animation-delay': theme('animationDelay.500'),
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    }
+  ],
 } satisfies Config;
