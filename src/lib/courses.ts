@@ -43,7 +43,7 @@ export const subjects = [
         id: 'chemistry-basics',
         title: 'Chemistry',
         instructor: 'Dr. Marie Curie',
-        thumbnail: 'https://picsum.photos/600/400',
+        thumbnail: 'https://i.pinimg.com/736x/dc/cf/47/dccf47c2bf129ee8a1c01fa649ae931b.jpg',
         dataAiHint: 'chemistry lab',
         description: 'A foundational course on the properties, composition, and structure of matter.',
         objectives: [],
