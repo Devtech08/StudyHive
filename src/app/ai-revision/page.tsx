@@ -163,14 +163,14 @@ export default function AiRevisionPage() {
              <DashboardHeader />
             <main className="flex-1 p-4 md:p-8 lg:p-12 bg-muted/20">
                 <div className="container mx-auto">
-                    <header className={cn("mb-12 text-center", activeTab === 'explain' && 'md:block hidden')}>
+                    <header className={cn("mb-12 text-center", activeTab === 'explain' && 'hidden md:block')}>
                         <h1 className="text-4xl font-bold font-headline">AI Revision Studio</h1>
                         <p className="text-muted-foreground mt-2 text-lg">
                             Your personalized AI-powered study partner.
                         </p>
                     </header>
                     <Tabs defaultValue="generate" value={activeTab} onValueChange={setActiveTab}>
-                        <TabsList className={cn("grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mb-8", activeTab === 'explain' && 'md:grid hidden')}>
+                        <TabsList className={cn("grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mb-8", activeTab === 'explain' && 'hidden md:grid')}>
                             <TabsTrigger value="generate"><Wand2 className="w-4 h-4 mr-2"/>Generate</TabsTrigger>
                             <TabsTrigger value="plan"><Target className="w-4 h-4 mr-2"/>Study Plan</TabsTrigger>
                             <TabsTrigger value="explain"><HelpCircle className="w-4 h-4 mr-2" />Explain</TabsTrigger>
@@ -260,16 +260,16 @@ export default function AiRevisionPage() {
                                 </CardContent>
                             </Card>
                         </TabsContent>
-                        <TabsContent value="explain">
-                             <Card className="md:relative fixed inset-0 z-50 md:z-auto bg-background md:bg-card rounded-none md:rounded-lg border-none md:border">
-                                <CardHeader className="flex-row items-center justify-between border-b md:border-none pb-4 md:pb-6">
+                        <TabsContent value="explain" className={cn(activeTab === 'explain' && 'md:block fixed inset-0 z-50 md:relative md:z-auto')}>
+                             <Card className="bg-background md:bg-card rounded-none md:rounded-lg border-none md:border h-full">
+                                <CardHeader className="flex flex-row items-center justify-between border-b pb-4 md:pb-6">
                                      <Button variant="ghost" className="md:hidden" onClick={() => setActiveTab('generate')}>
                                         <ArrowLeft className="w-4 h-4 mr-2"/>
                                         Back
                                     </Button>
                                     <CardTitle className="flex items-center text-lg md:text-2xl"><HelpCircle className="w-6 h-6 mr-3 text-primary" />Instant Explanations</CardTitle>
                                 </CardHeader>
-                                <CardContent className="p-0 md:p-6 md:pt-0 h-[calc(100vh-10rem)] md:h-auto">
+                                <CardContent className="p-0 md:p-6 md:pt-0 h-[calc(100%-80px)] md:h-auto">
                                    <div className="p-4 bg-background rounded-lg md:border flex flex-col h-full md:h-96">
                                        <ScrollArea className="flex-grow space-y-4 pr-4" ref={chatContainerRef}>
                                             {messages.map((message, index) => (
