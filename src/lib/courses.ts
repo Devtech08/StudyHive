@@ -87,8 +87,8 @@ export const subjects = [
             id: 'geometry-intro',
             title: 'Introduction to Geometry',
             instructor: 'Pythagoras',
-            thumbnail: 'https://i.pinimg.com/736x/b0/49/a4/b049a47b8921c25565af202cd689457d.jpg',
-            dataAiHint: 'mathematics chalkboard',
+            thumbnail: 'https://i.pinimg.com/1200x/b9/d3/a3/b9d3a344e8724038845f0473a6f2fafe.jpg',
+            dataAiHint: 'geometry shapes',
             description: 'Discover the world of shapes, angles, and spatial reasoning.',
             objectives: [],
             modules: [
