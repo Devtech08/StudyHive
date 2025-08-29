@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { AuthProvider } from '@/components/AuthProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { SplashScreenProvider } from '@/context/SplashScreenContext';
 
 export const metadata: Metadata = {
   title: 'StudyHive - Learn Faster',
@@ -30,7 +31,9 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
           <AuthProvider>
-            <div>{children}</div>
+            <SplashScreenProvider>
+              <div>{children}</div>
+            </SplashScreenProvider>
           </AuthProvider>
         </ThemeProvider>
       </body>

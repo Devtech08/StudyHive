@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { SplashScreen } from '@/components/SplashScreen';
 import { cn } from '@/lib/utils';
+import { useSplashScreen } from '@/context/SplashScreenContext';
 
 const testimonials = [
   {
@@ -89,15 +90,18 @@ export default function Home() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isAppLoading, setIsAppLoading] = useState(true);
+  const { isAppLoading, setIsAppLoading } = useSplashScreen();
+
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsAppLoading(false);
-    }, 2500); // Duration of the splash screen
+    if (isAppLoading) {
+        const timer = setTimeout(() => {
+            setIsAppLoading(false);
+        }, 2500); // Duration of the splash screen
 
-    return () => clearTimeout(timer);
-  }, []);
+        return () => clearTimeout(timer);
+    }
+  }, [isAppLoading, setIsAppLoading]);
 
 
   useEffect(() => {
