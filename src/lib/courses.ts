@@ -131,7 +131,7 @@ export const subjects = [
             id: 'intro-to-coding',
             title: 'Introduction to Coding',
             instructor: 'Ada Lovelace',
-            thumbnail: 'https://picsum.photos/600/400',
+            thumbnail: 'https://i.pinimg.com/736x/ee/24/dc/ee24dce0283929c91feb548df0a2f9ad.jpg',
             dataAiHint: 'code editor',
             description: 'Start your journey into the world of programming. No prior experience required!',
             objectives: [],
