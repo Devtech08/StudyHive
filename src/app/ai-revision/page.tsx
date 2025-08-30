@@ -157,20 +157,22 @@ export default function AiRevisionPage() {
             </>
         )
     };
+    
+    const isFullScreenTab = activeTab === 'explain' || activeTab === 'exam';
 
     return (
         <div className="flex flex-col min-h-screen animate-zoom-in">
              <DashboardHeader />
             <main className="flex-1 p-4 md:p-8 lg:p-12 bg-muted/20">
                 <div className="container mx-auto">
-                    <header className={cn("mb-12 text-center", activeTab === 'explain' && 'hidden md:block')}>
+                    <header className={cn("mb-12 text-center", isFullScreenTab && 'hidden md:block')}>
                         <h1 className="text-4xl font-bold font-headline">AI Revision Studio</h1>
                         <p className="text-muted-foreground mt-2 text-lg">
                             Your personalized AI-powered study partner.
                         </p>
                     </header>
                     <Tabs defaultValue="generate" value={activeTab} onValueChange={setActiveTab}>
-                        <TabsList className={cn("grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mb-8", activeTab === 'explain' && 'hidden md:grid')}>
+                        <TabsList className={cn("grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mb-8", isFullScreenTab && 'hidden md:grid')}>
                             <TabsTrigger value="generate"><Wand2 className="w-4 h-4 mr-2"/>Generate</TabsTrigger>
                             <TabsTrigger value="plan"><Target className="w-4 h-4 mr-2"/>Study Plan</TabsTrigger>
                             <TabsTrigger value="explain"><HelpCircle className="w-4 h-4 mr-2" />Explain</TabsTrigger>
@@ -317,14 +319,18 @@ export default function AiRevisionPage() {
                                 </CardContent>
                             </Card>
                         </TabsContent>
-                        <TabsContent value="exam">
-                             <Card>
-                                <CardHeader>
+                        <TabsContent value="exam" className={cn(activeTab === 'exam' && 'md:block fixed inset-0 z-50 md:relative md:z-auto')}>
+                             <Card className="bg-background md:bg-card rounded-none md:rounded-lg border-none md:border h-full flex flex-col">
+                                <CardHeader className="flex flex-row items-center justify-between border-b pb-4 md:pb-6">
+                                    <Button variant="ghost" className="md:hidden" onClick={() => setActiveTab('generate')}>
+                                        <ArrowLeft className="w-4 h-4 mr-2"/>
+                                        Back
+                                    </Button>
                                     <CardTitle className="flex items-center"><FileText className="w-6 h-6 mr-3 text-primary" />Mock Exam Mode</CardTitle>
-                                    <CardDescription>Let the AI generate a full practice test from all topics in a course to get you ready for the real exam.</CardDescription>
                                 </CardHeader>
-                                <CardContent className="space-y-6 pt-6 pb-4">
-                                    <div className="space-y-4">
+                                <CardContent className="flex-grow flex flex-col justify-center p-4 md:p-6">
+                                    <div className="space-y-4 max-w-md mx-auto w-full">
+                                        <p className="text-center text-muted-foreground">Select a subject to generate a full practice test. This will help you get ready for the real exam.</p>
                                         <Select onValueChange={setExamSubject} value={examSubject}>
                                             <SelectTrigger>
                                                 <SelectValue placeholder="Select a subject..." />
@@ -352,8 +358,8 @@ export default function AiRevisionPage() {
                                         </Button>
                                     </div>
                                 </CardContent>
-                                <CardFooter>
-                                    <p className="text-xs text-muted-foreground">The exam will be timed and cover all course material to simulate final exam conditions.</p>
+                                <CardFooter className="justify-center text-center">
+                                    <p className="text-xs text-muted-foreground max-w-sm">The exam will be timed and cover all course material to simulate final exam conditions.</p>
                                 </CardFooter>
                             </Card>
                         </TabsContent>
